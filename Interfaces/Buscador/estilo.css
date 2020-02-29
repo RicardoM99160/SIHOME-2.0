@@ -9,7 +9,7 @@
 
 /*Con esta clase hago que el ancho de mi navbar lateral sea de 250px
 Y que el alto mínimo sea el alto del dispositivo*/
-#sidebar{
+#barraLateral{
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
@@ -21,17 +21,17 @@ Y que el alto mínimo sea el alto del dispositivo*/
 
 /*Esta regla mueve 250px a la izquierda la navbar lateral
 ocultandola del sitio*/
-#sidebar.active{
+#barraLateral.active{
     margin-left: -250px;
 }
 
 /*Las dos reglas siguientes son para posicionar el triangulo de los
 dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
-#sidebar a[data-toggle="collapse"]{
+#barraLateral a[data-toggle="collapse"]{
     position: relative;
 }
 
-#sidebar .dropdown-toggle::after{
+#barraLateral .dropdown-toggle::after{
     display: block;
     position: absolute;
     top: 50%;
@@ -40,46 +40,61 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 }
 
 @media(max-width: 768px){
-    #sidebar{
+    #barraLateral{
         margin-left: -250px;
     }
-    #sidebar.active{
+    #barraLateral.active{
         margin-left: 0;
     }
 }
 
-#sidebar .sidebar-header {
+#barraLateral .sidebar-header {
     padding: 20px;
     background: #6d7fcc;
 }
 
-#sidebar ul.components {
+#barraLateral ul.components {
     padding: 20px 0;
     border-bottom: 1px solid #47748b;
 }
 
-#sidebar ul p {
+#barraLateral ul p, #barraLateral div p {
     color: #fff;
     padding: 10px;
 }
 
-#sidebar ul li a {
+#barraLateral ul li a {
     padding: 10px;
     font-size: 1.1em;
     display: block;
 }
-#sidebar ul li a:hover {
+#barraLateral ul li a:hover {
     color: #7386D5;
     background: #fff;
 }
 
-#sidebar ul li.active > a, #sidebar a[aria-expanded="true"] {
+#barraLateral ul li.active > a, #barraLateral a[aria-expanded="true"] {
     color: #fff;
     background: #6d7fcc;
 }
 
+#barraLateral div p {
+    font-size: 0.96em;
+}
+
+/*Sirve para corregir el posicionado del boton citas programadas cuando colapsa la barra superior*/
+@media(max-width: 991px){
+    #contenedorConsultasP{
+        margin-left: 0px !important;
+    }
+}
 /*------------------------- FIN ESTILOS PARA BARRA LATERAL -------------------------*/
 
+/*------------------------- ESTILOS PARA BARRA SUPERIOR -------------------------*/
+
+
+
+/*------------------------- FIN ESTILOS PARA BARRA SUPERIOR -------------------------*/
 
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
