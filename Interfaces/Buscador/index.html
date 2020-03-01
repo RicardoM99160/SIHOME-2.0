@@ -83,37 +83,94 @@
             </nav>
             
             <!-- Contenido del sitio -->
-            <div id="contenido" class="flex-fill">
-                <!--AQUIIIIIIIIIIIIIIIIIIIIIII SEEEEEEEEEERPAS-->
-                <form class="w-75 m-auto my-2">
-                    <div class="form-check w-100 m-auto">
-                        <input type="checkbox" name="aplicarFiltro" id="checkFiltro" class="form-check-input">
-                        <label for="form-check-label" for="checkFiltro">Filtrar búsqueda</label>
-                    </div>
-                    <div class="form-group w-50 m-auto">
+            <div id="contenido" class="w-75 h-100 mx-auto">
+                
+                <div id="tituloPagina" class="w-100 text-uppercase">
+                    <h1 class="">Buscador de Expedientes</h1>
+                </div>
+
+                <form id="buscador" class="w-100 d-flex">
+                    <div class="form-group w-50 px-2 d-flex">
                         <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Ingrese el # del expediente">
                     </div>
+                    <div class="form-group d-inline-flex ml-auto">
+                        <button id="btnFiltro" name="aplicarFiltro" class="btn btn-light">
+                            <svg id="i-options" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M28 6 L4 6 M28 16 L4 16 M28 26 L4 26 M24 3 L24 9 M8 13 L8 19 M20 23 L20 29" />
+                            </svg>
+                            <span>Refinar búsqueda</span>
+                        </button>
+                    </div>
                 </form>
-    
-                <div id="expedientes" class="bg-success w-75 h-50 overflow-auto m-auto">
-                    <ul class="list-group w-100 h-100 p-3">
-                        <li class="list-group-item my-2">
-                            <a href="">Expediente 1</a>
-                        </li>
-                        <li class="list-group-item my-2">
-                            <a href="">Expediente 2</a>
-                        </li>
-                        <li class="list-group-item my-2">
-                            <a href="">Expediente 3</a>
-                        </li>
-                        <li class="list-group-item my-2">
-                            <a href="">Expediente 4</a>
-                        </li>
-                        <li class="list-group-item my-2">
-                            <a href="">Expediente n</a>
-                        </li>
-                    </ul>
+
+                <div id="expedientes" class="bg-success w-100 h-50">
+                    <h5 id="tituloResultados" class="bg-secondary p-2">Resultados</h5>
+                    <div id="resultadosExpedientes" class="bg-success w-100 overflow-auto">
+                        <ul class="list-group w-100 p-3">
+                            <li class="list-group-item my-2 tarjeta-expediente">
+                                <a href="" class="w-100 d-flex flex-row">
+                                    <div id="imagenUsuario" class="w-25 d-flex pl-3 pt-2">
+                                        <img src="Imagenes/user.png" alt="Imagen de usuario" class="img-fluid img-responsive img-usuario">
+                                    </div>
+                                    <div id="datosUsuario" class="w-75">
+                                        <p>Expediente: Id_Expediente<br>
+                                            Nombre: Nombre_Paciente<br>
+                                            DUI: Dui_Paciente<br>
+                                            Fecha de creacion: Fecha_Creacion<br>
+                                            Ultima Cita: Fecha_Modificacion
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item my-2 tarjeta-expediente">
+                                <a href="" class="w-100 d-flex flex-row">
+                                    <div id="imagenUsuario" class="w-25 d-flex pl-3 pt-2">
+                                        <img src="Imagenes/user.png" alt="Imagen de usuario" class="img-fluid img-responsive img-usuario">
+                                    </div>
+                                    <div id="datosUsuario" class="w-75">
+                                        <p>Expediente: Id_Expediente<br>
+                                            Nombre: Nombre_Paciente<br>
+                                            DUI: Dui_Paciente<br>
+                                            Fecha de creacion: Fecha_Creacion<br>
+                                            Ultima Cita: Fecha_Modificacion
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item my-2 tarjeta-expediente">
+                                <a href="" class="w-100 d-flex flex-row">
+                                    <div id="imagenUsuario" class="w-25 d-flex pl-3 pt-2">
+                                        <img src="Imagenes/user.png" alt="Imagen de usuario" class="img-fluid img-responsive img-usuario">
+                                    </div>
+                                    <div id="datosUsuario" class="w-75">
+                                        <p>Expediente: Id_Expediente<br>
+                                            Nombre: Nombre_Paciente<br>
+                                            DUI: Dui_Paciente<br>
+                                            Fecha de creacion: Fecha_Creacion<br>
+                                            Ultima Cita: Fecha_Modificacion
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item my-2 tarjeta-expediente">
+                                <a href="" class="w-100 d-flex flex-row">
+                                    <div id="imagenUsuario" class="w-25 d-flex pl-3 pt-2">
+                                        <img src="Imagenes/user.png" alt="Imagen de usuario" class="img-fluid img-responsive img-usuario">
+                                    </div>
+                                    <div id="datosUsuario" class="w-75">
+                                        <p>Expediente: Id_Expediente<br>
+                                            Nombre: Nombre_Paciente<br>
+                                            DUI: Dui_Paciente<br>
+                                            Fecha de creacion: Fecha_Creacion<br>
+                                            Ultima Cita: Fecha_Modificacion
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                
             </div>
             
         </div>
