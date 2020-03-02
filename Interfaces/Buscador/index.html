@@ -18,9 +18,9 @@
     </head>
     <body>
 
+        <!-- Barra superior de navegación -->
         <div id="barraSuperior">
             <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-
                 <!-- Boton para desplegar barra lateral de navegación-->
                 <a href="#" id="colapsarBarraLateral" class="navbar-brand nav-link dropdown-toggle mr-5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SIHOME</a>
                 <!-- Boton para desplegar la barra superior -->
@@ -28,7 +28,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="contenidoBarraSuperior">
+                <div id="contenidoBarraSuperior" class="collapse navbar-collapse">
                     <div id="contenedorConsultasP" class="nav-item active mr-auto ml-5">
                         <a id="consultasProgramadas" href="#" class="nav-link" role="button">
                             <span>Consultas programadas</span>
@@ -62,14 +62,13 @@
 
             <!-- Barra lateral de navegación -->
             <nav id="barraLateral">
-                <div class="sidebar-header">
-                    <img src="Imagenes/Minsal.png" alt="Logo Ministerio de Salud" class="img-fluid img-responsive">
 
+                <div id="fotoNombreCentroMedico" class="sidebar-header">
+                    <img src="Imagenes/Minsal.png" alt="Logo Ministerio de Salud" class="img-fluid img-responsive">
                     <p class="text-center">Nombre de establecimiento médico, departamento</p>
                 </div>
 
-                <ul class="list-unlisted components">
-                    
+                <ul id="enlacesNavegacion" class="list-unlisted components">
                     <li>
                         <a href="#">Inicio</a>
                     </li>
@@ -83,12 +82,14 @@
             </nav>
             
             <!-- Contenido del sitio -->
-            <div id="contenido" class="w-75 h-100 mx-auto">
+            <div id="contenido" class="w-75 mx-auto">
                 
-                <div id="tituloPagina" class="w-100 text-uppercase">
+                <!-- Título de la página actual -->
+                <div id="tituloPagina" class="text-uppercase">
                     <h1 class="">Buscador de Expedientes</h1>
                 </div>
 
+                <!-- Form para realizar búsqueda -->
                 <form id="buscador" class="w-100 d-flex">
                     <div class="form-group w-50 px-2 d-flex">
                         <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Ingrese el # del expediente">
@@ -103,6 +104,7 @@
                     </div>
                 </form>
 
+                <!-- Mostrar expedientes -->
                 <div id="expedientes" class="bg-success w-100 h-50">
                     <h5 id="tituloResultados" class="bg-secondary p-2">Resultados</h5>
                     <div id="resultadosExpedientes" class="bg-success w-100 overflow-auto">
@@ -167,6 +169,7 @@
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+        <!-- Script para mostar/ocultar barra de navegación lateral-->
         <script>
             $(document).ready(function () {
 

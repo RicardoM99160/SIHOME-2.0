@@ -1,10 +1,4 @@
 
-.wrapper{
-    display: flex;
-    width: 100%;
-    align-items: stretch;
-}
-
 /*------------------------- ESTILOS PARA BARRA LATERAL -------------------------*/
 
 /*Con esta clase hago que el ancho de mi navbar lateral sea de 250px
@@ -92,6 +86,7 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 
 /*------------------------- ESTILOS PARA BARRA SUPERIOR -------------------------*/
 
+/*Sirve para ajustar el alto de la barra lateral con la barra superior*/
 #barraSuperior{
     min-height: 9vh;
 }
@@ -99,8 +94,6 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 /*------------------------- FIN ESTILOS PARA BARRA SUPERIOR -------------------------*/
 
 /*------------------------- ESTILOS PARA CONTENIDO -------------------------*/
-#contenido{
-}
 
 #tituloPagina{
     margin: 20px 0 30px 0;
@@ -144,6 +137,7 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 
 #resultadosExpedientes::-webkit-scrollbar-track
 {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 	/*background-color: #F5F5F5;*/
@@ -157,15 +151,18 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 
 #resultadosExpedientes::-webkit-scrollbar-thumb
 {
-	border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #555;
 }
 
 /*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+/*------------------------- ESTILOS GLOBALES DEL SITIO -------------------------*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -191,3 +188,10 @@ ul ul a {
     padding-left: 30px !important;
     background: #6d7fcc;
 }
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+/*------------------------- FIN ESTILOS GLOBALES DEL SITIO -------------------------*/
