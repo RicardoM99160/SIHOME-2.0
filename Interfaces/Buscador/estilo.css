@@ -131,6 +131,37 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
     bottom: 5px;
 }
 
+.scrollbar-propia
+{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+#resultadosExpedientes::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	/*background-color: #F5F5F5;*/
+}
+
+#resultadosExpedientes::-webkit-scrollbar
+{
+	width: 12px;
+	/*background-color: #F5F5F5;*/
+}
+
+#resultadosExpedientes::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
 /*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
