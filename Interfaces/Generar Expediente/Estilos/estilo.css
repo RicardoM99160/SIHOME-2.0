@@ -114,9 +114,9 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
     height: 30vh;
 } */
 
-#camposInfoPersonal{
+/* #camposInfoPersonal{
     height: 35vh;
-}
+} */
 
 
 .scrollbar-propia
@@ -184,4 +184,17 @@ ul ul a {
     background: #6d7fcc;
 }
 
+@media (min-height: 721px){
+    html{
+        width: 100%;
+        height: 100%;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper{
+        height: 100%;
+    }
+}
 /*------------------------- FIN ESTILOS GLOBALES DEL SITIO -------------------------*/
