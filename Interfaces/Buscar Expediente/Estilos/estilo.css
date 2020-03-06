@@ -12,7 +12,8 @@ Y que el alto mínimo sea el alto del dispositivo*/
 #barraLateral{
     min-width: 250px;
     max-width: 250px;
-    min-height: 89.8vh;
+    min-height: 95.3vh;
+    max-height: 95.3vh;
 
     background: #7386D5;
     color: #fff;
@@ -93,10 +94,16 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 /*------------------------- ESTILOS PARA BARRA SUPERIOR -------------------------*/
 
 /*Sirve para ajustar el alto de la barra lateral con la barra superior*/
-#barraSuperior{
-    min-height: 9vh;
+#cuentaUsuario, #consultasProgramadas, #colapsarBarraLateral{
+    height: 25px;
+    font-size: 15px;
 }
-
+/*Si los enlaces no quedan centrados, modifica el padding con bootstrap*/
+/*Sirve para ajustar el tamaño de los íconos*/
+#i-clock, #i-ellipsis-vertical, #i-user{
+    width: 16px;
+    height: 16px;
+}
 /*------------------------- FIN ESTILOS PARA BARRA SUPERIOR -------------------------*/
 
 /*------------------------- ESTILOS PARA CONTENIDO -------------------------*/

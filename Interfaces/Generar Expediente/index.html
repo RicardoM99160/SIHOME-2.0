@@ -19,8 +19,8 @@
     <body>
 
         <!-- Barra superior de navegación -->
-        <div id="barraSuperior">
-            <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <div id="contenedorBarraSuperior">
+            <nav id="barraSuperior" class="navbar navbar-expand-lg navbar-light bg-warning pb-2 pt-1">
                 <!-- Boton para desplegar barra lateral de navegación-->
                 <a href="#" id="colapsarBarraLateral" class="navbar-brand nav-link dropdown-toggle mr-5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SIHOME</a>
                 <!-- Boton para desplegar la barra superior -->
@@ -30,7 +30,7 @@
 
                 <div id="contenidoBarraSuperior" class="collapse navbar-collapse">
                     <div id="contenedorConsultasP" class="nav-item active mr-auto ml-5">
-                        <a id="consultasProgramadas" href="#" class="nav-link" role="button">
+                        <a id="consultasProgramadas" href="#" class="nav-link py-1" role="button">
                             <span>Consultas programadas</span>
                             <svg id="i-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                 <circle cx="16" cy="16" r="14" />
@@ -40,8 +40,8 @@
                     </div>
 
                     <!--Este seria un dropdown también (Sigue pendiente)-->
-                    <div class="nav-item active my-2 my-lg-0">
-                        <a id="cuentaUsuario" href="#" class="nav-link" role="button">
+                    <div id="contenedorCuentaUsuario" class="nav-item active">
+                        <a id="cuentaUsuario" href="#" class="nav-link py-1" role="button">
                             <svg id="i-ellipsis-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                 <circle cx="16" cy="7" r="2" />
                                 <circle cx="16" cy="16" r="2" />
