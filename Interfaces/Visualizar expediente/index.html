@@ -70,7 +70,7 @@
             </nav>
 
             <div id="contenido">
-                <div id="infoGeneralExpediente" class="border border-dark">
+                <div id="infoGeneralExpediente" class="border border-dark informacion-expediente">
                     <div class="row px-3 py-3 no-gutters">
                         <div class="col-9">
                             <div class="row my-2">
@@ -128,7 +128,233 @@
                         </div>
                     </div>
                 </div>
-                <div id="historialExpediente"></div>
+                <div id="historialExpediente" class="border border-top-0 border-dark informacion-expediente">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button id="colapsarBarraExpediente" class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#contenidoBarraExpediente" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div id="contenidoBarraExpediente" class="collapse navbar-collapse">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link">Histórico de Consultas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Historial Clínico</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Cirugias</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="px-3">
+                        <h5 class="mt-3 mb-4">
+                            <svg id="i-folder" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="27" height="27" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M2 26 L30 26 30 7 14 7 10 4 2 4 Z M30 12 L2 12" />
+                            </svg>
+                            <span><b>Consultas Registradas(16)</b></span>
+                        </h5>
+                        <form action="" class="row form-group">
+                            <div class="col-6">
+                                <input type="text" name="busqueda" id="busqueda" class="form-control" placeholder="Introduzca un parametro de búsqueda">
+                            </div>
+                            <div class="col-3">
+                                <button id="btnFiltro" name="aplicarFiltro" class="btn btn-light">
+                                    <svg id="i-options" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                        <path d="M28 6 L4 6 M28 16 L4 16 M28 26 L4 26 M24 3 L24 9 M8 13 L8 19 M20 23 L20 29" />
+                                    </svg>
+                                    <span>Refinar búsqueda</span>
+                                </button>
+                            </div>
+                            <div class="col-2 ml-auto">
+                                <button id="btnConsulta" name="nuevaConsulta" class="btn btn-light">
+                                    <svg id="i-compose" class="mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                        <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                    </svg>
+                                    <span>Nueva consulta</span>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="d-flex mt-4 align-items-center">
+                            <p class="m-0"><b>Mostrando 1-10 / de 16</b></p>
+                            <button id="menosResultados" class="btn" name="menosR">
+                                <svg id="i-caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="black" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <path d="M22 30 L6 16 22 2 Z" />
+                                </svg>
+                            </button>
+                            <button id="masResultados" class="btn" name="masR">
+                                <svg id="i-caret-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="black" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <path d="M10 30 L26 16 10 2 Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <table class="table border border-dark">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Código de consulta</th>
+                                    <th scope="col">Doctor encargado</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Hora</th>
+                                    <th scope="col">Comentario</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>No. 000000</td>
+                                    <td>Julio Salazar</td>
+                                    <td>15 Marzo 2016</td>
+                                    <td>12:00:00</td>
+                                    <td>Febril</td>
+                                    <td>
+                                        <button class="btn h-25">
+                                            <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 

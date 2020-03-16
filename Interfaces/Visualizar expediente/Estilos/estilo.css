@@ -12,8 +12,7 @@ Y que el alto mínimo sea el alto del dispositivo*/
 #barraLateral{
     min-width: 250px;
     max-width: 250px;
-    min-height: 95.3vh;
-    max-height: 95.3vh;
+    
 
     background: #7386D5;
     color: #fff;
@@ -111,16 +110,35 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
     width: 100%;
 }
 
-#infoGeneralExpediente{
+.informacion-expediente{
     width: 85%;
-    margin: 20px auto;
+    margin: 0 auto;
     font-size: 15px;
 }
 
-#infoGeneralExpediente input[type="text"]{
+.informacion-expediente input[type="text"]{
     height: 30px;
     font-size: 12px;
 }
+
+.informacion-expediente button{
+    font-size: 15px;
+}
+
+.informacion-expediente #menosResultados, .informacion-expediente #masResultados{
+    width: 16px;
+}
+
+#infoGeneralExpediente{
+    margin-top: 20px;
+}
+
+#historialExpediente{
+    margin-bottom: 20px;
+}
+
+
+
 
 /*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
 
