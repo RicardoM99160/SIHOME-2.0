@@ -1,0 +1,151 @@
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+/*------------------------- ESTILOS PARA BARRA LATERAL -------------------------*/
+
+/*Con esta clase hago que el ancho de mi navbar lateral sea de 250px
+Y que el alto mínimo sea el alto del dispositivo*/
+#barraLateral{
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 95.3vh;
+    max-height: 95.3vh;
+
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+/*Esta regla mueve 250px a la izquierda la navbar lateral
+ocultandola del sitio*/
+#barraLateral.active{
+    margin-left: -250px;
+}
+
+/*Las dos reglas siguientes son para posicionar el triangulo de los
+dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
+#barraLateral a[data-toggle="collapse"]{
+    position: relative;
+}
+
+#barraLateral .dropdown-toggle::after{
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media(max-width: 768px){
+    #barraLateral{
+        margin-left: -250px;
+    }
+    #barraLateral.active{
+        margin-left: 0;
+    }
+}
+
+#barraLateral .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#barraLateral ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#barraLateral ul p, #barraLateral div p {
+    color: #fff;
+    padding: 10px;
+}
+
+#barraLateral ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#barraLateral ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#barraLateral ul li.active > a, #barraLateral a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+#barraLateral div p {
+    font-size: 0.96em;
+}
+
+/*Sirve para corregir el posicionado del boton citas programadas cuando colapsa la barra superior*/
+@media(max-width: 991px){
+    #contenedorConsultasP{
+        margin-left: 0px !important;
+    }
+}
+/*------------------------- FIN ESTILOS PARA BARRA LATERAL -------------------------*/
+
+/*------------------------- ESTILOS PARA BARRA SUPERIOR -------------------------*/
+
+/*Sirve para ajustar el alto de la barra lateral con la barra superior*/
+#cuentaUsuario, #consultasProgramadas, #colapsarBarraLateral{
+    height: 25px;
+    font-size: 15px;
+}
+/*Si los enlaces no quedan centrados, modifica el padding con bootstrap*/
+/*Sirve para ajustar el tamaño de los íconos*/
+#i-clock, #i-ellipsis-vertical, #i-user{
+    width: 16px;
+    height: 16px;
+}
+/*------------------------- FIN ESTILOS PARA BARRA SUPERIOR -------------------------*/
+
+/*------------------------- ESTILOS PARA CONTENIDO -------------------------*/
+#contenido{
+    width: 100%;
+}
+
+#infoGeneralExpediente{
+    width: 85%;
+    margin: 20px auto;
+    font-size: 15px;
+}
+
+#infoGeneralExpediente input[type="text"]{
+    height: 30px;
+    font-size: 12px;
+}
+
+/*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
+
+
+/*------------------------- ESTILOS GLOBALES DEL SITIO -------------------------*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+/*------------------------- FIN ESTILOS GLOBALES DEL SITIO -------------------------*/
