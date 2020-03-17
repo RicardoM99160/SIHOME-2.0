@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>Visualizar Expediente</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- CSS propio -->
+        <link rel="stylesheet" href="Estilos/estilo.css">
+
+        <!-- Font Awesome JS-->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        
+        <!-- Barra superior de navegación -->
+        <div id="contenedorBarraSuperior">
+            <nav id="barraSuperior" class="navbar navbar-expand-lg navbar-light bg-warning pb-2 pt-1">
+                <!-- Boton para desplegar barra lateral de navegación-->
+                <a href="#" id="colapsarBarraLateral" class="navbar-brand nav-link dropdown-toggle mr-5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SIHOME</a>
+                <!-- Boton para desplegar la barra superior -->
+                <button id="colapsarBarraSuperior" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#contenidoBarraSuperior" aria-controls="contenidoBarraSuperior" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="contenidoBarraSuperior" class="collapse navbar-collapse">
+                    <!--Este seria un dropdown también (Sigue pendiente)-->
+                    <div id="contenedorCuentaUsuario" class="nav-item active my-1 ml-auto">
+                        <a id="cuentaUsuario" href="#" class="nav-link py-1" role="button">
+                            <svg id="i-ellipsis-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <circle cx="16" cy="7" r="2" />
+                                <circle cx="16" cy="16" r="2" />
+                                <circle cx="16" cy="25" r="2" />
+                            </svg>
+                            <span>Apellido, Nombre</span>
+                            <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="wrapper">
+            <!-- Barra lateral de navegación -->
+            <nav id="barraLateral">
+
+                <div id="fotoNombreCentroMedico" class="sidebar-header">
+                    <img src="Imagenes/Minsal.png" alt="Logo Ministerio de Salud" class="img-fluid img-responsive">
+                    <p class="text-center">Nombre de establecimiento médico, departamento</p>
+                </div>
+
+                <ul id="enlacesNavegacion" class="list-unlisted components">
+                    <li>
+                        <a href="#">Inicio</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">Buscar expediente</a>
+                    </li>
+                    <li>
+                        <a href="#">Generar expediente</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div id="contenido">
+                <div id="infoGeneralExpediente" class="border border-dark informacion-expediente">
+                    <div class="row px-3 py-3 no-gutters">
+                        <div class="col-9">
+                            <div class="row my-2">
+                                <div class="col">
+                                    <h4>Expediente No 100000</h4>
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col">
+                                    <p>Nombre completo, apellido completo</p>
+                                </div>
+                            </div>
+                            <div class="row form-group no-gutters">
+                                <div class="col-3 px-1">
+                                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                                    <input type="text" name="fechaNacimiento" id="fechaNacimiento" value="12 mayo 2016 (30 años)" class="form-control" disabled>
+                                </div>
+                                <div class="col-2 px-1">
+                                    <label for="sexo">Sexo</label>
+                                    <input type="text" name="sexo" id="sexo" value="Masculino" class="form-control" disabled>
+                                </div>
+                                <div class="col-3 px-1">
+                                    <label for="dui">DUI</label>
+                                    <input type="text" name="dui" id="dui" value="00000000-0" class="form-control" disabled>
+                                </div>
+                                <div class="col-2 px-1">
+                                    <label for="tipoSangre">Tipo de sangre</label>
+                                    <input type="text" name="tipoSangre" id="tipoSangre" value="O+" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="row form-group no-gutters">
+                                <div class="col-7 px-1">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" name="direccion" id="direccion" value="Col El Trafico 1, Calle Venecia, Casa 3A-1, San Vicente" class="form-control" disabled>
+                                </div>
+                                <div class="col-3 px-1">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" name="telefono" id="telefono" value="0000-0000" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <img src="Imagenes/user.png" alt="Imagen Expediente" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row no-gutters mb-3">
+                        <div class="col d-flex justify-content-center">
+                            <p class="px-1"><b>Ultima consulta:</b></p>
+                            <p class="px-1">Recibida el <u>15 de Mayo de 2019</u> en <u>Instituto Médico San Marcos</u></p>
+                            <button class="btn py-0 px-1 h-25">
+                                <svg id="i-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="historialExpediente" class="border border-top-0 border-dark informacion-expediente">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button id="colapsarBarraExpediente" class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#contenidoBarraExpediente" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div id="contenidoBarraExpediente" class="collapse navbar-collapse">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link">Histórico de Consultas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Historial Clínico</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Cirugias</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="row px-3 py-3">
+                        <div class="col">
+                            <div id="habitosToxicos" class="form-group mt-2">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-uppercase font-weight-bold">
+                                            <span class="pr-2">Habitos Toxicos</span>
+                                            <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                            </svg>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="alcoholH" id="alcoholHabito" class="form-control text-uppercase text-center" value="Alcohol" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="alcoholV" id="alcoholValor" class="form-control" value="Solo en celebraciones" disabled>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="tabacoH" id="tabacoHabito" class="form-control text-uppercase text-center" value="Tabaco" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="tabacoV" id="tabacoValor" class="form-control" value="1 o dos veces por semana" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="habitosFisiologicos" class="form-group mt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-uppercase font-weight-bold">
+                                            <span class="pr-2">Habitos Fisiologicos</span>
+                                            <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                            </svg>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="alimentacionH" id="alimentacionHabito" class="form-control text-uppercase text-center" value="Alimentacion" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="alimentacionV" id="alimentacionValor" class="form-control" value="3 veces al día, sin refrigerios" disabled>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="diuresisH" id="diuresisHabito" class="form-control text-uppercase text-center" value="Dihuresis" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="diuresisV" id="diuresisValor" class="form-control" value="Normal, poco oscura, no despierta por la noche para orinar" disabled>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="catarsisH" id="catarsisHabito" class="form-control text-uppercase text-center" value="Dihuresis" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="catarsisV" id="catarsisValor" class="form-control" value="Normal" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="enfermedadesInfancia" class="form-group mt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-uppercase font-weight-bold">
+                                            <span class="pr-2">Enfermedades de la infancia</span>
+                                            <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                            </svg>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="enfermedad1I" id="enfermedad1Infancia" class="form-control text-uppercase text-center h-100" value="Varicela" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <!-- Popper.JS -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <!-- Script para mostar/ocultar barra de navegación lateral-->
+        <script>
+            $(document).ready(function () {
+
+                $('#colapsarBarraLateral').on('click', function () {
+                    $('#barraLateral').toggleClass('active');
+                });
+
+            });
+        </script>
+    </body>
+</html>
