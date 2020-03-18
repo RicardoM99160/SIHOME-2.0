@@ -135,14 +135,14 @@
                         </button>
                         <div id="contenidoBarraExpediente" class="collapse navbar-collapse">
                             <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="consultas.html" class="nav-link">Histórico de Consultas</a>
+                                </li>
                                 <li class="nav-item active">
-                                    <a href="#" class="nav-link">Histórico de Consultas</a>
+                                    <a href="clinico.html" class="nav-link">Historial Clínico</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Historial Clínico</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Cirugias</a>
+                                    <a href="cirugias.html" class="nav-link">Cirugias</a>
                                 </li>
                             </ul>
                         </div>
@@ -154,9 +154,11 @@
                                     <div class="col">
                                         <h6 class="text-uppercase font-weight-bold">
                                             <span class="pr-2">Habitos Toxicos</span>
-                                            <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
-                                            </svg>
+                                            <button class="btn btn-light">
+                                                <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                                </svg>
+                                            </button>
                                         </h6>
                                     </div>
                                 </div>
@@ -183,9 +185,11 @@
                                     <div class="col">
                                         <h6 class="text-uppercase font-weight-bold">
                                             <span class="pr-2">Habitos Fisiologicos</span>
-                                            <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
-                                            </svg>
+                                            <button class="btn btn-light">
+                                                <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                                </svg>
+                                            </button>
                                         </h6>
                                     </div>
                                 </div>
@@ -220,9 +224,11 @@
                                     <div class="col">
                                         <h6 class="text-uppercase font-weight-bold">
                                             <span class="pr-2">Enfermedades de la infancia</span>
-                                            <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
-                                            </svg>
+                                            <button class="btn btn-light">
+                                                <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                                </svg>
+                                            </button>
                                         </h6>
                                     </div>
                                 </div>
@@ -230,10 +236,128 @@
                                     <div class="col-2">
                                         <input type="text" name="enfermedad1I" id="enfermedad1Infancia" class="form-control text-uppercase text-center h-100" value="Varicela" disabled>
                                     </div>
+                                    <div class="col-7">
+                                        <div id="enfermedad1IDescripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">Diagnosticado a los 10 años</p>
+                                            <p>Informacion del paciente</p>                                     
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
+                            <div id="enfermedades" class="form-group mt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-uppercase font-weight-bold">
+                                            <span class="pr-2">Enfermedades</span>
+                                            <button class="btn btn-light">
+                                                <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                                </svg>
+                                            </button>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="enfermedad1" id="enfermedad1" class="form-control text-uppercase text-center h-100" value="CV" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="enfermedad1Descripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">Diagnosticado a los 28 años</p>
+                                            <p>Tratado con Elapril 10 mg/dia sin dieta dash, realiza acompañamiento cardiólogo periódicamente</p>                                     
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div id="alergias" class="form-group mt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-uppercase font-weight-bold">
+                                            <span class="pr-2">Alergias</span>
+                                            <button class="btn btn-light">
+                                                <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                                </svg>
+                                            </button>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-9">
+                                        <div id="alergiasLista" class="px-3 py-3 form-control font-weight-bold campo-descriptivo">
+                                            <p>Caspa de mascotas</p>
+                                            <p>Penicilina y antibióticos basados en penicilina</p>
+                                            <p>Latex</p>
+                                            <p>Moho</p>                              
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col">
+                                        <div class="form-control d-flex">Caspa de mascotas</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-control d-flex">Penicilina y antibióticos basados en penicilina</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-control d-flex">Latex</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-control d-flex">Moho</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="antecedentes" class="form-group mt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-uppercase font-weight-bold">
+                                            <span class="pr-2">Antecedentes Heredofamiliares</span>
+                                            <button class="btn btn-light">
+                                                <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                                </svg>
+                                            </button>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="antecedente1" id="antecedente1" class="form-control text-uppercase text-center h-100" value="Hipertension" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="antecedente1Descripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">Madre y abuela</p>
+                                            <p>El paciente afirma que su madre y abuela materna fueron diagnosticadas con hipertensión</p>                                     
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="medicamentos" class="form-group mt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-uppercase font-weight-bold">
+                                            <span class="pr-2">Medicamentos</span>
+                                            <button class="btn btn-light">
+                                                <svg id="i-compose" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                                                </svg>
+                                            </button>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-9">
+                                        <div id="medicamentosDescripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">ATENOL (50 Mg)</p>
+                                            <p>1 tableta cada mañana</p>                                     
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

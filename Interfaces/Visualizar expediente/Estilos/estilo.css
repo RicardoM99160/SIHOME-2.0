@@ -137,6 +137,11 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
     margin-bottom: 20px;
 }
 
+.campo-descriptivo{
+    font-size: 12px;
+    height: 120px;
+    overflow: auto;
+}
 
 
 
