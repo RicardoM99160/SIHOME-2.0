@@ -105,47 +105,7 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 }
 /*------------------------- FIN ESTILOS PARA BARRA SUPERIOR -------------------------*/
 
-/*------------------------- ESTILOS PARA CONTENIDO -------------------------*/
-#contenido{
-    width: 100%;
-}
 
-.informacion-expediente{
-    width: 85%;
-    margin: 0 auto;
-    font-size: 15px;
-}
-
-.informacion-expediente input[type="text"]{
-    height: 30px;
-    font-size: 12px;
-}
-
-.informacion-expediente button{
-    font-size: 15px;
-}
-
-.informacion-expediente #menosResultados, .informacion-expediente #masResultados{
-    width: 16px;
-}
-
-#infoGeneralExpediente{
-    margin-top: 20px;
-}
-
-#historialExpediente{
-    margin-bottom: 20px;
-}
-
-.campo-descriptivo{
-    font-size: 12px;
-    height: 120px;
-    overflow: auto;
-}
-
-
-
-/*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
 
 
 /*------------------------- ESTILOS GLOBALES DEL SITIO -------------------------*/

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="Estilos/estilo.css">
+    <link rel="stylesheet" href="public/css/login.css">
 </head>
 <body>
     <div class="container w-100 h-100 wrapper justify-content-center">
@@ -40,7 +40,7 @@
                 </form>
             </div>
             <div class="col-lg-5 align-self-center">
-                <img src="Imagenes/Minsal.png" alt="Imagen" class="img-fluid rounded-circle border border-dark">
+                <img src="public/img/Minsal.png" alt="Imagen" class="img-fluid rounded-circle border border-dark">
             </div>
         </div>
     </div>
