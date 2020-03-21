@@ -7,13 +7,13 @@
 
     <ul id="enlacesNavegacion" class="list-unlisted components">
         <li>
-            <a href="login">Inicio</a>
+            <a href="<?php echo constant('URL');?>login">Inicio</a>
         </li>
         <li class="active">
-            <a href="buscarExpediente">Buscar expediente</a>
+            <a href="<?php echo constant('URL');?>buscarExpediente">Buscar expediente</a>
         </li>
         <li>
-            <a href="generarExpediente">Generar expediente</a>
+            <a href="<?php echo constant('URL');?>generarExpediente">Generar expediente</a>
         </li>
     </ul>
 </nav>

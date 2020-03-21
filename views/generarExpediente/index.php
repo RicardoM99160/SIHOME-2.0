@@ -8,7 +8,7 @@
         <title>Generar Expediente</title>
 
         <!-- CSS propio -->
-        <link rel="stylesheet" href="public/css/generarExpediente.css">
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/generarExpediente.css">
 
     </head>
     <body>
@@ -198,7 +198,7 @@
         
         <!--Gigjo DatePicker-->
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-        <script src="public/js/DatePicker.js"></script>
+        <script src="<?php echo constant('URL');?>public/js/DatePicker.js"></script>
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     </body>
 </html>

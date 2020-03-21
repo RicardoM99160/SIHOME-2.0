@@ -15,7 +15,7 @@
                 require_once $archivoController;
                 $controller = new $url[0];
 
-                if(isset($url[1])){
+                if(isset($url[1]) && method_exists($controller,$url[1])){
                     $controller->{$url[1]}();
                 }
             }else{

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- CSS propio -->
-    <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/login.css">
 </head>
 <body>
     <div class="container w-100 h-100 wrapper justify-content-center">
@@ -52,7 +52,7 @@
                 </form>
             </div>
             <div  class="col-lg-5 align-self-center  pull-right"> 
-                    <img  src="public/img/3350444.jpg" alt="Imagen" class="rounded-circle border"> 
+                    <img  src="<?php echo constant('URL');?>public/img/3350444.jpg" alt="Imagen" class="rounded-circle border"> 
             </div>
         </div>
     </div>

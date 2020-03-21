@@ -8,7 +8,7 @@
         <title>Visualizar Expediente</title>
         
         <!-- CSS propio -->
-        <link rel="stylesheet" href="public/css/visualizarExpediente.css">
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/visualizarExpediente.css">
 
     </head>
     <body>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="col-3">
-                            <img src="public/img/user.png" alt="Imagen Expediente" class="img-fluid">
+                            <img src="<?php echo constant('URL');?>public/img/user.png" alt="Imagen Expediente" class="img-fluid">
                         </div>
                     </div>
                     <div class="row no-gutters mb-3">

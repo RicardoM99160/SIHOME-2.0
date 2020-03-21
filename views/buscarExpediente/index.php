@@ -7,7 +7,7 @@
         
         <title>Buscar Expediente</title>
         <!-- CSS propio -->
-        <link rel="stylesheet" href="public/css/buscarExpediente.css">
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/buscarExpediente.css">
 
     </head>
     <body>
