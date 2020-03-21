@@ -1,8 +1,8 @@
+
 <!-- Barra lateral de navegación -->
 <nav id="barraLateral">
-    <div id="fotoNombreCentroMedico" class="sidebar-header">
-        <img src="public/img/Minsal.png" alt="Logo Ministerio de Salud" class="img-fluid img-responsive">
-        <p class="text-center">Nombre de establecimiento médico, departamento</p>
+    <div class="sidebar-header">
+        <!--En esta parte iba una imágen y el nombre del hospital, pero ha quedado vacio por el momento-->
     </div>
 
     <ul id="enlacesNavegacion" class="list-unlisted components">

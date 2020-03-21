@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
 .wrapper{
     display: flex;
     width: 100%;
@@ -6,17 +10,16 @@
 
 
 /*------------------------- ESTILOS GLOBALES DEL SITIO -------------------------*/
-
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+ 
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #F7F9FA;
     height: 100vh;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -36,3 +39,68 @@ ul ul a {
 }
 
 /*------------------------- FIN ESTILOS GLOBALES DEL SITIO -------------------------*/
+
+
+#font-icono h3{  
+    padding-left: 0.5em;
+    color: #0084E6; 
+    font-family: 'Baloo Chettan 2', cursive;
+    font-weight: 500;
+}
+
+ #font-bienvenida
+ {  
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+ }
+
+/*------------------------- FORM.CSS -------------------------*/
+#btn-form-cont
+{
+    margin-top: 40px;
+}
+
+.btn-action{
+     
+    border: none;
+    color: white; 
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    background: rgb(0,132,230);
+    background: linear-gradient(90deg, rgba(0,132,230,1) 0%, rgba(0,132,230,1) 63%, rgba(158,202,255,1) 100%);
+    
+}
+
+.btn-ayuda{
+    border: none;
+    color: #323233; 
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 10px;
+    background: #FFFFFF;
+    
+    -webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+    -moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+
+}
+
+
+.btn-action:hover{ 
+    background: #004D8B;
+    border: 1px solid #323233;
+}
+
+.btn-ayuda:hover{
+    border: 1px solid #323233;
+}
+
+/*------------------------- FIN FORM.CSS -------------------------*/

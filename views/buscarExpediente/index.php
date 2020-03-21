@@ -16,99 +16,116 @@
         <div class="wrapper">
 
             <?php require 'views/barraLateral.php' ?>
-            
+
             <!-- Contenido del sitio -->
             <div id="contenido" class="w-75 h-75 mx-auto">
                 
                 <!-- Título de la página actual -->
-                <div id="tituloPagina" class="text-uppercase">
-                    <h2 class="">Buscador de Expedientes</h2>
+                <div id="font-tituloPagina">
+                    <h4>Buscar un expediente</h4>
                 </div>
 
                 <!-- Form para realizar búsqueda -->
-                <form id="buscador" class="w-100 d-flex">
-                    <div class="form-group w-50 px-2 d-flex">
-                        <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Ingrese el # del expediente">
+                <form id="form-buscador" class="w-100 d-flex">
+
+
+                    <div class="form-group w-50 px-2 d-block"> 
+                        <div class="input-group ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+                            </div>
+                            <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Número del expediente">    
+                        </div>
+
+
                     </div>
+
+                   
+
+
+
                     <div class="form-group d-inline-flex ml-auto">
-                        <button id="btnFiltro" name="aplicarFiltro" class="btn btn-light">
-                            <svg id="i-options" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                <path d="M28 6 L4 6 M28 16 L4 16 M28 26 L4 26 M24 3 L24 9 M8 13 L8 19 M20 23 L20 29" />
-                            </svg>
-                            <span>Refinar búsqueda</span>
+                        <button id="btn-refinar" name="aplicarFiltro">
+                            <i class="fas fa-sliders-h"></i>
+                            Refinar búsqueda 
                         </button>
                     </div>
                 </form>
 
-                <!-- Mostrar expedientes -->
-                <div id="expedientes" class="bg-success w-100 h-75 border border-dark rounded">
-                    <h5 id="tituloResultados" class="bg-secondary px-2 py-1">Resultados</h5>
-                    <div id="resultadosExpedientes" class="bg-success w-100 overflow-auto">
-                        <ul class="list-group w-100 h-75 px-3">
-                            <li class="list-group-item my-2 tarjeta-expediente">
-                                <a href="" class="w-100 d-flex flex-row justify-content-around">
-                                    <div id="imagenUsuario" class="w-25 h-100 pl-3 d-flex">
-                                        <img src="public/img/user.png" alt="Imagen de usuario" class="img-usuario">
-                                    </div>
-                                    <div id="datosUsuario" class="d-flex w-50">
-                                        <p>Expediente: Id_Expediente<br>
-                                            Nombre: Nombre_Paciente<br>
-                                            DUI: Dui_Paciente<br>
-                                            Fecha de creacion: Fecha_Creacion<br>
-                                            Ultima Cita: Fecha_Modificacion
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item my-2 tarjeta-expediente">
-                                <a href="" class="w-100 d-flex flex-row justify-content-around">
-                                    <div id="imagenUsuario" class="w-25 h-100 pl-3 d-flex">
-                                        <img src="public/img/user.png" alt="Imagen de usuario" class="img-usuario">
-                                    </div>
-                                    <div id="datosUsuario" class="d-flex w-50">
-                                        <p>Expediente: Id_Expediente<br>
-                                            Nombre: Nombre_Paciente<br>
-                                            DUI: Dui_Paciente<br>
-                                            Fecha de creacion: Fecha_Creacion<br>
-                                            Ultima Cita: Fecha_Modificacion
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item my-2 tarjeta-expediente">
-                                <a href="" class="w-100 d-flex flex-row justify-content-around">
-                                    <div id="imagenUsuario" class="w-25 h-100 pl-3 d-flex">
-                                        <img src="public/img/user.png" alt="Imagen de usuario" class="img-usuario">
-                                    </div>
-                                    <div id="datosUsuario" class="d-flex w-50">
-                                        <p>Expediente: Id_Expediente<br>
-                                            Nombre: Nombre_Paciente<br>
-                                            DUI: Dui_Paciente<br>
-                                            Fecha de creacion: Fecha_Creacion<br>
-                                            Ultima Cita: Fecha_Modificacion
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item my-2 tarjeta-expediente">
-                                <a href="" class="w-100 d-flex flex-row justify-content-around">
-                                    <div id="imagenUsuario" class="w-25 h-100 pl-3 d-flex">
-                                        <img src="public/img/user.png" alt="Imagen de usuario" class="img-usuario">
-                                    </div>
-                                    <div id="datosUsuario" class="d-flex w-50">
-                                        <p>Expediente: Id_Expediente<br>
-                                            Nombre: Nombre_Paciente<br>
-                                            DUI: Dui_Paciente<br>
-                                            Fecha de creacion: Fecha_Creacion<br>
-                                            Ultima Cita: Fecha_Modificacion
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>   
+                <!-- Tabla de resultados de búsqueda-->
+                <div id="cont-table">
+                <table class="table table-borderless borderless">
+                    <thead class="thead">
+                    <!-- Encabezados de tabla-->
+                      <tr>
+                        <th scope="col"> #</th>
+                        <th scope="col">Código de historia</th>
+                        <th style="width: 20%;" scope="col">Paciente</th>
+                        <th sscope="col">DUI</th>
+                        <th scope="col">Fecha de creación</th>
+                        <th scope="col">Ultima consulta</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>000000</td>
+                        <td>Nombre del paciente</td>
+                        <td>00000000-0</td>
+                        <td>día-mes-año</td>
+                        <td>día-mes-año</td>
+                        <td>
+                            <a class="btn btn-default" href="">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a> 
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>000000</td>
+                        <td>Nombre del paciente</td>
+                        <td>00000000-0</td>
+                        <td>día-mes-año</td>
+                        <td>día-mes-año</td>
+                        <td>
+                            <a class="btn btn-default" href="">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a> 
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>000000</td>
+                        <td>Nombre del paciente</td>
+                        <td>00000000-0</td>
+                        <td>día-mes-año</td>
+                        <td>día-mes-año</td>
+                        <td>
+                            <a class="btn btn-default" href="">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a> 
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>000000</td>
+                        <td>Nombre del paciente</td>
+                        <td>00000000-0</td>
+                        <td>día-mes-año</td>
+                        <td>día-mes-año</td>
+                        <td>
+                            <a class="btn btn-default" href="">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a> 
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>  
+            </div>
+
         </div>
     </body>
 </html>
