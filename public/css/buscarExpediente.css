@@ -49,10 +49,34 @@
     height: 50vh;
 }
 
-
 /*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
 
+/*------------------------- ESTILOS PARA FORMULARIO FILROS-------------------------*/
+
+.font-tituloSeccion{ 
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;  
+    background-color: #E6E9EC !important;
+    color: #353A40;
+    border-radius: 4px;
+}
+
+.frm-seccion{
+    padding: 15px 40px !important;
+    margin-top: 30px;
+    font-family: 'Source Sans Pro', sans-serif;  
+    font-size: 14px; 
+}
+
+.tooltip.in 
+{
+  opacity: 1;
+}
+
+/*------------------------- FIN ESTILOS PARA FORMULARIO FILTROS-------------------------*/
+
 /*------------------------- ESTILOS DE TABLAS ---------------------------*/
+
 #cont-table{
     padding: 30px;
     background-color:#FFFFFF ;

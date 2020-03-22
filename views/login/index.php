@@ -28,11 +28,13 @@
                 <form action="<?php echo constant('URL');?>login/iniciarSesion" method="POST" id="form-inicioSesion" class="mb-5 pl-4 w-75">
                     <div class="row form-group d-block">
                         <label for="txtNombreUsuario" class="d-block">Correo institucional</label>
+                        <!-- Ingreso de correo -->
                         <div class="input-group ">
                             <div id="form-input-wrap" class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
                             </div>
-                            <input  type="text" name="nombre" id="txtNombreUsuario" class="w-75 form-control d-block" placeholder="ejemplo@gmail.com">
+                            <input  type="text" name="nombre" id="txtNombreUsuario" class="w-75 form-control d-block" placeholder="ejemplo@gmail.com" onchange="habilitarInicio()">
+                            <div class="invalid-feedback">Ingrese un correo con formato válido. Ej: ejemplo@gmail.com</div><p></p>
                         </div>
                     </div>
                     
@@ -56,5 +58,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Validaciones -->
+    <script type="text/javascript">
+        //Validación de correo
+        document.getElementById('txtNombreUsuario').addEventListener('blur',function(e){
+            var datos = document.getElementById('txtNombreUsuario');
+            var re=/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+            if(re.test(datos.value) || datos.value == "")
+            {
+                //Válido
+                datos.classList.remove('is-invalid');
+            }
+            else
+            {
+                //Inválido
+                datos.classList.add('is-invalid');
+            }
+            e.preventDefault();
+        })
+
+        //Validar botón
+        function habilitarInicio()
+        {
+            var datos = document.getElementById('txtNombreUsuario');
+            var re=/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+            if(re.test(datos.value))
+            {
+                document.getElementById('btnInicio').disabled = false;
+            }
+            else
+            {
+                document.getElementById('btnInicio').disabled = true;
+            }
+        }
+    </script>
 </body>
 </html>

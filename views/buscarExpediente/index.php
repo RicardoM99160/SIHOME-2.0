@@ -6,9 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         
         <title>Buscar Expediente</title>
+        <!-- Slider -->
+        <script type="text/javascript" src="public/js/bootstrap-slider.js"></script>
+        <link rel="stylesheet" href="public/css/bootstrap-slider.css">
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/buscarExpediente.css">
-
     </head>
     <body>
         <?php require 'views/plantillaBase.php'?>
@@ -34,18 +36,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Número del expediente">    
+                            <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Número del expediente">
                         </div>
-
-
                     </div>
 
-                   
-
-
-
                     <div class="form-group d-inline-flex ml-auto">
-                        <button id="btn-refinar" name="aplicarFiltro">
+                        <button type="button" class="btn btn-primary" id="btn-refinar" name="aplicarFiltro" data-toggle="modal" data-target="#modalFiltros">
                             <i class="fas fa-sliders-h"></i>
                             Refinar búsqueda 
                         </button>
@@ -127,5 +123,129 @@
             </div>
 
         </div>
+
+        <!-- Script para limitar el ingreso de caracteres del expediente-->
+        <script type="text/javascript">
+            //Input solo con números
+            document.getElementById('inputFiltro').addEventListener('keydown', function(e) {
+                const regex = RegExp('[0-9]');
+                //console.log(e.key.toString());
+                if (!regex.test(e.key) && e.key.toString() != 'Backspace')
+                {
+                    e.preventDefault();
+                }
+            });
+        </script>
+
+        <!-- Ventana modal de filtros -->
+        <div class="modal fade" id="modalFiltros" tabindex="-1" role="dialog" aria-labelledby="modalFiltrosLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalFiltrosLabel"><b>Filtros disponibles</b></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Contenido -->
+                        <form class="form-group">
+                            
+                            <!-- Seccion antiguedad -->
+                            <div class="card">
+                                <h5 class="font-tituloSeccion card-header">Filtrar por antiguedad</h5>
+                                <div class="frm-seccion card-body">
+                                    <!-- Fila -->
+                                    <div class="row"> 
+                                        <!-- Columna -->
+                                        <div class='col-md-6 col-centered'>
+                                            <div class="form-group">
+                                                <input type="radio" class="custom-radio align-self-center" name="antiguedad" id="nuevos">
+                                                <label for="nuevos">Más nuevos primero</label>
+                                            </div>
+                                        </div>
+                                        <!-- Columna -->
+                                        <div class='col-md-6'>
+                                            <div class="form-group">
+                                                <input type="radio" class="custom-radio" name="antiguedad" id="antiguos">
+                                                <label for="antiguos">Más antiguos primero</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Seccion edad -->
+                            <div class="card">
+                                <h5 class="font-tituloSeccion card-header">Filtrar por edad</h5>
+                                <div class="frm-seccion card-body">
+                                    <!-- Fila -->
+                                    <div class="row"> 
+                                        <!-- Columna -->
+                                        <div class='col w-100'>
+                                            <div class="form-group">
+                                                    <input id="sliderDoble" type="text" class="span2" value="" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[1,18]"/>
+                                            </div>
+                                        </div>
+                                        <div class='col w-100'>
+                                            <div class="form-group">
+                                                    <span>Rango seleccionado: <span id="rangoEdades">1,18</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Seccion fecha ultima cita -->
+                            <div class="card">
+                                <h5 class="font-tituloSeccion card-header">Fecha estimada de ultima cita</h5>
+                                <div class="frm-seccion card-body">
+                                    <!-- Fila -->
+                                    <div class="row"> 
+                                        <!-- Columna -->
+                                        <div class='col-md-6 w-75'>
+                                            <div class="form-group">
+                                                <span>Entre </span>
+                                                <input type="date" id="filtroFecha1" class="form-control d-inline-flex w-75" >
+                                            </div>
+                                        </div>
+                                        <!-- Columna -->
+                                        <div class='col-md-6 w-75'>
+                                            <div class="form-group">
+                                                <span> y </span>
+                                                <input type="date" id="fitroFecha2" class="form-control d-inline-flex w-75" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light">Resetear campos</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-dark">Aplicar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Validaciones -->
+        <script type="text/javascript" src="public/js/validaciones_buscar.js"></script>
+        <!-- Inicialización de slider -->
+        <script type="text/javascript">
+            var slider = new Slider('#sliderDoble', 
+            {
+                tooltip: 'always',
+                formatter: function(value) {
+                return 'Current value: ' + value;
+                }
+            });
+            slider.on("slide", function(sliderValue)
+            {
+                document.getElementById("rangoEdades").textContent = sliderValue;
+            });
+        </script>
     </body>
 </html>

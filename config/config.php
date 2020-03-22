@@ -1,6 +1,7 @@
 <?php
 
     define('URL','http://127.0.0.1/SIHOME-2.0/');
+    //define('URL','http://localhost/SIHOME2/'); <-Serpas
 
     define('HOST','localhost');
     define('DB','');
