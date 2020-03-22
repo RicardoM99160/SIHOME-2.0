@@ -4,8 +4,11 @@
 
         function __construct(){
             parent::__construct();
-            $this->view->render('generarExpediente/index');
             //echo "<p>Controlador para Generar Expediente</p>";
+        }
+
+        function render(){
+            $this->view->render('generarExpediente/index');
         }
         
     }
