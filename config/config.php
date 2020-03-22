@@ -1,6 +1,6 @@
 <?php
 
-    define('URL','http://localhost/Proyecto%20LIS/SIHOME-2.0/');
+    define('URL','http://127.0.0.1/SIHOME-2.0/');
 
     define('HOST','localhost');
     define('DB','');

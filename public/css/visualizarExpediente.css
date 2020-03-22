@@ -1,16 +1,35 @@
+#ruta{
+  margin-left: 50px;
+  color: #5C5C5C;
+  margin-bottom: 30px;
+}
+
+#ruta a:hover{
+  color: black;
+  text-decoration: underline;
+} 
+
+#ruta span{
+  color: #2592CD;
+}
 #contenido{
     width: 100%;
+    margin-top: 40px;
 }
 
 .informacion-expediente{
     width: 85%;
-    margin: 0 auto;
+    margin: 0 auto; 
     font-size: 15px;
 }
 
+ 
+.informacion-expediente label{
+    font-size: 14px;
+}
 .informacion-expediente input[type="text"]{
     height: 30px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .informacion-expediente button{
@@ -20,15 +39,23 @@
 .informacion-expediente #menosResultados, .informacion-expediente #masResultados{
     width: 16px;
 }
+ 
+.cont-ultimaConsulta{
+    margin: 20px auto;
+}
 
-#infoGeneralExpediente{
-    margin-top: 20px;
+.link-ext{
+    margin-left: 5px;
+    color: #DE676A;
 }
 
 #historialExpediente{
     margin-bottom: 20px;
 }
 
+.titulo-seccion{
+  color: #389CD5;
+}
 .campo-descriptivo{
     font-size: 12px !important;
     height: 120px !important;
@@ -40,4 +67,118 @@
 }
 
 
+/* Estilos para menu tab */
+ 
+.tab-content{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 
+/* Estilos de botones */
+.form-group{
+  margin-left: 10px;
+}
+
+.fa-sliders-h, .fa-pencil-alt{
+  margin-right:5px;
+}
+
+ .fa-external-link-alt, .fa-edit{
+  color: #E05C61;
+ }
+ 
+.filtro{ 
+ height: 30px;
+ margin-right: 0;
+}
+
+#btn-refinar{
+  border: 1px solid #E4E4E4;
+  color: #676767; 
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 5px; 
+  background: #F2F6FA;
+  
+
+  
+  -webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+  -moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+}
+
+#btn-nuevaConsulta{
+  border: 1px solid #389CD5;
+  color: #FFFFFF; 
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 5px; 
+  background: #389CD5;
+
+  -webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+  -moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+  
+}
+
+#btn-nuevaConsulta:hover{
+  background-color: #00437D;
+}
+#btn-refinar:hover{
+  border: 1px solid #72B5FB;
+  
+}
+
+.font-seccionHistorial{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/*------------------------- ESTILOS DE TABLAS ---------------------------*/
+#cont-table{
+  padding: 30px;
+  background-color:#FFFFFF ;
+  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+  border-radius: 4px;
+
+}
+ 
+.borderless td, .borderless th {
+  border: none !important;
+  background-color:#FFFFFF ;
+  
+  
+}
+
+
+.borderless th{ 
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+  font-size: 15px;
+  border-bottom: solid 2px #D9DEE2 !important;
+}
+
+.borderless td{
+  font-size: 14px;
+  vertical-align: middle !important;
+}
+
+.borderless tr{
+  height: 10px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color:   #F0F5F9;
+  border-color: 1px solid #2592CD;
+}
+
+/*------------------------- FIN DE ESTILOS TABLAS -----------------------*/
+ 
