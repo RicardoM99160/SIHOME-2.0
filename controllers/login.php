@@ -8,6 +8,11 @@
             //echo "<p>Controlador de Login</p>";
         }
 
+        function iniciarSesion(){
+            echo "<p>Inicio de sesion exitoso</p>";
+            $this->model->insert();
+        }
+
     }
 
 ?>

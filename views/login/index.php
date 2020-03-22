@@ -25,7 +25,7 @@
                 <div id="font-bienvenida"class="row mt-3 mb-4">
                     <h1>Bienvenido a su página de usuario.</h1>
                 </div> 
-                <form action="" id="form-inicioSesion" class="mb-5 pl-4 w-75">
+                <form action="<?php echo constant('URL');?>login/iniciarSesion" method="POST" id="form-inicioSesion" class="mb-5 pl-4 w-75">
                     <div class="row form-group d-block">
                         <label for="txtNombreUsuario" class="d-block">Correo institucional</label>
                         <div class="input-group ">
