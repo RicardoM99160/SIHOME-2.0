@@ -10,14 +10,14 @@
             //var_dump($url);
 
             //Cuando se ingresa sin definir controlador
-            if(empty($url[0])){
-                $archivoController = 'controllers/login.php';
+            if(empty($url[0]) || $url[0]=='login'){
+                $archivoController = 'controllers/buscarExpediente.php';
                 require_once $archivoController;
 
                 //Inicializo el controlador de Login
-                $controller = new Login();
+                $controller = new BuscarExpediente();
                 //Aquí asigno el modelo al controlador llamado
-                $controller->loadModel('login');
+                //$controller->loadModel('buscarExpediente');
                 $controller->render();
                 return false;
             }

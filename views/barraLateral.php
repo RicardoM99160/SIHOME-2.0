@@ -6,9 +6,6 @@
     </div>
 
     <ul id="enlacesNavegacion" class="list-unlisted components">
-        <li>
-            <a href="<?php echo constant('URL');?>login">Inicio</a>
-        </li>
         <li class="active">
             <a href="<?php echo constant('URL');?>buscarExpediente">Buscar expediente</a>
         </li>

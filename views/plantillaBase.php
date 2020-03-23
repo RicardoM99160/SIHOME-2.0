@@ -31,9 +31,9 @@
                 </button>-->
                 <!--Este seria un dropdown también (Sigue pendiente)-->
                 <div id="contenedorCuentaUsuario" class="nav-item active my-1 ml-auto">
-                    <a id="cuentaUsuario" href="#" class="nav-link py-1" role="button"> 
+                    <a id="cuentaUsuario" href="<?php echo constant('URL');?>libs/logout.php" class="nav-link py-1" role="button"> 
                         <i class="fas fa-user-circle fa-lg"></i>
-                        <span>Apellido, Nombre</span> 
+                        <span><?php echo $_SESSION['apellido'];?>, <?php echo $_SESSION['nombre'];?></span> 
                             
                     </a>
                 </div>
