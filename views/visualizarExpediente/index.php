@@ -19,60 +19,16 @@
             <div id="contenido">
                 <!--Informacion general de paciente -->
                 <div id="ruta">
-                    <h6><a href="">Buscar expediente</a> > <span>EXPEDIENTE P000000</span></h6>
+                    <h6><a href="">Buscar expediente</a> > <span>EXPEDIENTE <?php echo $_SESSION['idPaciente'];?></span></h6>
                 </div>
                 
                 <div id="cont-infoGeneral" class="informacion-expediente">
               
-                    <div class="row px-3 py-3 no-gutters">
-                        <div class="col-9"> 
-                            <div class="row my-2">
-                                <!-- Nombre completo -->
-                                <div class="col"> 
-                                    <h3 id="font-nombreCompleto">Dieguito Armando, Maradona</h43>
-                                </div> 
-                            </a> 
-                            </div>
-                            <hr>
-                            <!-- Fila 1 --> 
-                            <div class="row form-group no-gutters">
-                                <!--Fecha de nacimiento -->
-                                <div class="col-3 px-1">
-                                    <label for="fechaNacimiento">Fecha de nacimiento</label>
-                                    <input type="text" name="fechaNacimiento" id="fechaNacimiento" value="12 mayo 1990 (30 años)" class="form-control" disabled>
-                                </div>
-                                <!-- Sexo -->
-                                <div class="col-2 px-1">
-                                    <label for="sexo">Sexo</label>
-                                    <input type="text" name="sexo" id="sexo" value="Masculino" class="form-control" disabled>
-                                </div>
-                                <!--DUI-->
-                                <div class="col-3 px-1">
-                                    <label for="dui">DUI</label>
-                                    <input type="text" name="dui" id="dui" value="00000000-0" class="form-control" disabled>
-                                </div>
-                                <!--Tipo de sangre -->
-                                <div class="col-2 px-1">
-                                    <label for="tipoSangre">Tipo de sangre</label>
-                                    <input type="text" name="tipoSangre" id="tipoSangre" value="O+" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <!-- Fila 2 --> 
-                            <div class="row form-group no-gutters">
-                                <!--Direccion -->
-                                <div class="col-7 px-1">
-                                    <label for="direccion">Dirección</label>
-                                    <input type="text" name="direccion" id="direccion" value="Col El Trafico 1, Calle Venecia, Casa 3A-1, San Vicente" class="form-control" disabled>
-                                </div>
-                                <!--Telefono-->
-                                <div class="col-3 px-1">
-                                    <label for="telefono">Teléfono</label>
-                                    <input type="text" name="telefono" id="telefono" value="0000-0000" class="form-control" disabled>
-                                </div>
-                            </div>
-                        </div> 
-                         
-                    </div>
+                <?php 
+                require 'libs/datosPacientes.php';
+                $datos = new paciente();
+                $datos->mostrarNombreVE($_SESSION['idPaciente']);
+                ?>
                     <!--Enlace para ultima consulta -->
 
                     <div class="cont-ultimaConsulta row no-gutters mb-3">
@@ -105,7 +61,12 @@
                                         <path d="M2 26 L30 26 30 7 14 7 10 4 2 4 Z M30 12 L2 12" />
                                     </svg>
                                     <!--Número de consultas --->
-                                    <span>Consultas Registradas  (16)</span>
+                                    <?php
+                                        include 'libs/datosConsultas.php';
+                                        $buscar = new consulta();
+                                        $numC = $buscar->nConsultas($_SESSION['idPaciente']);
+                                        echo '<span><b>Consultas Registradas ('.$numC.') </b></span>';
+                                        ?>
                                 </h5>
                                 <!--Formulario de opciones -->
                                 <form action="" class="row form-group inline-form">
@@ -148,84 +109,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td scope="row">1</td>
-                                                <td>000000</td>
-                                                <td>Nombre del doctor</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora</td>
-                                                <td>comentario</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr> 
-                                            <tr>
-                                                <td scope="row">2</td>
-                                                <td>000000</td>
-                                                <td>Nombre del doctor</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora</td>
-                                                <td>comentario</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr> 
-                                            <tr>
-                                                <td scope="row">3</td>
-                                                <td>000000</td>
-                                                <td>Nombre del doctor</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora</td>
-                                                <td>comentario</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr> 
-                                            <tr>
-                                                <td scope="row">4</td>
-                                                <td>000000</td>
-                                                <td>Nombre del doctor</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora</td>
-                                                <td>comentario</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr> 
-                                            <tr>
-                                                <td scope="row">5</td>
-                                                <td>000000</td>
-                                                <td>Nombre del doctor</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora</td>
-                                                <td>comentario</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr> 
-                                            <tr>
-                                                <td scope="row">6</td>
-                                                <td>000000</td>
-                                                <td>Nombre del doctor</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora</td>
-                                                <td>comentario</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr> 
+                                        <tr>
+                                <?php
+                                $buscar->listarConsultas($_SESSION['idPaciente']);
+                                ?>
                                         </tbody>
                                     </table>
                                 </div>

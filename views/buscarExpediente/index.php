@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <?php $_SESSION['idPaciente']='';?>
         
         <title>Buscar Expediente</title>
         <!-- CSS slider -->
@@ -32,7 +33,7 @@
                 </div>
 
                 <!-- Form para realizar búsqueda -->
-                <form id="form-buscador" class="w-100 d-flex">
+                <form id="form-buscador" class="w-100 d-flex" method="POST">
 
 
                     <div class="form-group w-50 px-2 d-block"> 
@@ -68,59 +69,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>000000</td>
-                        <td>Nombre del paciente</td>
-                        <td>00000000-0</td>
-                        <td>día-mes-año</td>
-                        <td>día-mes-año</td>
-                        <td>
-                            <a class="btn btn-default" href="">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a> 
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>000000</td>
-                        <td>Nombre del paciente</td>
-                        <td>00000000-0</td>
-                        <td>día-mes-año</td>
-                        <td>día-mes-año</td>
-                        <td>
-                            <a class="btn btn-default" href="">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a> 
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>000000</td>
-                        <td>Nombre del paciente</td>
-                        <td>00000000-0</td>
-                        <td>día-mes-año</td>
-                        <td>día-mes-año</td>
-                        <td>
-                            <a class="btn btn-default" href="">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a> 
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>000000</td>
-                        <td>Nombre del paciente</td>
-                        <td>00000000-0</td>
-                        <td>día-mes-año</td>
-                        <td>día-mes-año</td>
-                        <td>
-                            <a class="btn btn-default" href="">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a> 
-                        </td>
-                      </tr>
+                    <?php
+                    require 'libs/datosPacientes.php';
 
+                    $idBuscar='';
+                    $buscar = new paciente();
+
+                    if(isset($_POST['filtro'])){
+                        $_SESSION['idPaciente'] = $_POST['filtro'];
+                    
+                        $buscar->BuscarPaciente($_SESSION['idPaciente']);   
+                    }
+                    else{
+                        $buscar->BuscarPaciente($idBuscar);  
+                    }
+                    ?>
                     </tbody>
                   </table>
                 </div>  
@@ -128,7 +91,7 @@
 
         </div>
 
-        <!-- Script para limitar el ingreso de caracteres del expediente-->
+        <!-- Script para limitar el ingreso de caracteres del expediente
         <script type="text/javascript">
             //Input solo con números
             document.getElementById('inputFiltro').addEventListener('keydown', function(e) {
@@ -139,7 +102,8 @@
                     e.preventDefault();
                 }
             });
-        </script>
+        </script> 
+        !-->
 
         <!-- Ventana modal de filtros -->
         <div class="modal fade" id="modalFiltros" tabindex="-1" role="dialog" aria-labelledby="modalFiltrosLabel" aria-hidden="true">
@@ -153,7 +117,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Contenido -->
-                        <form class="form-group">
+                        <form class="form-group" method="POST">
                             
                             <!-- Seccion antiguedad -->
                             <div class="card">
@@ -164,14 +128,14 @@
                                         <!-- Columna -->
                                         <div class='col-md-6'>
                                             <div class="form-group">
-                                                <input type="radio" class="custom-radio" name="antiguedad" id="nuevos" required>
+                                                <input type="radio" class="custom-radio" name="antiguedad" id="nuevos">
                                                 <label for="nuevos">Más nuevos primero</label>
                                             </div>
                                         </div>
                                         <!-- Columna -->
                                         <div class='col-md-6'>
                                             <div class="form-group">
-                                                <input type="radio" class="custom-radio" name="antiguedad" id="antiguos" required>
+                                                <input type="radio" class="custom-radio" name="antiguedad" id="antiguos">
                                                 <label for="antiguos">Más antiguos primero</label>
                                             </div>
                                         </div>
