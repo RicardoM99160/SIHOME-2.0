@@ -6,10 +6,21 @@
     <title>Document</title>
 </head>
 <body>
+
+    <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/mensajeError.css">
     <?php require 'views/plantillaBase.php'; ?>
-    <div class="wrapper">
-        <?php require 'views/barraLateral.php'; ?>
-        <h1 style="color: red;"><?php echo $this->mensaje;?></h1>
+    <div class="wrapper"> 
+        <div class="contenido row justify-content-center" >  
+            <div class="col-md-4"> 
+            <div class="card border-danger mb-3 text-center"> 
+                <div class="card-body "> 
+                        <p><i class="fas fa-unlink fa-2x text-danger"></i></p>
+                        <p class="card-text text-danger"><?php echo $this->mensaje;?></p>
+                        <!--<button type="button" class="btn btn-link">Regresar a inicio</button> -->
+                </div> 
+            </div>
+            </div>
+        </div> 
     </div>
     
 </body>
