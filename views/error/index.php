@@ -16,7 +16,7 @@
                 <div class="card-body "> 
                         <p><i class="fas fa-unlink fa-2x text-danger"></i></p>
                         <p class="card-text text-danger"><?php echo $this->mensaje;?></p>
-                        <!--<button type="button" class="btn btn-link">Regresar a inicio</button> -->
+                        <a class="btn btn-danger" href="<?php echo constant('URL')?>buscarExpediente">Regresar a inicio</a>
                 </div> 
             </div>
             </div>

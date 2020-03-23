@@ -1,7 +1,7 @@
 <?php
 
-    //define('URL','http://localhost/Proyecto%20LIS/SIHOME-2.0/'); <- NO SE, algun puerko
-    define('URL','http://127.0.0.1/SIHOME-2.0/'); //<-Nathaly
+    define('URL','http://localhost/Proyecto%20LIS/SIHOME-2.0/'); //Majano :(<- NO SE, algun puerko
+    //define('URL','http://127.0.0.1/SIHOME-2.0/'); //<-Nathaly
     //define('URL','http://localhost/SIHOME2/'); <-Serpas
 
     define('HOST','localhost');
