@@ -69,7 +69,7 @@
                                         ?>
                                 </h5>
                                 <!--Formulario de opciones -->
-                                <form action="" class="row form-group inline-form">
+                                <form action="POST" class="row form-group inline-form">
                                     <!--input parametro busqueda -->
                                     <div class="col-3"> 
                                         <div class="input-group filtro">
