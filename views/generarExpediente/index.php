@@ -10,8 +10,12 @@
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/generarExpediente.css">
     </head>
-    <body>
+    <body onload="numeroCampos(7)">
+        <!-- Validaciones -->
+        <script type="text/javascript" src="<?php echo constant('URL');?>public/js/validaciones.js"></script>
+
         <?php require 'views/plantillaBase.php'; ?>
+
         <div class="wrapper">
 
             <?php require 'views/barraLateral.php'; ?>
@@ -67,7 +71,7 @@
                                     <!--Fecha de nacimiento-->
                                     <div class="form-group">
                                         <label for="fechaNacimiento" class="w-50">Fecha de nacimiento</label>
-                                        <input type="date" name="nacimiento" id="fechaNacimiento" class="form-control h-25" width="276" min="1900-01-01" max="" onclick="validarFecha()" />
+                                        <input type="date" name="nacimiento" id="fechaNacimiento" class="form-control h-25" width="276" min="1900-01-01" max="" onclick="validarFecha('fechaNacimiento')" />
                                     </div>
                                     <!--Tipo de sangre-->
                                     <div class="form-group">
@@ -200,9 +204,6 @@
             </div>
 
         </div>
-
-        <!-- Validaciones -->
-        <script type="text/javascript" src="public/js/validaciones_generar.js"></script>
 
         <!--Gigjo DatePicker
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>

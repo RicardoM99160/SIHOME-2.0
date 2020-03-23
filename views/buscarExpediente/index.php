@@ -8,15 +8,15 @@
         
         <title>Buscar Expediente</title>
         <!-- CSS slider -->
-        <link rel="stylesheet" href="public/css/bootstrap-slider.css">
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/bootstrap-slider.css">
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/buscarExpediente.css">
     </head>
     <body>
         <!-- Script slider -->
-        <script type="text/javascript" src="public/js/bootstrap-slider.js"></script>
+        <script type="text/javascript" src="<?php echo constant('URL');?>public/js/bootstrap-slider.js"></script>
         <!-- Validaciones -->
-        <script type="text/javascript" src="public/js/validaciones_buscar.js"></script>
+        <script type="text/javascript" src="<?php echo constant('URL');?>public/js/validaciones.js"></script>
 
         <?php require 'views/plantillaBase.php'?>
 
@@ -91,19 +91,18 @@
 
         </div>
 
-        <!-- Script para limitar el ingreso de caracteres del expediente
+        <!-- Script para limitar el ingreso de caracteres del expediente -->
         <script type="text/javascript">
             //Input solo con números
             document.getElementById('inputFiltro').addEventListener('keydown', function(e) {
                 const regex = RegExp('[0-9]');
                 //console.log(e.key.toString());
-                if (!regex.test(e.key) && e.key.toString() != 'Backspace')
+                if (!regex.test(e.key) && e.key.toString() != 'Backspace' && e.key.toString() != 'Enter' && e.key.toString() != 'P')
                 {
                     e.preventDefault();
                 }
             });
         </script> 
-        !-->
 
         <!-- Ventana modal de filtros -->
         <div class="modal fade" id="modalFiltros" tabindex="-1" role="dialog" aria-labelledby="modalFiltrosLabel" aria-hidden="true">
@@ -194,7 +193,6 @@
             </div>
         </div>
 
-
         <!-- Inicialización de slider -->
         <script type="text/javascript">
             var slider = new Slider('#sliderDoble', 
@@ -205,5 +203,6 @@
                 }
             });
         </script>
+        
     </body>
 </html>
