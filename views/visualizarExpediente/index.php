@@ -93,10 +93,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="clinico-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Historial Clínico</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="cirugia-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Cirugias</a>
-                        </li>
+                        </li> 
                     </ul>
                     
                     <div class="tab-content" id="myTabContent">
@@ -132,7 +129,7 @@
                                     <div class="form-group">
                                         <button id="btn-nuevaConsulta" name="aplicarFiltro">
                                             <i class="fas fa-pencil-alt"></i>
-                                            <span> Nueva consulta </span>
+                                            <span> <a href="<?php echo constant('URL');?>generarConsulta">Nueva consulta </a></span>
                                         </button>
                                     </div> 
                                 </form>
@@ -428,104 +425,7 @@
                         </div>
                     </div>
 
-                    <!--Historial de cirugias-->
-                    <div id="historialCirugia" class="px-3">
-                    <div id="historialConsulta" class="px-3">
-                                <h5 class="titulo-seccion mt-3 mb-4">
-                                    <svg id="i-folder" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="27" height="27" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                        <path d="M2 26 L30 26 30 7 14 7 10 4 2 4 Z M30 12 L2 12" />
-                                    </svg>
-                                    <!--Número de cirugias --->
-                                    <span>Cirugias Registradas  (3)</span>
-                                </h5>
-                                <!--Formulario de opciones -->
-                                <form action="" class="row form-group inline-form">
-                                    <!--input parametro busqueda -->
-                                    <div class="col-3"> 
-                                        <div class="input-group filtro">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                            </div>
-                                            <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Buscar...">    
-                                        </div>
-                                    </div> 
-                                    <!--Boton filtro -->   
-                                    <div class="form-group">
-                                        <button id="btn-refinar" name="aplicarFiltro">
-                                            <i class="fas fa-sliders-h"></i>
-                                            <span> Refinar búsqueda </span>
-                                        </button>
-                                    </div>
-                                    <!--Boton nueva cirugia -->   
-                                    <div class="form-group">
-                                        <button id="btn-nuevaConsulta" name="aplicarFiltro">
-                                            <i class="fas fa-pencil-alt"></i>
-                                            <span> Nueva cirugia </span>
-                                        </button>
-                                    </div> 
-                                </form>
-                                <!--Tabla de cirugias-->
-                                <div id="cont-table">
-                                    <table class="table table borderless align-midle table-hover" >
-                                        <thead class="thead">
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Código de cirugia</th>
-                                                <th scope="col">Motivo</th>
-                                                <th scope="col">Cirujano</th>
-                                                <th scope="col">Fecha</th>
-                                                <th scope="col">Hora de inicio</th>
-                                                <th scope="col">Duración</th>
-                                                <th scope="col">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td scope="row">1</td>
-                                                <td>000000</td>
-                                                <td>Descripcion de motivo</td>
-                                                <td>Nombre de cirujano</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora inicio</td> 
-                                                <td>duracion (horas)</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr>  
-                                            <tr>
-                                                <td scope="row">2</td>
-                                                <td>000000</td>
-                                                <td>Descripcion de motivo</td>
-                                                <td>Nombre de cirujano</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora inicio</td> 
-                                                <td>duracion (horas)</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr>  
-                                            <tr>
-                                                <td scope="row">3</td>
-                                                <td>000000</td>
-                                                <td>Descripcion de motivo</td>
-                                                <td>Nombre de cirujano</td>
-                                                <td>dia-mes-anio</td>
-                                                <td>hora inicio</td> 
-                                                <td>duracion (horas)</td> 
-                                                <td>
-                                                    <a class="btn btn-default" href="">
-                                                        <i class="fas fa-external-link-alt"></i>
-                                                    </a> 
-                                                </td> 
-                                            </tr>  
-                                        </tbody>
-                                    </table>
-                                </div> 
-                    </div>
+                   
 
                 </div>
             </div>

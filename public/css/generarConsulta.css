@@ -1,0 +1,129 @@
+/*------------------------- ESTILOS PARA CONTENIDO -------------------------*/
+#contenido
+{
+    margin-top: 50px; 
+    
+}
+
+#font-tituloPagina{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;  
+    margin-bottom: 50px;
+    
+}
+
+
+  
+/*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
+
+ /*------------------------- ESTILOS PARA FORMULARIO -------------------------*/
+ #form-generarExpediente{
+     margin-bottom: 60px;
+ }
+ .seccionFormulario{
+    margin-bottom: 30px !important;
+}
+
+.font-tituloSeccion{ 
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;  
+    background-color: #E6E9EC !important;
+    color: #353A40;
+    border-radius: 4px;
+}
+
+.frm-seccion{
+    padding: 15px 40px !important;
+    margin-top: 30px;
+    font-family: 'Source Sans Pro', sans-serif;  
+    font-size: 14px; 
+}
+
+.btn-action{ 
+    border: none;
+    color: white; 
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 5px;
+    background: rgb(0,132,230); 
+    margin: 15px 15px;
+    
+}
+
+.btn-action:hover{ 
+    background: #004D8B;
+    border: 1px solid #323233;
+}
+
+
+ .custom-select{
+    font-size: 14px !important; 
+    max-height: 32px;
+    width:300px !important;  
+}
+
+
+textarea { height: 100px; width: 90%; }
+ 
+#btn-agregar{
+    border: 1px solid #E4E4E4;
+    color: #676767; 
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px; 
+    background: #F2F6FA;
+    
+  
+    
+    -webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+    -moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+  }
+  #btn-agregar:hover{
+    border: 1px solid #72B5FB;
+    
+  }
+
+
+.lista-orden{
+    margin-top: 20px;
+}
+.lista-orden li{
+    max-height: 32px; 
+}
+
+ 
+
+  .eliminarOrden:hover{
+      cursor: pointer; 
+  }
+ 
+ /*------------------------- FIN ESTILOS PARA FORMULARIO -------------------------*/
+
+ /*------------------------- ESTILOS DE ICONOS -----------------------*/
+
+ 
+.fa-sliders-h,.fa-plus-circle{
+
+    margin-right: 5px;
+}
+
+.fa-external-link-alt{
+    color: #DD7373;
+}
+
+.fa-save{
+    margin-right: 5px;
+}
+.fa-minus-circle{
+    color: #D5404A;
+}
+
+ 
+/*-------------------------- FIN DE ESTILOS DE ICONOS -------------------*/
