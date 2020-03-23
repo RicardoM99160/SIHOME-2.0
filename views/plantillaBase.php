@@ -20,7 +20,7 @@
         <div id="contenedorBarraSuperior">
             <nav id="barraSuperior" class="navbar navbar-expand-lg navbar-light pb-2 pt-1">
                 <!-- Boton para desplegar barra lateral de navegación-->
-                <a href="#" id="colapsarBarraLateral" class="navbar-brand nav-link dropdown-toggle mr-5" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
+                <a href="#" id="colapsarBarraLateral" class="navbar-brand nav-link dropdown-toggle mr-5" role="button" aria-haspopup="true" aria-expanded="false">  
                     <i class="fas fa-image"></i>
                     <span id="font-logo">SIHOME</span>
                 </a>
