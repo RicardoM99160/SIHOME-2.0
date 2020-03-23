@@ -149,7 +149,7 @@
                                         
                                             </div>                             
                                             <!-- Fila 3 -->  
-                                            <div class="row form-group no gutters">
+                                            <div class="row form-group no-gutters">
                                                 <!--Direccion -->
                                                 <div class="col-9 px-1">
                                                     <label for="direccion">Dirección</label>

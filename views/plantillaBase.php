@@ -30,12 +30,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>-->
                 <!--Este seria un dropdown también (Sigue pendiente)-->
-                <div id="contenedorCuentaUsuario" class="nav-item active my-1 ml-auto">
-                    <a id="cuentaUsuario" href="<?php echo constant('URL');?>libs/logout.php" class="nav-link py-1" role="button"> 
+                <div id="contenedorCuentaUsuario" class="nav-item dropdown my-1 ml-auto">
+                    <a id="cuentaUsuario" href="#" class="nav-link dropdown-toggle py-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                         <i class="fas fa-user-circle fa-lg"></i>
-                        <span><?php echo $_SESSION['apellido'];?>, <?php echo $_SESSION['nombre'];?></span> 
-                            
+                        <span><?php echo $_SESSION['apellido'];?>, <?php echo $_SESSION['nombre'];?></span>     
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="cuentaUsuario">
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>libs/logout.php">
+                            <svg id="i-signout" class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M28 16 L8 16 M20 8 L28 16 20 24 M11 28 L3 28 3 4 11 4" />
+                            </svg>
+                        <span>Cerrar sesión</span>
+                        </a>
+                    </div>
                 </div>
             </nav>
         </div>

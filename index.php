@@ -10,8 +10,14 @@
 
     require_once 'config/config.php';
     
+    //Inicializando usuario para la sesion
     $userSession = new UserSession();
     $user = new User();
+
+    //Inicializo el controlador de Login
+    $controladorLogin = 'controllers/login.php';
+    require_once $controladorLogin;
+    $controladorLogin = new Login();
 
     if(isset($_SESSION['user'])){
         $user->setUser($userSession->getCurrentUser());
@@ -27,10 +33,14 @@
 
             include_once 'views/buscarExpediente/index.php';
         }else{
-            include_once 'views/login/index.php';
+            //Renderizando la vista de login con mensaje de error de inicio de sesión
+            $controladorLogin->view->mensaje="Usuario y/o contraseña incorrectos";
+            $controladorLogin->render();
         }
     }else{
-        include_once 'views/login/index.php';
+        //Renderizando la vista de login sin mensaje de error de inicio de sesión
+        $controladorLogin->view->mensaje="";
+        $controladorLogin->render();
     }
     
 ?>
