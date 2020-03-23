@@ -6,11 +6,28 @@
     </div>
 
     <ul id="enlacesNavegacion" class="list-unlisted components">
-        <li class="active">
+        <li id="bExp" class="">
             <a href="<?php echo constant('URL');?>buscarExpediente">Buscar expediente</a>
         </li>
-        <li>
+        <li id="gExp" class="">
             <a href="<?php echo constant('URL');?>generarExpediente">Generar expediente</a>
         </li>
     </ul>
 </nav>
+
+<script>
+
+    document.getElementById("bExp").addEventListener("click", buscExp());
+    document.getElementById("gExp").addEventListener("click", genExp());
+
+   function buscExp(){
+       document.getElementById("bExp").classList.add('active');
+       document.getElementById("gExp").classList.remove('active');
+   }
+
+   function genExp(){
+        document.getElementById("bExp").classList.remove('active');
+        document.getElementById("gExp").classList.add('active');
+   }
+
+</script>
