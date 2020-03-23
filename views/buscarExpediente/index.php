@@ -6,13 +6,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         
         <title>Buscar Expediente</title>
-        <!-- Slider -->
-        <script type="text/javascript" src="public/js/bootstrap-slider.js"></script>
+        <!-- CSS slider -->
         <link rel="stylesheet" href="public/css/bootstrap-slider.css">
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/buscarExpediente.css">
     </head>
     <body>
+        <!-- Script slider -->
+        <script type="text/javascript" src="public/js/bootstrap-slider.js"></script>
+        <!-- Validaciones -->
+        <script type="text/javascript" src="public/js/validaciones_buscar.js"></script>
+
         <?php require 'views/plantillaBase.php'?>
 
         <div class="wrapper">
@@ -158,16 +162,16 @@
                                     <!-- Fila -->
                                     <div class="row"> 
                                         <!-- Columna -->
-                                        <div class='col-md-6 col-centered'>
+                                        <div class='col-md-6'>
                                             <div class="form-group">
-                                                <input type="radio" class="custom-radio align-self-center" name="antiguedad" id="nuevos">
+                                                <input type="radio" class="custom-radio" name="antiguedad" id="nuevos" required>
                                                 <label for="nuevos">Más nuevos primero</label>
                                             </div>
                                         </div>
                                         <!-- Columna -->
                                         <div class='col-md-6'>
                                             <div class="form-group">
-                                                <input type="radio" class="custom-radio" name="antiguedad" id="antiguos">
+                                                <input type="radio" class="custom-radio" name="antiguedad" id="antiguos" required>
                                                 <label for="antiguos">Más antiguos primero</label>
                                             </div>
                                         </div>
@@ -184,12 +188,7 @@
                                         <!-- Columna -->
                                         <div class='col w-100'>
                                             <div class="form-group">
-                                                    <input id="sliderDoble" type="text" class="span2" value="" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[1,18]"/>
-                                            </div>
-                                        </div>
-                                        <div class='col w-100'>
-                                            <div class="form-group">
-                                                    <span>Rango seleccionado: <span id="rangoEdades">1,18</span></span>
+                                                    <input id="sliderDoble" type="text" class="span2" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[1,18]" style="width: 100%" />
                                             </div>
                                         </div>
                                     </div>
@@ -205,15 +204,15 @@
                                         <!-- Columna -->
                                         <div class='col-md-6 w-75'>
                                             <div class="form-group">
-                                                <span>Entre </span>
-                                                <input type="date" id="filtroFecha1" class="form-control d-inline-flex w-75" >
+                                                <span style="margin-right: 2%">Entre</span>
+                                                <input type="date" id="filtroFecha1" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('filtroFecha1')">
                                             </div>
                                         </div>
                                         <!-- Columna -->
                                         <div class='col-md-6 w-75'>
                                             <div class="form-group">
-                                                <span> y </span>
-                                                <input type="date" id="fitroFecha2" class="form-control d-inline-flex w-75" >
+                                                <span style="margin-right: 10%; margin-left: 2%">y</span>
+                                                <input type="date" id="fitroFecha2" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('fitroFecha2')">
                                             </div>
                                         </div>
                                     </div>
@@ -223,28 +222,23 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light">Resetear campos</button>
+                        <button type="button" class="btn btn-light" id="btn-reset" style="display: none;">Resetear campos</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-dark">Aplicar</button>
+                        <button type="submit" class="btn btn-dark">Aplicar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Validaciones -->
-        <script type="text/javascript" src="public/js/validaciones_buscar.js"></script>
+
         <!-- Inicialización de slider -->
         <script type="text/javascript">
             var slider = new Slider('#sliderDoble', 
             {
                 tooltip: 'always',
                 formatter: function(value) {
-                return 'Current value: ' + value;
+                return 'Rango de edades: ' + formatoRango(value);
                 }
-            });
-            slider.on("slide", function(sliderValue)
-            {
-                document.getElementById("rangoEdades").textContent = sliderValue;
             });
         </script>
     </body>

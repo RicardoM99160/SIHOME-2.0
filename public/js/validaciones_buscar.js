@@ -38,7 +38,7 @@ function validar(id, tipo, indice)
     }
 }
 
-function validarFecha()
+function fechaActual()
 {
 	var fecha = new Date();
 	var dd = fecha.getDate();
@@ -52,22 +52,40 @@ function validarFecha()
         mm='0'+mm
     }
     fecha = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("fechaNacimiento").setAttribute("max", fecha.toString());
+    return fecha;
 }
 
-function habilitarGenerar(fecha, indice)
+function validarFecha(id)
 {
-	var check = 0;
-	for (var i = 0; i < 4; i++)
+	//console.log(fechaActual().toString());
+	document.getElementById(id).setAttribute("max", fechaActual().toString());
+}
+
+function formatoRango(rango)
+{
+	if(undefined != rango)
 	{
-		check = check + campos[i];
+		var rangoStr = "" + rango;
+		re = /[0-9]{1,3},[0-9]{1,3}/g;
+
+		if(re.test(rangoStr))
+		{
+			var edades = rangoStr.split(",");
+			var rango_formateado = "";
+			if(edades[0] == edades[1])
+			{
+				if (edades[0] == 1) rango_formateado = "1 año";
+				else rango_formateado = edades[0].toString() + " años";
+			}
+			else rango_formateado = "de " + edades[0].toString() + " a " + edades[1].toString() + " años";
+			return rango_formateado;
+		}
+		else return rango;
 	}
-	if (check == 4)
-	{
-		document.getElementById("btn-generar").disabled = false;
-	}
-	else
-	{
-		document.getElementById("btn-generar").disabled = true;
-	}
+	else return;
+}
+
+function resetearCampos()
+{
+	//Aún no
 }
