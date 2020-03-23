@@ -213,10 +213,72 @@
       ';
     }
   }
+
+
+  public function mostrarNombreC($idBuscarPaciente){
+
+    $arrPacientes = $this->generarDatos();
+    if(array_key_exists($idBuscarPaciente, $arrPacientes)){
+      echo '
+      <div class="frm-seccion card-body">   
+                                    <div class="col"> 
+                                        <!--Fila 1--> 
+                                        <div class="row">
+                                          <div class="row form-group no-gutters">
+                                                <!--Nombre completo -->
+                                                <div class="col-9 px-1">
+                                                    <label for="fechaNacimiento">Nombre del paciente</label>
+                                                    <input type="text" name="" id="" value="'.$arrPacientes[$idBuscarPaciente]['nombre']. ' ' . $arrPacientes[$idBuscarPaciente]['apellido'].'" class="form-control" disabled>
+                                                </div>
+                                                <!--DUI-->
+                                                <div class="col-3 px-1">
+                                                    <label for="dui">DUI</label>
+                                                    <input type="text" name="dui" id="dui" value="'.$arrPacientes[$idBuscarPaciente]['dui'].'" class="form-control" disabled>
+                                                </div> 
+                                            </div>  
+                                            <!-- Fila 2 --> 
+                                            <div class="row form-group no-gutters">
+                                                <!--Fecha de nacimiento -->
+                                                <div class="col-5 px-1">
+                                                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                                                    <input type="text" name="fechaNacimiento" id="fechaNacimiento" value="'.$arrPacientes[$idBuscarPaciente]['fechaNacimiento']. '" class="form-control" disabled>
+                                                </div>
+                                                <!-- Sexo -->
+                                                <div class="col-4 px-1">
+                                                    <label for="sexo">Sexo</label>
+                                                    <input type="text" name="sexo" id="sexo" value="'.$arrPacientes[$idBuscarPaciente]['sexo']. '" class="form-control" disabled>
+                                                </div>
+                                                <!--Tipo de sangre -->
+                                                <div class="col-3 px-1">
+                                                    <label for="tipoSangre">Tipo de sangre</label>
+                                                    <input type="text" name="tipoSangre" id="tipoSangre" value="'.$arrPacientes[$idBuscarPaciente]['tipoSangre']. '" class="form-control" disabled>
+                                                </div> 
+                                        
+                                            </div>                             
+                                            <!-- Fila 3 -->  
+                                            <div class="row form-group no-gutters">
+                                                <!--Direccion -->
+                                                <div class="col-9 px-1">
+                                                    <label for="direccion">Dirección</label>
+                                                    <input type="text" name="direccion" id="direccion" value="'.$arrPacientes[$idBuscarPaciente]['direccion']. '" class="form-control" disabled>
+                                                </div>
+                                                <!--Telefono-->
+                                                <div class="col-3 px-1">
+                                                    <label for="telefono">Teléfono</label>
+                                                    <input type="text" name="telefono" id="telefono" value="'.$arrPacientes[$idBuscarPaciente]['telefono']. '" class="form-control" disabled>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        </div>
+                                        </div>
+      ';
+    }
+    else{
+      echo '';
+    }
+}
+
 }
 
      
-
-
-
 ?>

@@ -54,8 +54,13 @@ class consulta{
     public function nConsultas($idPacienteConsulta){
 
         $arrConsultas = $this->generarDatosConsulta();
-        $numeConsultas = sizeof($arrConsultas[$idPacienteConsulta]);
+        if(array_key_exists($idPacienteConsulta, $arrConsultas)){
 
+            $numeConsultas = sizeof($arrConsultas[$idPacienteConsulta]);
+        }
+        else{
+            $numeConsultas = 0;
+        }
     return $numeConsultas;
     }
 
