@@ -109,7 +109,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="modalFiltrosLabel"><b>Filtros disponibles</b></h4>
+                        <h5 class="modal-title" id="modalFiltrosLabel">Filtros disponibles</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -119,7 +119,7 @@
                         <form class="form-group" method="POST">
                             
                             <!-- Seccion antiguedad -->
-                            <div class="card">
+                            <div class="card filterSection">
                                 <h5 class="font-tituloSeccion card-header">Filtrar por antiguedad</h5>
                                 <div class="frm-seccion card-body">
                                     <!-- Fila -->
@@ -143,7 +143,7 @@
                             </div>
                             
                             <!-- Seccion edad -->
-                            <div class="card">
+                            <div class="card filterSection">
                                 <h5 class="font-tituloSeccion card-header">Filtrar por edad</h5>
                                 <div class="frm-seccion card-body">
                                     <!-- Fila -->
@@ -159,7 +159,7 @@
                             </div>
 
                             <!-- Seccion fecha ultima cita -->
-                            <div class="card">
+                            <div class="card filterSection">
                                 <h5 class="font-tituloSeccion card-header">Fecha estimada de ultima cita</h5>
                                 <div class="frm-seccion card-body">
                                     <!-- Fila -->
@@ -187,7 +187,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" id="btn-reset" style="display: none;">Resetear campos</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-dark">Aplicar</button>
+                        <button type="submit" class="btn-action">Aplicar</button>
                     </div>
                 </div>
             </div>
