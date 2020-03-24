@@ -1,4 +1,6 @@
-//****************** GENERALES ******************
+//****************** FUNCIONES GENERALES ******************
+
+//Fechas
 function fechaActual()
 {
 	var fecha = new Date();
@@ -18,13 +20,27 @@ function fechaActual()
 
 function validarFecha(id)
 {
-	//console.log(fechaActual().toString());
 	document.getElementById(id).setAttribute("max", fechaActual().toString());
 }
 
 
+//Select
+function removerOpcionSelect(id_select, id_boton)
+{
+    var select = document.getElementById(id_select);
+    select.remove(select.selectedIndex);
+    if(select.value == "") document.getElementById(id_boton).disabled = true;
+}
 
-//****************** GENERAR EXPEDIENTE ******************
+function añadirOpcionSelect(opcion, id_select, id_boton)
+{
+    var select = document.getElementById(id_select);
+    select.add(opcion);
+    document.getElementById(id_boton).disabled = false;
+}
+
+
+//Validaciones de campos con expresiones regulares
 var campos = [];
 function numeroCampos(campos)
 {
@@ -32,7 +48,6 @@ function numeroCampos(campos)
 		campos[i] = 0;
 	}
 }
-
 
 function validar(id, tipo, indice)
 {
@@ -52,7 +67,15 @@ function validar(id, tipo, indice)
 		break;
 
 		case "decimales":
-		var re=/^[0-9]{2}.[0-9]{2}/;
+		var re=/^[0-9]{2}[.][0-9]{2}$/;
+		break;
+
+		case "enteros":
+		var re=/^[0-9]{1,3}$/;
+		break;
+
+		case "presion":
+		var re=/^[0-9]{1,3}[/][0-9]{1,3}$/;
 		break;
 
 		default:
@@ -93,7 +116,7 @@ function habilitarGenerar(fecha, indice)
 }
 
 
-//****************** BUSCAR EXPEDIENTE ******************
+//****************** FUNCIONES DE BUSCAR EXPEDIENTE ******************
 function formatoRango(rango)
 {
 	if(undefined != rango)

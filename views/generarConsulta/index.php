@@ -10,7 +10,11 @@
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/generarConsulta.css">
     </head>
-    <body>
+    <body onload="numeroCampos(4)">
+        <!-- Validaciones -->
+        <script type="text/javascript" src="<?php echo constant('URL');?>public/js/validaciones.js"></script>
+        <script type="text/javascript" src="<?php echo constant('URL');?>public/js/listaOrden.js"></script>
+
         <?php require 'views/plantillaBase.php'; ?>
         <div class="wrapper">
 
@@ -37,12 +41,12 @@
                                             <!--Motivo de consulta-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Motivo de consulta*</label>
-                                                <textarea class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
+                                                <textarea class="form-control" rows="3" id="comment" tabindex ="1" required></textarea> 
                                             </div> 
                                             <!--Enfermedad actual-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Enfermedad actual*</label>
-                                                <textarea class="form-control" rows="2" id="comment" tabindex ="1"></textarea> 
+                                                <textarea class="form-control" rows="2" id="comment" tabindex ="1" required></textarea> 
                                             </div> 
                                             <!--Antecedentes de enfermedad actual-->
                                             <div class="form-group">
@@ -64,20 +68,22 @@
                                         <div class="form-group"> 
                                             <label for="" class="w-75">Temperatura</label> 
                                                 <div class="input-group"> 
-                                                    <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="">    
+                                                    <input type="text" name="filtro" id="inputTemperatura" class="form-control" placeholder="" required onchange="validar('inputTemperatura', 'decimales', 0)">    
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">&#176;C</span>
                                                     </div>
+                                                    <div class="invalid-feedback">Ingrese una temperatura válida.</div>
                                                 </div>  
                                         </div> 
                                         <!--pulso-->
                                         <div class="form-group">
                                             <label for="" class="w-100">Pulso</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="">    
+                                                <input type="text" name="filtro" id="inputPulso" class="form-control" placeholder="" required onchange="validar('inputPulso', 'enteros', 1)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">lat/min</span>
                                                 </div>
+                                                <div class="invalid-feedback">Ingrese un pulso válida.</div>
                                             </div> 
                                         </div>
                                     
@@ -88,20 +94,22 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Presión</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="">    
+                                                <input type="text" name="filtro" id="inputPresion" class="form-control" placeholder="" required onchange="validar('inputPresion', 'presion', 2)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">mmHg</span>
                                                 </div>
+                                                <div class="invalid-feedback">Ingrese una presión válida.</div>
                                             </div> 
                                         </div>
                                         <!--Frecuencia respiratoria-->
                                         <div class="form-group">
                                             <label for="" class="w-100">Frecuencia respiratoria</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="">    
+                                                <input type="text" name="filtro" id="inputFrecuencia" class="form-control" placeholder="" required onchange="validar('inputFrecuencia', 'enteros', 3)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">resp/min</span>
                                                 </div>
+                                                <div class="invalid-feedback">Ingrese una frecuencia válida.</div>
                                             </div> 
                                         </div>
                                     
@@ -118,7 +126,7 @@
                                             $datosP = new paciente;
                                             $datosP->mostrarNombreC($_SESSION['idPaciente']);
                                             ?> 
-                            </div>
+                        </div>
                         <!--- Seccion Diagnostico-->
                         <div class=" seccionFormulario card">
                             <h5 class="font-tituloSeccion card-header">Diagnostico</h5>
@@ -140,12 +148,12 @@
                                             <label for="" class="w-50">Orden</label>
                                             
                                             <select name="examenes" id="listaOrdenes" class="custom-select" required>
-                                                <option selected>Sin examenes</option>
+                                                <option>Sin examenes</option>
                                                 <option>Análisis de orina</option>
                                                 <option>Hemograma completo</option>
                                                 <option>Coprocultivo</option>
                                             </select>
-                                        <button type="button" id="btn-agregar" value="Guardar" onclick="newElement()"> 
+                                        <button type="button" id="btn-agregar" value="Guardar" onclick="newElement(); removerOpcionSelect('listaOrdenes','btn-agregar');"> 
                                         
                                         <i class="fas fa-plus-circle"></i><span>Agregar</span>
                                         </button>
@@ -191,10 +199,6 @@
             </div>
 
         </div>
-
-        <!-- Validaciones -->
-        <script type="text/javascript" src="public/js/validaciones_generar.js"></script>
-        <script type="text/javascript" src="public/js/listaOrden.js"></script>
         <!--Gigjo DatePicker
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         <script src="public/js/DatePicker.js"></script>
