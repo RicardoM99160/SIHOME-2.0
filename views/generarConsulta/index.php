@@ -28,7 +28,7 @@
                     <h4>Nueva consulta <?php echo ' | PACIENTE '.$_SESSION['idPaciente']; ?></h4>
                 </div>
                 <!--- Formulario generar consulta-->
-                <form id="form-generarConsulta" action="">
+                <form id="form-generarConsulta" action="" method="POST">
                     <div class="row">
                         <div class="col-md-6"> 
                              <!--- Seccion datos de consulta-->
@@ -41,17 +41,17 @@
                                             <!--Motivo de consulta-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Motivo de consulta*</label>
-                                                <textarea class="form-control" rows="3" id="comment" tabindex ="1" required></textarea> 
+                                                <textarea name="motivo" class="form-control" rows="3" id="comment" tabindex ="1" required></textarea> 
                                             </div> 
                                             <!--Enfermedad actual-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Enfermedad actual*</label>
-                                                <textarea class="form-control" rows="2" id="comment" tabindex ="1" required></textarea> 
+                                                <textarea name="enfermedad" class="form-control" rows="2" id="comment" tabindex ="1" required></textarea> 
                                             </div> 
                                             <!--Antecedentes de enfermedad actual-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Antecedentes de enfermedad actual</label>
-                                                <textarea class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
+                                                <textarea name="antecedente" class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
                                             </div> 
                                         </div> 
                                     </div> 
@@ -68,7 +68,7 @@
                                         <div class="form-group"> 
                                             <label for="" class="w-75">Temperatura</label> 
                                                 <div class="input-group"> 
-                                                    <input type="text" name="filtro" id="inputTemperatura" class="form-control" placeholder="" required onchange="validar('inputTemperatura', 'decimales', 0)">    
+                                                    <input type="text" name="temperatura" id="inputTemperatura" class="form-control" placeholder="" required onchange="validar('inputTemperatura', 'decimales', 0)">    
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">&#176;C</span>
                                                     </div>
@@ -79,7 +79,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Pulso</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputPulso" class="form-control" placeholder="" required onchange="validar('inputPulso', 'enteros', 1)">    
+                                                <input type="text" name="pulso" id="inputPulso" class="form-control" placeholder="" required onchange="validar('inputPulso', 'enteros', 1)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">lat/min</span>
                                                 </div>
@@ -94,7 +94,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Presión</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputPresion" class="form-control" placeholder="" required onchange="validar('inputPresion', 'presion', 2)">    
+                                                <input type="text" name="presion" id="inputPresion" class="form-control" placeholder="" required onchange="validar('inputPresion', 'presion', 2)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">mmHg</span>
                                                 </div>
@@ -105,7 +105,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Frecuencia respiratoria</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputFrecuencia" class="form-control" placeholder="" required onchange="validar('inputFrecuencia', 'enteros', 3)">    
+                                                <input type="text" name="frecuenciac" id="inputFrecuencia" class="form-control" placeholder="" required onchange="validar('inputFrecuencia', 'enteros', 3)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">resp/min</span>
                                                 </div>
@@ -138,7 +138,7 @@
                                     <!--Diagnostico-->
                                     <div class="form-group">
                                         <label for="" class='control-label'>Descripción de diagnostico*</label>
-                                        <textarea class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
+                                        <textarea name="diagnostico" class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
                                     </div> 
                                 </div> 
                             </div>  
@@ -148,10 +148,10 @@
                                             <label for="" class="w-50">Orden</label>
                                             
                                             <select name="examenes" id="listaOrdenes" class="custom-select" required>
-                                                <option>Sin examenes</option>
-                                                <option>Análisis de orina</option>
-                                                <option>Hemograma completo</option>
-                                                <option>Coprocultivo</option>
+                                                <option value="Sin examenes">Sin examenes</option>
+                                                <option value="Análisis de orina">Análisis de orina</option>
+                                                <option value="Hemograma completo">Hemograma completo</option>
+                                                <option value="Coprocultivo">Coprocultivo</option>
                                             </select>
                                         <button type="button" id="btn-agregar" value="Guardar" onclick="newElement(); removerOpcionSelect('listaOrdenes','btn-agregar');"> 
                                         
@@ -187,6 +187,21 @@
                      
                     </div>
                 </form> 
+
+                <?php
+
+                    $motivoConsulta = $_POST['motivo'];
+                    $enfermedad = $_POST['enfermedad'];
+                    $antecedente = $_POST['antecedente'];
+
+                    $temperatura = $_POST['temperatura'];
+                    $presion = $_POST['presion'];
+                    $pulso = $_POST['pulso'];
+                    $frecuencia = $_POST['frecuenciac'];
+                    
+                    $diagnostico = $_POST['diagnostico'];
+                    $orden = $_POST['examenes'];
+                ?>
                    
                    
                 
