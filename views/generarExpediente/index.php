@@ -27,10 +27,14 @@
                 <div id="font-tituloPagina">
                     
                     <h4>  Generar un expediente</h4>
+                    
                 </div>
-
+                <div class="alert alert-success alert-dismissible fade show">
+                    El expediente ha sido agregado con exito.
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
                 <!--- Formulario generar expediente-->
-                <form id="form-generarExpediente" action="">
+                <form id="form-generarExpediente" action="POST">
                     <!--- Seccion informacion personal-->
                     <div class="card">
                         <h5 class="font-tituloSeccion card-header">Información personal</h5>
@@ -185,8 +189,7 @@
                                             </select>
                                     </div> 
                                 </div>
-                            </div>
-
+                            </div> 
                             
                         </div>
                         <hr></hr>
@@ -219,6 +222,8 @@
                         $direccionPariente = $_POST['direccionp'];
                         $telefonoPariente = $_POST['telefonop'];
                         $parentezcoPariente = $_POST['parentezcop'];
+
+
                     }
 
                 ?>
