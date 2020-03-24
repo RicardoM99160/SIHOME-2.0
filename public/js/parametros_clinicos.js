@@ -47,6 +47,7 @@ function add_categoria(evt){
     var contenedorSeccion = document.getElementById(evt.currentTarget.container);
     contenedorSeccion.appendChild(contenedorCategoria);
 
+    removerOpcionSelect('slt-listaToxicos', 'btn-agregarToxico');
 
     var btnGuardar = document.getElementById(evt.currentTarget.counterpart);
     btnGuardar.addEventListener("click", save_categoria, false); 

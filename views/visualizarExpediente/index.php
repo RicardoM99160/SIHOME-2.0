@@ -12,6 +12,9 @@
 
     </head>
     <body>
+        <!-- Validaciones -->
+        <script type="text/javascript" src="<?php echo constant('URL');?>public/js/validaciones.js"></script>
+        
         <?php require 'views/plantillaBase.php'; ?>
         <div class="wrapper">
 
