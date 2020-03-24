@@ -202,22 +202,25 @@
                     </div>  
                 </form>
                 <?php
-                    $nombrePaciente = $_POST['nombre'];
-                    $apellidoPaciente = $_POST['apellido'];
-                    $duiPaciente = $_POST['dui'];
-                    $nacimientoPaciente = $_POST['nacimiento'];
-                    $sexoPaciente = $_POST['sexo'];
-                    $sangrePaciente = $_POST['sangre'];
+                    if(isset($_POST['submit']) && $_POST['submit'] == 'Guardar'){
+                        $nombrePaciente = $_POST['nombre'];
+                        $apellidoPaciente = $_POST['apellido'];
+                        $duiPaciente = $_POST['dui'];
+                        $nacimientoPaciente = $_POST['nacimiento'];
+                        $sexoPaciente = $_POST['sexo'];
+                        $sangrePaciente = $_POST['sangre'];
 
-                    $direccionPaciente = $_POST['direccion'];
-                    $departamentoPaciente = $_POST['telefono'];
-                    $telefonoPaciente = $_POST['departamento'];
+                        $direccionPaciente = $_POST['direccion'];
+                        $departamentoPaciente = $_POST['telefono'];
+                        $telefonoPaciente = $_POST['departamento'];
 
-                    $nombrePariente = $_POST['nombrep'];
-                    $apellidoPariente = $_POST['apellidop'];
-                    $direccionPariente = $_POST['direccionp'];
-                    $telefonoPariente = $_POST['telefonop'];
-                    $parentezcoPariente = $_POST['parentezcop'];
+                        $nombrePariente = $_POST['nombrep'];
+                        $apellidoPariente = $_POST['apellidop'];
+                        $direccionPariente = $_POST['direccionp'];
+                        $telefonoPariente = $_POST['telefonop'];
+                        $parentezcoPariente = $_POST['parentezcop'];
+                    }
+
                 ?>
 
             </div>

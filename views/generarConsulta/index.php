@@ -190,17 +190,20 @@
 
                 <?php
 
-                    $motivoConsulta = $_POST['motivo'];
-                    $enfermedad = $_POST['enfermedad'];
-                    $antecedente = $_POST['antecedente'];
+                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
+                        $motivoConsulta = $_POST['motivo'];
+                        $enfermedad = $_POST['enfermedad'];
+                        $antecedente = $_POST['antecedente'];
 
-                    $temperatura = $_POST['temperatura'];
-                    $presion = $_POST['presion'];
-                    $pulso = $_POST['pulso'];
-                    $frecuencia = $_POST['frecuenciac'];
+                        $temperatura = $_POST['temperatura'];
+                        $presion = $_POST['presion'];
+                        $pulso = $_POST['pulso'];
+                        $frecuencia = $_POST['frecuenciac'];
+
+                        $diagnostico = $_POST['diagnostico'];
+                        $orden = $_POST['examenes'];
+                    }
                     
-                    $diagnostico = $_POST['diagnostico'];
-                    $orden = $_POST['examenes'];
                 ?>
                    
                    
