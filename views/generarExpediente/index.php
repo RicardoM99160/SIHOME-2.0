@@ -232,4 +232,10 @@
         <script src="public/js/DatePicker.js"></script>
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
     </body>
+    <script>
+        $(document).ready(function(){
+            $('#gExp').addClass('active');
+            $('#bExp').removeClass('active');
+        });
+    </script>
 </html>

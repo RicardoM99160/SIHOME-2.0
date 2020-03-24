@@ -378,6 +378,12 @@
                 });
             });
         </script>
-
+        
     </body>
+    <script>
+        $(document).ready(function(){
+            $('#bExp').addClass('active');
+            $('#gExp').removeClass('active');
+        });
+    </script>
 </html>
