@@ -148,12 +148,12 @@
                                             <label for="" class="w-50">Orden</label>
                                             
                                             <select name="examenes" id="listaOrdenes" class="custom-select" required>
-                                                <option selected>Sin examenes</option>
+                                                <option>Sin examenes</option>
                                                 <option>Análisis de orina</option>
                                                 <option>Hemograma completo</option>
                                                 <option>Coprocultivo</option>
                                             </select>
-                                        <button type="button" id="btn-agregar" value="Guardar" onclick="newElement()"> 
+                                        <button type="button" id="btn-agregar" value="Guardar" onclick="newElement(); removerOpcionSelect('listaOrdenes','btn-agregar');"> 
                                         
                                         <i class="fas fa-plus-circle"></i><span>Agregar</span>
                                         </button>
