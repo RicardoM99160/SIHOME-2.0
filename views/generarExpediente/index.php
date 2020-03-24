@@ -29,12 +29,18 @@
                     <h4>  Generar un expediente</h4>
                     
                 </div>
+                <?php
+                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
+                ?>
                 <div class="alert alert-success alert-dismissible fade show">
                     El expediente ha sido agregado con exito.
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                 </div>
+                <?php
+                    }
+                ?>
                 <!--- Formulario generar expediente-->
-                <form id="form-generarExpediente" action="POST">
+                <form id="form-generarExpediente" action="" method="POST">
                     <!--- Seccion informacion personal-->
                     <div class="card">
                         <h5 class="font-tituloSeccion card-header">Información personal</h5>
