@@ -52,7 +52,15 @@ function validar(id, tipo, indice)
 		break;
 
 		case "decimales":
-		var re=/^[0-9]{2}.[0-9]{2}/;
+		var re=/^[0-9]{2}[.][0-9]{2}$/;
+		break;
+
+		case "enteros":
+		var re=/^[0-9]{1,3}$/;
+		break;
+
+		case "presion":
+		var re=/^[0-9]{1,3}[/][0-9]{1,3}$/;
 		break;
 
 		default:

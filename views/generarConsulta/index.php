@@ -68,7 +68,7 @@
                                         <div class="form-group"> 
                                             <label for="" class="w-75">Temperatura</label> 
                                                 <div class="input-group"> 
-                                                    <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="" required onchange="validar('inputTemperatura', 'decimales', 0)">    
+                                                    <input type="text" name="filtro" id="inputTemperatura" class="form-control" placeholder="" required onchange="validar('inputTemperatura', 'decimales', 0)">    
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">&#176;C</span>
                                                     </div>
@@ -79,10 +79,11 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Pulso</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="" required>    
+                                                <input type="text" name="filtro" id="inputPulso" class="form-control" placeholder="" required onchange="validar('inputPulso', 'enteros', 1)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">lat/min</span>
                                                 </div>
+                                                <div class="invalid-feedback">Ingrese un pulso válida.</div>
                                             </div> 
                                         </div>
                                     
@@ -93,20 +94,22 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Presión</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="" required>    
+                                                <input type="text" name="filtro" id="inputPresion" class="form-control" placeholder="" required onchange="validar('inputPresion', 'presion', 2)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">mmHg</span>
                                                 </div>
+                                                <div class="invalid-feedback">Ingrese una presión válida.</div>
                                             </div> 
                                         </div>
                                         <!--Frecuencia respiratoria-->
                                         <div class="form-group">
                                             <label for="" class="w-100">Frecuencia respiratoria</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="" required>    
+                                                <input type="text" name="filtro" id="inputFrecuencia" class="form-control" placeholder="" required onchange="validar('inputFrecuencia', 'enteros', 3)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">resp/min</span>
                                                 </div>
+                                                <div class="invalid-feedback">Ingrese una frecuencia válida.</div>
                                             </div> 
                                         </div>
                                     
