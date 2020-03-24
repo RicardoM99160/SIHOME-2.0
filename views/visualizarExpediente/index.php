@@ -63,15 +63,13 @@
                                     <!--Número de consultas --->
                                     <?php
                                         include 'libs/datosConsultas.php';
-                                        include 'libs/datosClinicos.php';
-                                        $clinico = new datosClinicos();
                                         $buscar = new consulta();
                                         $numC = $buscar->nConsultas($_SESSION['idPaciente']);
                                         echo '<span><b>Consultas Registradas ('.$numC.') </b></span>';
                                         ?>
                                 </h5>
                                 <!--Formulario de opciones -->
-                                <form action="" class="row form-group inline-form" method = "POST">
+                                <form action="POST" class="row form-group inline-form">
                                     <!--input parametro busqueda -->
                                     <div class="col-3"> 
                                         <div class="input-group filtro">
@@ -90,10 +88,10 @@
                                     </div>
                                     <!--Boton nueva consulta -->   
                                     <div class="form-group">
-                                        <a id="btn-nuevaConsulta" name="aplicarFiltro" href="<?php echo constant('URL');?>generarConsulta">
+                                        <button id="btn-nuevaConsulta" name="aplicarFiltro">
                                             <i class="fas fa-pencil-alt"></i>
-                                            <span>Nueva Consulta</span>
-                                        </a>
+                                            <span> <a href="<?php echo constant('URL');?>generarConsulta">Nueva consulta </a></span>
+                                        </button>
                                     </div> 
                                 </form>
                                 <!--Tabla de consultas-->
@@ -119,101 +117,187 @@
                                     </table>
                                 </div>
                     </div>
-
-
                     <!--Historial de clinico-->
                     <div id="historialClinico" class="row px-3 py-3">
                         <div class="col">
+                            <!--Habitos toxicos -->
                             <div id="habitosToxicos" class="form-group mt-2">
                                 <div class="row">
                                     <div class="col">
-                                        <h6 class="titulo-seccion  text-uppercase">
+                                        <!--Titulo de seccion -->
+                                        <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Habitos Toxicos</span>
-                                            <button class="btn btn-light">
+                                            <!--Boton modificar seccion-->
+                                            <button id="btn-modificarHabitos"class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
-                                            </button>
+                                            </button>  
                                             
-                                        </h6>
+                                        </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                      $clinico->obtenerToxicos($_SESSION['idPaciente']);
-                                ?>
-                                
-                                </div>
+                                <!--Menu para agregar una categoria/comentario habitos-toxicos-->
+                                <div class="d-none row inline-form" id="cont-agregarToxico">  
+                                    <div class="form-group"> 
+                                        <!--Combo box de categorias -->
+                                        <label for="" class="w-100">Categoria</label>
+                                            <select name="examenes" id="slt-listaToxicos" class="custom-select" required>
+                                                <option selected>Alcohol</option>
+                                                <option>Tabaco</option>
+                                                <option>Drogas</option>
+                                                <option>Infusiones</option>
+                                                <option>Otros</option>
+                                            </select>
+                                    </div>
+                                    <!--Observaciones input -->
+                                    <div class="form-group">  
+                                        <label for="" class="">Observaciones*</label>    
+                                        <div class="input-group">  
+                                            <input type="text" id="input-observacionToxico" class="form-control" placeholder="">   
+                                            <button type="button" id="btn-agregarToxico" class="btn-agregarCategoria"> 
+                                                <i class="fas fa-plus-circle"></i>
+                                                <span>Agregar</span>
+                                            </button> 
+                                            <button id="btn-guardarHabitos"class="d-none btn-action">
+                                                <i class="fas fa-save"></i>
+                                                <span>Guardar cambios</span>
+                                            </button>  
+                                            
+                                        </div> 
+                                    </div>  
+                                </div>  
+                               
+                                <!--Cuando no hay observaciones debe de ir lo siguiente 
+                                <div class="row no-gutters my-2" id="noRegistro"> 
+                                    <p>Aun no hay hábitos tóxicos registrados</p>
+                                </div> 
+                                -->
+                                <!--Plantilla de habito--> 
+                                <div class="nodo row no-gutters my-2">
+                                    
+                                    <div class="col-2">
+                                        <input type="text" name="" id="alcoholHabito" class="form-control text-uppercase text-center" value="Alcohol" disabled>
+                                    </div>
+                                     
+                                    <div class="col-5">
+                                        <input type="text" name="" id="alcoholValor" class="form-control" value="Bebe mucho, le pega a su esposa." disabled>
+                                        
+                                    </div>
+                                     
+                                </div> 
+
+
+
                             </div>
                             <hr>
                             <div id="habitosFisiologicos" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h6 class="titulo-seccion  text-uppercase">
+                                    <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Habitos Fisiologicos</span>
                                             <button class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
-                                        </h6>
+                                        </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                      $clinico->obtenerFisiologicos($_SESSION['idPaciente']);
-                                ?>
+                                 
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="alimentacionH" id="alimentacionHabito" class="form-control text-uppercase text-center" value="Alimentacion" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="alimentacionV" id="alimentacionValor" class="form-control" value="3 veces al día, sin refrigerios" disabled>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="diuresisH" id="diuresisHabito" class="form-control text-uppercase text-center" value="Dihuresis" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="diuresisV" id="diuresisValor" class="form-control" value="Normal, poco oscura, no despierta por la noche para orinar" disabled>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="catarsisH" id="catarsisHabito" class="form-control text-uppercase text-center" value="Dihuresis" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="catarsisV" id="catarsisValor" class="form-control" value="Normal" disabled>
+                                    </div>
+                                </div>
                             </div>
                             <hr>
                             <div id="enfermedadesInfancia" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h6 class="titulo-seccion  text-uppercase">
+                                    <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Enfermedades de la infancia</span>
                                             <button class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
-                                        </h6>
+                                        </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                $clinico->obtenerInfancia($_SESSION['idPaciente']);
-                                ?>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="enfermedad1I" id="enfermedad1Infancia" class="form-control text-uppercase text-center h-100" value="Varicela" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="enfermedad1IDescripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">Diagnosticado a los 10 años</p>
+                                            <p>Informacion del paciente</p>                                     
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <hr>
                             <div id="enfermedades" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h6 class="titulo-seccion  text-uppercase">
+                                    <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Enfermedades</span>
                                             <button class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
-                                        </h6>
+                                        </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                $clinico->obtenerEnfermedad($_SESSION['idPaciente']);
-                                ?>
-                                
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="enfermedad1" id="enfermedad1" class="form-control text-uppercase text-center h-100" value="CV" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="enfermedad1Descripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">Diagnosticado a los 28 años</p>
+                                            <p>Tratado con Elapril 10 mg/dia sin dieta dash, realiza acompañamiento cardiólogo periódicamente</p>                                     
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <hr>
                             <div id="alergias" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h6 class="titulo-seccion  text-uppercase">
+                                    <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Alergías</span>
                                             <button class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
-                                        </h6>
+                                        </h5>
                                     </div>
                                 </div>
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
-                                        <div id="alergiasLista" class="px-3 py-3 form-control font-weight-bold campo-descriptivo">
-                                        <?php 
-                                            $clinico->obtenerAlergias($_SESSION['idPaciente']);
-                                        ?>                  
-                                        </div>
+                                        <ul class="list-group" id="list-alergias">
+                                            <li class="list-group-item">Caspa de mascotas</li>
+                                            <li class="list-group-item">Penicilina y antibióticos basados en penicilina</li>
+                                            <li class="list-group-item">Latex</li>
+                                            <li class="list-group-item">Moho</li> 
+                                        </ul> 
                                     </div>
                                 </div>
                                 
@@ -222,38 +306,44 @@
                             <div id="antecedentes" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h6 class="titulo-seccion  text-uppercase">
+                                    <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Antecedentes heredofamiliares</span>
                                             <button class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
-                                        </h6>
+                                        </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                $clinico->obtenerAntecedentes($_SESSION['idPaciente']);
-                                ?>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="antecedente1" id="antecedente1" class="form-control text-uppercase text-center h-100" value="Hipertension" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="antecedente1Descripcion" class="px-3 py-3 form-control campo-descriptivo"> 
+                                            <p>El paciente afirma que su madre y abuela materna fueron diagnosticadas con hipertensión</p>                                     
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                     
                             <div id="medicamentos" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h6 class="titulo-seccion  text-uppercase">
+                                    <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Medicamentos</span>
                                             <button class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
-                                        </h6>
+                                        </h5>
                                     </div>
                                 </div>
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
                                         <div id="medicamentosDescripcion" class="px-3 py-3 form-control campo-descriptivo">
-                                            <?php
-                                            $clinico->obtenerMedicamentos($_SESSION['idPaciente']);    
-                                            ?>                               
+                                            <p class="font-weight-bold">ATENOL (50 Mg)</p>
+                                            <p>1 tableta cada mañana</p>                                     
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +356,7 @@
                 </div>
             </div>
         </div>
-
+        <script type="text/javascript" src="public/js/parametros_clinicos.js"></script>
         <script>
             $(document).ready(function () {
                 $('#consulta-tab').on('click', function () {
