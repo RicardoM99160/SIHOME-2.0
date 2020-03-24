@@ -90,10 +90,10 @@
                                     </div>
                                     <!--Boton nueva consulta -->   
                                     <div class="form-group">
-                                        <button id="btn-nuevaConsulta" name="aplicarFiltro">
+                                        <a id="btn-nuevaConsulta" name="aplicarFiltro" href="<?php echo constant('URL');?>generarConsulta">
                                             <i class="fas fa-pencil-alt"></i>
-                                            <span> <a href="<?php echo constant('URL');?>generarConsulta">Nueva consulta </a></span>
-                                        </button>
+                                            <span>Nueva Consulta</span>
+                                        </a>
                                     </div> 
                                 </form>
                                 <!--Tabla de consultas-->
