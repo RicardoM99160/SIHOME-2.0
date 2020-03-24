@@ -15,7 +15,7 @@
     </ul>
 </nav>
 
-<script>
+<script type="text/javascript">
 
     document.getElementById("bExp").addEventListener("click", buscExp());
     document.getElementById("gExp").addEventListener("click", genExp());
