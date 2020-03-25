@@ -208,7 +208,7 @@ class datosClinicos{
             foreach($arrAlergia[$idPacienteAlergia] as $datos)
  	        {
                  echo ' 
-                 <p>'.$datos.'</p>
+                 <li class="list-group-item">'.$datos.'</li>
                          ';
              }
 

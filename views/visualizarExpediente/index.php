@@ -66,6 +66,8 @@
                                     <!--Número de consultas --->
                                     <?php
                                         include 'libs/datosConsultas.php';
+                                        include 'libs/datosClinicos.php';
+                                        $clinico = new datosClinicos();
                                         $buscar = new consulta();
                                         $numC = $buscar->nConsultas($_SESSION['idPaciente']);
                                         echo '<span><b>Consultas Registradas ('.$numC.') </b></span>';
@@ -205,30 +207,9 @@
                                     </div>
                                 </div>
                                  
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="alimentacionH" id="alimentacionHabito" class="form-control text-uppercase text-center" value="Alimentacion" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <input type="text" name="alimentacionV" id="alimentacionValor" class="form-control" value="3 veces al día, sin refrigerios" disabled>
-                                    </div>
-                                </div>
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="diuresisH" id="diuresisHabito" class="form-control text-uppercase text-center" value="Dihuresis" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <input type="text" name="diuresisV" id="diuresisValor" class="form-control" value="Normal, poco oscura, no despierta por la noche para orinar" disabled>
-                                    </div>
-                                </div>
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="catarsisH" id="catarsisHabito" class="form-control text-uppercase text-center" value="Dihuresis" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <input type="text" name="catarsisV" id="catarsisValor" class="form-control" value="Normal" disabled>
-                                    </div>
-                                </div>
+                                <?php 
+                                      $clinico->obtenerFisiologicos($_SESSION['idPaciente']);
+                                ?>
                             </div>
                             <hr>
                             <div id="enfermedadesInfancia" class="form-group mt-5">
@@ -243,17 +224,9 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="enfermedad1I" id="enfermedad1Infancia" class="form-control text-uppercase text-center h-100" value="Varicela" disabled>
-                                    </div>
-                                    <div class="col-7">
-                                        <div id="enfermedad1IDescripcion" class="px-3 py-3 form-control campo-descriptivo">
-                                            <p class="font-weight-bold">Diagnosticado a los 10 años</p>
-                                            <p>Informacion del paciente</p>                                     
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php 
+                                      $clinico->obtenerInfancia($_SESSION['idPaciente']);
+                                ?>
                             </div>
                             <hr>
                             <div id="enfermedades" class="form-group mt-5">
@@ -268,17 +241,9 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="enfermedad1" id="enfermedad1" class="form-control text-uppercase text-center h-100" value="CV" disabled>
-                                    </div>
-                                    <div class="col-7">
-                                        <div id="enfermedad1Descripcion" class="px-3 py-3 form-control campo-descriptivo">
-                                            <p class="font-weight-bold">Diagnosticado a los 28 años</p>
-                                            <p>Tratado con Elapril 10 mg/dia sin dieta dash, realiza acompañamiento cardiólogo periódicamente</p>                                     
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php 
+                                      $clinico->obtenerEnfermedad($_SESSION['idPaciente']);
+                                ?>
                             </div>
                             <hr>
                             <div id="alergias" class="form-group mt-5">
@@ -296,10 +261,9 @@
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
                                         <ul class="list-group" id="list-alergias">
-                                            <li class="list-group-item">Caspa de mascotas</li>
-                                            <li class="list-group-item">Penicilina y antibióticos basados en penicilina</li>
-                                            <li class="list-group-item">Latex</li>
-                                            <li class="list-group-item">Moho</li> 
+                                            <?php 
+                                                $clinico->obtenerAlergias($_SESSION['idPaciente']);
+                                            ?> 
                                         </ul> 
                                     </div>
                                 </div>
@@ -318,16 +282,9 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="antecedente1" id="antecedente1" class="form-control text-uppercase text-center h-100" value="Hipertension" disabled>
-                                    </div>
-                                    <div class="col-7">
-                                        <div id="antecedente1Descripcion" class="px-3 py-3 form-control campo-descriptivo"> 
-                                            <p>El paciente afirma que su madre y abuela materna fueron diagnosticadas con hipertensión</p>                                     
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php 
+                                      $clinico->obtenerAntecedentes($_SESSION['idPaciente']);
+                                ?>
                             </div>
                     
                             <div id="medicamentos" class="form-group mt-5">
@@ -345,8 +302,9 @@
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
                                         <div id="medicamentosDescripcion" class="px-3 py-3 form-control campo-descriptivo">
-                                            <p class="font-weight-bold">ATENOL (50 Mg)</p>
-                                            <p>1 tableta cada mañana</p>                                     
+                                            <?php
+                                                $clinico->obtenerMedicamentos($_SESSION['idPaciente']);    
+                                            ?>                                   
                                         </div>
                                     </div>
                                 </div>
