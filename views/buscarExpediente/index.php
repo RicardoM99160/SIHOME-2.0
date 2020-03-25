@@ -107,81 +107,66 @@
         <!-- Ventana modal de filtros -->
         <div class="modal fade" id="modalFiltros" tabindex="-1" role="dialog" aria-labelledby="modalFiltrosLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalFiltrosLabel">Filtros disponibles</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
+                <div class="modal-content"> 
+                    <div class="modal-body"> 
                         <!-- Contenido -->
-                        <form class="form-group" method="POST">
-                            
-                            <!-- Seccion antiguedad -->
-                            <div class="card filterSection">
-                                <h5 class="font-tituloSeccion card-header">Filtrar por antiguedad</h5>
-                                <div class="frm-seccion card-body">
-                                    <!-- Fila -->
-                                    <div class="row"> 
-                                        <!-- Columna -->
-                                        <div class='col-md-6'>
-                                            <div class="form-group">
-                                                <input type="radio" class="custom-radio" name="antiguedad" id="nuevos">
-                                                <label for="nuevos">Más nuevos primero</label>
-                                            </div>
-                                        </div>
-                                        <!-- Columna -->
-                                        <div class='col-md-6'>
-                                            <div class="form-group">
-                                                <input type="radio" class="custom-radio" name="antiguedad" id="antiguos">
-                                                <label for="antiguos">Más antiguos primero</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <form id="frm-filtro" method="POST">
+                            <div class="col">
+                                <!---Filtro de antiguedad -->
+                            <div class="modal-seccion">
+                                <div class="row"> 
+                                    <h6 class="modal-seccion-title">Filtrar por antiguedad</h6> 
                                 </div>
-                            </div>
-                            
-                            <!-- Seccion edad -->
-                            <div class="card filterSection">
-                                <h5 class="font-tituloSeccion card-header">Filtrar por edad</h5>
-                                <div class="frm-seccion card-body">
-                                    <!-- Fila -->
-                                    <div class="row"> 
-                                        <!-- Columna -->
-                                        <div class='col w-100'>
-                                            <div class="form-group">
-                                                    <input id="sliderDoble" type="text" class="span2" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[1,18]" style="width: 100%" />
-                                            </div>
-                                        </div>
+                                <div class="row">  
+                                    <div class="col-md-4">
+                                        <div class="form form-inline">
+                                            <input type="radio" name="antiguedad" id="nuevos"> 
+                                            <label class="form-check-label" for="antiguedad">Más nuevos primero</label> 
+                                        </div> 
                                     </div>
-                                </div>
+                                    <div class="col-md-4">
+                                        <div class="form form-inline">
+                                            <input type="radio" name="antiguedad" id="antiguos">   
+                                            <label class="form-check-label" for="antiguedad">Más antiguos primeros</label> 
+                                        </div>  
+                                    </div>
+                                </div>  
                             </div>
-
-                            <!-- Seccion fecha ultima cita -->
-                            <div class="card filterSection">
-                                <h5 class="font-tituloSeccion card-header">Fecha estimada de ultima cita</h5>
-                                <div class="frm-seccion card-body">
-                                    <!-- Fila -->
-                                    <div class="row"> 
-                                        <!-- Columna -->
-                                        <div class='col-md-6 w-75'>
-                                            <div class="form-group">
+                            <!---Filtro de cita -->
+                            <div class="modal-seccion">
+                            <div class="row"> 
+                                    <h6 class="modal-seccion-title">Fecha estimada de ultima cita</h6> 
+                                </div>
+                                <div class="form-inline"> 
+                                        <!-- Columna --> 
+                                            <div class="form-inline">
                                                 <span style="margin-right: 2%">Entre</span>
                                                 <input type="date" id="filtroFecha1" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('filtroFecha1')">
-                                            </div>
-                                        </div>
-                                        <!-- Columna -->
-                                        <div class='col-md-6 w-75'>
-                                            <div class="form-group">
-                                                <span style="margin-right: 10%; margin-left: 2%">y</span>
+                                                 
+                                            </div> 
+                                        <div class='col-md-4'> 
+                                                <span style="margin-right: 2%">y</span>
                                                 <input type="date" id="fitroFecha2" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('fitroFecha2')">
-                                            </div>
+                                           
+                                        </div> 
+                                </div> 
+                                </div>
+                                
+                            <div class="modal-seccion">
+                                <!---Filtro de edad -->
+                                <div class="row"> 
+                                    <h6 class="modal-seccion-title">Filtrar por edad</h6> 
+                                </div>
+                                <div class="row justify-content-center" id="modal-slider-seccion">
+                                    <div class='col-md-10'>
+                                        <div class="form-inline form-group ">
+                                            <input id="sliderDoble" type="text" class="span2" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[1,18]" style="width: 100%" />
+                                             
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
+                                </div> 
+                                <!---Filtro por fecha de ultima cita -->
+                                </div>    
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -199,7 +184,7 @@
             {
                 tooltip: 'always',
                 formatter: function(value) {
-                return 'Rango de edades: ' + formatoRango(value);
+                return formatoRango(value);
                 }
             });
         </script>

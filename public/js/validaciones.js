@@ -133,7 +133,7 @@ function formatoRango(rango)
 				if (edades[0] == 1) rango_formateado = "1 año";
 				else rango_formateado = edades[0].toString() + " años";
 			}
-			else rango_formateado = "de " + edades[0].toString() + " a " + edades[1].toString() + " años";
+			else rango_formateado = "De " + edades[0].toString() + " a " + edades[1].toString() + " años";
 			return rango_formateado;
 		}
 		else return rango;

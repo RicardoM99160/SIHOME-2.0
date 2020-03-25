@@ -57,20 +57,31 @@ html,body, .wrapper{
 /*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
 
 /*------------------------- ESTILOS PARA FORMULARIO FILROS-------------------------*/
-.modal-title{
-    color: #5E6875;
+ 
+
+.modal-content{
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: lighter !important;
+    color: #909090;
+    padding-bottom: 0;
+}
+.modal-seccion{
+    margin-bottom: 30px;
 }
 
-.filterSection{
-    margin-bottom: 30px;
-    border-radius: 4px;
-}
-.font-tituloSeccion{ 
-    font-size: 16px;
-    font-family: 'Source Sans Pro', sans-serif;  
-    background-color: #E6E9EC !important;
-    color: #353A40;
-    border-radius: 4px;
+.modal-seccion-title{
+    color: #5E6875;
+    margin-bottom: 15px;  
+}  
+
+input[type=radio]{
+    margin-right: 10px;
+} 
+
+#modal-slider-seccion{
+    margin-top: 40px;
+    padding: 0 15px;
 }
 
 .frm-seccion{
@@ -103,7 +114,9 @@ html,body, .wrapper{
     background: #004D8B;
     border: 1px solid #323233;
 }
-
+.modal-footer{
+    margin-bottom: 0;
+}
 /*------------------------- FIN ESTILOS PARA FORMULARIO FILTROS-------------------------*/
 
 /*------------------------- ESTILOS DE TABLAS ---------------------------*/
