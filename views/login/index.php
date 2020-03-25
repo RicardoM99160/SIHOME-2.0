@@ -52,7 +52,7 @@
                     </div>
                     <div id="btn-form-cont" class="row form-group">
                         <button class="btn-action" type="submit" id="btnInicio" disabled="true">Iniciar sesión</button>
-                        <button class="btn-ayuda" type="menu">Ayuda</button>
+                        <button class="btn-ayuda" type="button">Ayuda</button>
                     </div>
                 </form>
             </div>
