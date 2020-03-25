@@ -57,7 +57,14 @@ html,body, .wrapper{
 /*------------------------- FIN ESTILOS PARA CONTENIDO -------------------------*/
 
 /*------------------------- ESTILOS PARA FORMULARIO FILROS-------------------------*/
+.modal-title{
+    color: #5E6875;
+}
 
+.filterSection{
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
 .font-tituloSeccion{ 
     font-size: 16px;
     font-family: 'Source Sans Pro', sans-serif;  
@@ -76,6 +83,25 @@ html,body, .wrapper{
 .tooltip.in 
 {
   opacity: 1;
+}
+
+.btn-action{ 
+    border: none;
+    color: white; 
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 5px;
+    background: rgb(0,132,230); 
+    margin: 15px 15px;
+    
+}
+
+.btn-action:hover{ 
+    background: #004D8B;
+    border: 1px solid #323233;
 }
 
 /*------------------------- FIN ESTILOS PARA FORMULARIO FILTROS-------------------------*/

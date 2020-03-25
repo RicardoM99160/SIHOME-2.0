@@ -27,8 +27,18 @@
                 <div id="font-tituloPagina">
                     
                     <h4>  Generar un expediente</h4>
+                    
                 </div>
-
+                <?php
+                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
+                ?>
+                <div class="alert alert-success alert-dismissible fade show">
+                    El expediente ha sido agregado con exito.
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php
+                    }
+                ?>
                 <!--- Formulario generar expediente-->
                 <form id="form-generarExpediente" method="POST" action="">
                     <!--- Seccion informacion personal-->
@@ -185,8 +195,7 @@
                                             </select>
                                     </div> 
                                 </div>
-                            </div>
-
+                            </div> 
                             
                         </div>
                         <hr></hr>
@@ -220,9 +229,9 @@
                         $apellidoPariente = $_POST['apellidop'];
                         $direccionPariente = $_POST['direccionp'];
                         $telefonoPariente = $_POST['telefonop'];
-                        $parentescoPariente = $_POST['parentezcop'];
+                        $parentezcoPariente = $_POST['parentezcop'];
 
-                        $guardar->agregarPaciente($nombrePaciente, $apellidoPaciente, $duiPaciente, $nacimientoPaciente, $sexoPaciente, $sangrePaciente,$direccionPaciente,$departamentoPaciente,$telefonoPaciente,$nombrePariente,$apellidoPariente,$direccionPariente,$telefonoPariente,$parentescoPariente);
+
                     }
 
                 ?>
@@ -236,4 +245,10 @@
         <script src="public/js/DatePicker.js"></script>
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
     </body>
+    <script>
+        $(document).ready(function(){
+            $('#gExp').addClass('active');
+            $('#bExp').removeClass('active');
+        });
+    </script>
 </html>
