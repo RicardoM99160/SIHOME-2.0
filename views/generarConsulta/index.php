@@ -27,6 +27,16 @@
                 <div id="font-tituloPagina"> 
                     <h4>Nueva consulta <?php echo ' | PACIENTE '.$_SESSION['idPaciente']; ?></h4>
                 </div>
+                <?php
+                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
+                ?>
+                <div class="alert alert-success alert-dismissible fade show">
+                    La nueva consulta ha sido agregada con exito.
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php
+                    }
+                ?>
                 <!--- Formulario generar consulta-->
                 <form id="form-generarConsulta" action="" method="POST">
                     <div class="row">
