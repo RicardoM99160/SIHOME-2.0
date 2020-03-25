@@ -30,7 +30,7 @@
                 </div>
 
                 <!--- Formulario generar expediente-->
-                <form id="form-generarExpediente" action="">
+                <form id="form-generarExpediente" method="POST" action="">
                     <!--- Seccion informacion personal-->
                     <div class="card">
                         <h5 class="font-tituloSeccion card-header">Información personal</h5>
@@ -202,6 +202,8 @@
                     </div>  
                 </form>
                 <?php
+                include 'libs/datosPacientes.php';
+                $guardar = new paciente();
                     if(isset($_POST['submit']) && $_POST['submit'] == 'Guardar'){
                         $nombrePaciente = $_POST['nombre'];
                         $apellidoPaciente = $_POST['apellido'];
@@ -218,7 +220,9 @@
                         $apellidoPariente = $_POST['apellidop'];
                         $direccionPariente = $_POST['direccionp'];
                         $telefonoPariente = $_POST['telefonop'];
-                        $parentezcoPariente = $_POST['parentezcop'];
+                        $parentescoPariente = $_POST['parentezcop'];
+
+                        $guardar->agregarPaciente($nombrePaciente, $apellidoPaciente, $duiPaciente, $nacimientoPaciente, $sexoPaciente, $sangrePaciente,$direccionPaciente,$departamentoPaciente,$telefonoPaciente,$nombrePariente,$apellidoPariente,$direccionPariente,$telefonoPariente,$parentescoPariente);
                     }
 
                 ?>

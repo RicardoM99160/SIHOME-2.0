@@ -1,14 +1,16 @@
 <?php
 class consulta{
 
+    var $consultas;
+
     public function generarDatosConsulta(){
-        $consultas = array(
+        $this->consultas = array(
             "P0001"=>array("C00001"=>array("nombreDoctor"=>"Julio Salazar", "fechaConsulta"=>"15/03/2020", "horaConsulta"=>"15:00", "comentarioConsulta"=>"Fiebre", "diagnostico"=>"El paciente presentaba temperatura elevada, presión normal"),
                           "C00002"=>array("nombreDoctor"=>"Julio Salazar", "fechaConsulta"=>"15/03/2020", "horaConsulta"=>"09:40", "comentarioConsulta"=>"Dolor", "diagnostico"=>"El paciente presenta dolor abdominal")),
             "P0002"=>array("C00001"=>array("nombreDoctor"=>"Guillermo Oseggueda", "fechaConsulta"=>"11/03/2020", "horaConsulta"=>"11:00", "comentarioConsulta"=>"Alergia", "diagnostico"=>"Urticaria presentada moderada" ),),
         );
   
-    return $consultas;
+    return $this->consultas;
     }
 
 
