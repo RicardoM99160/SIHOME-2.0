@@ -82,7 +82,7 @@
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">&#176;C</span>
                                                     </div>
-                                                    <div class="invalid-feedback">Ingrese una temperatura válida.</div>
+                                                    <div class="invalid-feedback">Ingrese una temperatura válida.<br>Ejemplo: 37.00</div>
                                                 </div>  
                                         </div> 
                                         <!--pulso-->
@@ -93,7 +93,7 @@
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">lat/min</span>
                                                 </div>
-                                                <div class="invalid-feedback">Ingrese un pulso válida.</div>
+                                                <div class="invalid-feedback">Ingrese un pulso válido.<br>Ejemplo: 130</div>
                                             </div> 
                                         </div>
                                     
@@ -108,7 +108,7 @@
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">mmHg</span>
                                                 </div>
-                                                <div class="invalid-feedback">Ingrese una presión válida.</div>
+                                                <div class="invalid-feedback">Ingrese una presión válida.<br>Ejemplo: 130/150</div>
                                             </div> 
                                         </div>
                                         <!--Frecuencia respiratoria-->
@@ -119,7 +119,7 @@
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">resp/min</span>
                                                 </div>
-                                                <div class="invalid-feedback">Ingrese una frecuencia válida.</div>
+                                                <div class="invalid-feedback">Ingrese una frecuencia válida.<br>Ejemplo: 16</div>
                                             </div> 
                                         </div>
                                     
