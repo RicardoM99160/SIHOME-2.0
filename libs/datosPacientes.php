@@ -275,6 +275,7 @@ public function agregarPaciente($nombre, $apellido, $dui, $fechaNa, $sexo, $tipo
   ),
 
 );
+  $_SESSION['pacientes'] = array_merge((array)$_SESSION['pacientes'], (array)$datosEstaticos);
   $nuevoid = 'P'.str_pad((sizeof($_SESSION['pacientes'])+1), 4, '0', STR_PAD_LEFT);
   $nuevoarr = array($nuevoid => array(
     "nombre"=>$nombre,
@@ -291,10 +292,10 @@ public function agregarPaciente($nombre, $apellido, $dui, $fechaNa, $sexo, $tipo
     "apellidoPariente"=>$apellidoPariente,
     "direccionPariente"=>$direccionP,
     "telefonoPariente"=>$telefonoP,
-    "parentezco"=>$parentesco
+    "parentesco"=>$parentesco
   ),);
 
-  $_SESSION['pacientes'] = array_merge((array)$_SESSION['pacientes'], (array)$datosEstaticos);
+  
   $_SESSION['pacientes'] = array_merge((array)$_SESSION['pacientes'], (array)$nuevoarr);
 
 }

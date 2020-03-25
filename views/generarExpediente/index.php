@@ -222,15 +222,15 @@
                         $sangrePaciente = $_POST['sangre'];
 
                         $direccionPaciente = $_POST['direccion'];
-                        $departamentoPaciente = $_POST['telefono'];
-                        $telefonoPaciente = $_POST['departamento'];
+                        $departamentoPaciente = $_POST['departamento'];
+                        $telefonoPaciente = $_POST['telefono'];
 
                         $nombrePariente = $_POST['nombrep'];
                         $apellidoPariente = $_POST['apellidop'];
                         $direccionPariente = $_POST['direccionp'];
                         $telefonoPariente = $_POST['telefonop'];
-                        $parentezcoPariente = $_POST['parentezcop'];
-
+                        $parentescoPariente = $_POST['parentezcop'];
+                        $guardar->agregarPaciente($nombrePaciente, $apellidoPaciente, $duiPaciente, $nacimientoPaciente, $sexoPaciente, $sangrePaciente,$direccionPaciente,$departamentoPaciente,$telefonoPaciente,$nombrePariente,$apellidoPariente,$direccionPariente,$telefonoPariente,$parentescoPariente);
 
                     }
 

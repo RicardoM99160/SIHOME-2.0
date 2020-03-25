@@ -190,6 +190,9 @@
 
                 <?php
 
+                include 'libs/datosConsultas.php';
+                $guardar = new consulta();
+
                     if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
                         $motivoConsulta = $_POST['motivo'];
                         $enfermedad = $_POST['enfermedad'];
@@ -202,6 +205,8 @@
 
                         $diagnostico = $_POST['diagnostico'];
                         $orden = $_POST['examenes'];
+
+                        $guardar->guardarConsultas($motivoConsulta, $enfermedad, $antecedente, $temperatura, $presion, $pulso, $frecuencia, $diagnostico, $orden);
                     }
                     
                 ?>

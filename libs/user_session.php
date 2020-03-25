@@ -12,6 +12,7 @@
             $_SESSION['apellido'] = $apellido;
             $_SESSION['idPaciente'] = '';
             $_SESSION['pacientes'] = array();
+            $_SESSION['consultas'] = array();
         }
 
         public function getCurrentUser(){
