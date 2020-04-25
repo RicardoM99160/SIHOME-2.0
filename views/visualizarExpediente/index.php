@@ -125,7 +125,9 @@
                     <!--Historial de clinico-->
                     <div id="historialClinico" class="row px-3 py-3">
                         <div class="col">
-                            <!--Habitos toxicos -->
+
+                            <!--HABITOS TOXICOS -->
+                            <form>
                             <div id="habitosToxicos" class="form-group mt-2">
                                 <div class="row">
                                     <div class="col">
@@ -133,7 +135,7 @@
                                         <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Habitos Toxicos</span>
                                             <!--Boton modificar seccion-->
-                                            <button id="btn-modificarHabitos"class="btn btn-light">
+                                            <button id="btn-modificarHabitos" name="edit_historia" class="btn btn-light">
                                                 <i class="fas fa-edit"></i>
                                             </button>  
                                             
@@ -146,18 +148,13 @@
                                         <!--Combo box de categorias -->
                                         <label for="" class="w-100">Categoria</label>
                                             <select name="examenes" id="slt-listaToxicos" class="custom-select" required>
-                                                <option selected>Alcohol</option>
-                                                <option>Tabaco</option>
-                                                <option>Drogas</option>
-                                                <option>Infusiones</option>
-                                                <option>Otros</option>
                                             </select>
                                     </div>
                                     <!--Observaciones input -->
                                     <div class="form-group">  
                                         <label for="" class="">Observaciones*</label>    
                                         <div class="input-group">  
-                                            <input type="text" id="input-observacionToxico" class="form-control" placeholder="">   
+                                            <input type="text" id="input-observacionToxico" class="form-control" placeholder="" required>   
                                             <button type="button" id="btn-agregarToxico" class="btn-agregarCategoria"> 
                                                 <i class="fas fa-plus-circle"></i>
                                                 <span>Agregar</span>
@@ -177,29 +174,24 @@
                                 </div> 
                                 -->
                                 <!--Plantilla de habito--> 
-                                <div class="nodo row no-gutters my-2">
-                                    
-                                    <div class="col-2">
-                                        <input type="text" name="" id="alcoholHabito" class="form-control text-uppercase text-center" value="Alcohol" disabled>
-                                    </div>
-                                     
-                                    <div class="col-5">
-                                        <input type="text" name="" id="alcoholValor" class="form-control" value="Bebe mucho, le pega a su esposa." disabled>
-                                        
-                                    </div>
-                                     
-                                </div> 
-
+                                <div class="nodo row no-gutters my-2"> 
+                                </div>
 
 
                             </div>
+                        </form>
+
+
+
+
                             <hr>
+                            <!--HABITOS FISIOLOGICOS -->
                             <div id="habitosFisiologicos" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Habitos Fisiologicos</span>
-                                            <button class="btn btn-light">
+                                            <button class="btn btn-light" name="edit_historia">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
@@ -212,12 +204,14 @@
                                 ?>
                             </div>
                             <hr>
+
+                            <!--ENFERMEDADES DE LA INFANCIA -->
                             <div id="enfermedadesInfancia" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Enfermedades de la infancia</span>
-                                            <button class="btn btn-light">
+                                            <button class="btn btn-light" name="edit_historia">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
@@ -229,13 +223,15 @@
                                 ?>
                             </div>
                             <hr>
+
+                            <!--ENFERMEDADES -->
                             <div id="enfermedades" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Enfermedades</span>
-                                            <button class="btn btn-light">
-                                                <i class="fas fa-edit"></i>
+                                            <button class="btn btn-light" name="edit_historia">
+                                                <i class="fas fa-edit" ></i>
                                             </button>
                                             
                                         </h5>
@@ -246,12 +242,14 @@
                                 ?>
                             </div>
                             <hr>
+
+                             <!--ALERGIAS -->
                             <div id="alergias" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Alergías</span>
-                                            <button class="btn btn-light">
+                                            <button class="btn btn-light" name="edit_historia">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
@@ -270,12 +268,13 @@
                                 
                             </div>
                             <hr>
+                             <!-- ANTECEDENTES-->
                             <div id="antecedentes" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Antecedentes heredofamiliares</span>
-                                            <button class="btn btn-light">
+                                            <button class="btn btn-light" name="edit_historia">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
@@ -286,13 +285,13 @@
                                       $clinico->obtenerAntecedentes($_SESSION['idPaciente']);
                                 ?>
                             </div>
-                    
+                            <!-- MEDICAMENTOS -->
                             <div id="medicamentos" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Medicamentos</span>
-                                            <button class="btn btn-light">
+                                            <button class="btn btn-light" name="edit_historia">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             

@@ -1,5 +1,36 @@
  
+ /*
+document.addEventListener('DOMContentLoaded',populate_selects);
 
+
+//Funcion para llenar los selects dinamicamente
+function populate_selects(){ 
+    var habitosToxicos =
+    [
+        {
+            "text"  : "Tabaco",
+            "value" : "Value 1",
+            "selected":true
+        },
+        {
+            "text"     : "Drogas",
+            "value"    : "Value 2" 
+        },
+        {
+            "text"  : "Infusiones",
+            "value" : "Value 3"
+        }
+    ];
+
+    var selectHabitos = document.getElementById('slt-listaToxicos');
+    
+    for(var i = 0, l = options.length; i < l; i++){
+        var option = habitosToxicos[i];
+        selectHabitos.options.add( new Option(option.text, option.value, option.selected) );
+        }
+} 
+
+*/
 
 const sec_habitosToxicos = document.getElementById("btn-modificarHabitos"); 
 sec_habitosToxicos.addEventListener("click", toggle_container, false);
@@ -50,9 +81,9 @@ function add_categoria(evt){
     removerOpcionSelect('slt-listaToxicos', 'btn-agregarToxico');
 
     var btnGuardar = document.getElementById(evt.currentTarget.counterpart);
-    btnGuardar.addEventListener("click", save_categoria, false); 
+    btnGuardar.addEventListener("click", guardar_categoria, false); 
 
-    function save_categoria(evt){  
+    function guardar_categoria(evt){  
          var x = document.getElementById(evt.currentTarget.father);
          x.classList.add("d-none");      
      }
@@ -64,20 +95,37 @@ function add_categoria(evt){
 
 
 function toggle_container(evt) { 
+
+
     var x = document.getElementById(evt.currentTarget.father);
     x.classList.remove("d-none");
     var btn_editar = document.getElementById(evt.currentTarget.id);
     btn_editar.disabled = true;
-
+    desactivarModificar();
     btn_guardar= document.getElementById(evt.currentTarget.brother);  
     btn_guardar.classList.remove("d-none");
-    btn_guardar.addEventListener("click", save_categoria, false); 
+    btn_guardar.addEventListener("click", guardar_categoria, false); 
 
-    function save_categoria(){ 
+    function guardar_categoria(){ 
+        activarModificar();
         x.classList.add("d-none"); 
         btn_guardar.classList.add("d-none");
-        btn_editar.disabled = false;
+        btn_editar.disabled = false; 
     } 
+
 
 }
 
+//Desactivar todos los botones para editar la historia
+function desactivarModificar() {
+    document.querySelectorAll('[name="edit_historia"]').forEach(element => { 
+        element.setAttribute("disabled", true);
+    });
+}
+
+//Activar todos los botones para editar la historia
+function activarModificar() {
+    document.querySelectorAll('[name="edit_historia"]').forEach(element => {  
+        element.disabled = false; 
+    });
+}
