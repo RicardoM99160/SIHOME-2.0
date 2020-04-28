@@ -14,15 +14,15 @@
                 $archivoController = 'controllers/buscarExpediente.php';
                 require_once $archivoController;
 
-                //Inicializo el controlador de Login
+                //Inicializo el controlador de Buscar Expediente
                 $controller = new BuscarExpediente();
                 //Aquí asigno el modelo al controlador llamado
-                //$controller->loadModel('buscarExpediente');
+                $controller->loadModel('buscarExpediente');
                 $controller->render();
                 return false;
             }
-            $archivoController = 'controllers/'.$url[0].'.php';
 
+            $archivoController = 'controllers/'.$url[0].'.php';
             if(file_exists($archivoController)){
                 require_once $archivoController;
 

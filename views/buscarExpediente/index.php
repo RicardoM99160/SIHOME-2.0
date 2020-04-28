@@ -33,7 +33,7 @@
                 </div>
 
                 <!-- Form para realizar búsqueda -->
-                <form id="form-buscador" class="w-100 d-flex" method="POST">
+                <form id="form-buscador" class="w-100 d-flex" action="<?php echo constant('URL');?>buscarExpediente/buscarE" method="POST">
 
 
                     <div class="form-group w-50 px-2 d-block"> 
@@ -62,28 +62,45 @@
                         <th scope="col"> #</th>
                         <th scope="col">Código de historia</th>
                         <th style="width: 20%;" scope="col">Paciente</th>
-                        <th sscope="col">DUI</th>
+                        <th scope="col">DUI</th>
                         <th scope="col">Fecha de creación</th>
                         <th scope="col">Ultima consulta</th>
                         <th scope="col">Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    require 'libs/datosPacientes.php';
-
-                    $idBuscar='';
-                    $buscar = new paciente();
-
-                    if(isset($_POST['filtro'])){
-                        $_SESSION['idPaciente'] = $_POST['filtro'];
-                    
-                        $buscar->BuscarPaciente($_SESSION['idPaciente']);   
-                    }
-                    else{
-                        $buscar->BuscarPaciente($idBuscar);  
-                    }
-                    ?>
+                        <?php
+                            include_once 'models/expediente.php';
+                            $i = 1;
+                            if(count($this->expedientes) >0 ){
+                                foreach($this->expedientes as $row){
+                                    $expediente = new Expediente();
+                                    $expediente = $row;
+                        ?>
+                        <tr>
+                            <th scope="row"><?php echo $i; ?></th>
+                            <td><?php echo $expediente->codigo; ?></td>
+                            <td><?php echo $expediente->nombre; ?></td>
+                            <td><?php echo $expediente->dui; ?></td>
+                            <td><?php echo $expediente->fechaCreacion; ?></td>
+                            <td><?php echo $expediente->ultimaConsulta; ?></td>
+                            <td>
+                                <a class="btn btn-default" href="#">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a> 
+                            </td>
+                        </tr>
+                        <?php 
+                                    $i++; 
+                                }
+                            }else{     
+                        ?>
+                        <tr>
+                            <th colspan=6><?php echo $this->mensaje;?><th>
+                        </tr>
+                        <?php
+                            }
+                        ?>
                     </tbody>
                   </table>
                 </div>  
