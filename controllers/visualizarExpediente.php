@@ -14,9 +14,9 @@
 
         function mostrarExpediente($datos){
             $id = $datos[0];
-            echo $id;
             $this->view->expediente = $this->model->obtenerExpediente($id);
-            var_dump($this->view->expediente);
+            //var_dump($this->view->expediente);
+            //echo $id;
             $this->render();
         }
 

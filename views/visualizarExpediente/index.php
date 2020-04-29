@@ -21,17 +21,77 @@
             <?php require 'views/barraLateral.php'; ?> 
             <div id="contenido">
                 <!--Informacion general de paciente -->
+                <?php
+                    include_once 'models/expediente.php';
+                    if(isset($this->expediente)){
+                        $expediente = new Expediente();
+                        $expediente = $this->expediente;
+                ?>
                 <div id="ruta">
-                    <h6><a href="">Buscar expediente</a> > <span>EXPEDIENTE <?php echo $_SESSION['idPaciente'];?></span></h6>
+                    <h6><a href="">Buscar expediente</a> > <span>EXPEDIENTE <?php echo $expediente->codigo; ?></span></h6>
                 </div>
                 
                 <div id="cont-infoGeneral" class="informacion-expediente">
-              
-                <?php 
-                require 'libs/datosPacientes.php';
-                $datos = new paciente();
-                $datos->mostrarNombreVE($_SESSION['idPaciente']);
+                <div class="row px-3 py-3 no-gutters">
+                    <div class="col-9"> 
+                            <div class="row my-2">
+                                <!-- Nombre completo -->
+                                <div class="col"> 
+                                    <h3 id="font-nombreCompleto"><?php echo $expediente->nombre; ?></h3>
+                                </div> 
+                            </div>
+                            <hr>
+                            <!-- Fila 1 --> 
+                            <div class="row form-group no-gutters">
+                                <!--Fecha de nacimiento -->
+                                <div class="col-3 px-1">
+                                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                                    <input type="text" name="fechaNacimiento" id="fechaNacimiento" value='<?php echo $expediente->fechaNacimiento; ?>' class="form-control" disabled>
+                                </div>
+                                <!-- Sexo -->
+                                <div class="col-2 px-1">
+                                    <label for="sexo">Sexo</label>
+                                    <input type="text" name="sexo" id="sexo" value="<?php echo $expediente->genero; ?>" class="form-control" disabled>
+                                </div>
+                                <!--DUI-->
+                                <div class="col-3 px-1">
+                                    <label for="dui">DUI</label>
+                                    <input type="text" name="dui" id="dui" value='<?php echo $expediente->dui; ?>' class="form-control" disabled>
+                                </div>
+                                <!--Tipo de sangre -->
+                                <div class="col-2 px-1">
+                                    <label for="tipoSangre">Tipo de sangre</label>
+                                    <input type="text" name="tipoSangre" id="tipoSangre" value="<?php echo $expediente->tipoSangre; ?>" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <!-- Fila 2 --> 
+                            <div class="row form-group no-gutters">
+                                <!--Direccion -->
+                                <div class="col-7 px-1">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" name="direccion" id="direccion" value="<?php echo $expediente->direccion; ?>" class="form-control" disabled>
+                                </div>
+                                <!--Telefono-->
+                                <div class="col-3 px-1">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" name="telefono" id="telefono" value="<?php echo $expediente->telefono; ?>" class="form-control" disabled>
+                                </div>
+                            </div>
+                    </div>         
+                </div>
+                <?php
+                    }else{
                 ?>
+                <div class="row px-3 py-3 no-gutters">
+                    <div class="col-9">
+                        <div class="row my-2">
+                            <!-- mensaje error -->
+                            <h3 id="font-nombreCompleto">No se ha encontrado información</h43>
+                        </div> 
+                    </div>
+                </div> 
+                <?php } ?>
+
                     <!--Enlace para ultima consulta -->
 
                     <div class="cont-ultimaConsulta row no-gutters mb-3">
@@ -310,9 +370,6 @@
                             </div>
                         </div>
                     </div>
-
-                   
-
                 </div>
             </div>
         </div>
