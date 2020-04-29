@@ -18,6 +18,7 @@
                 $controller = new BuscarExpediente();
                 //Aquí asigno el modelo al controlador llamado
                 $controller->loadModel('buscarExpediente');
+                $controller->view->expedientes = [];
                 $controller->render();
                 return false;
             }

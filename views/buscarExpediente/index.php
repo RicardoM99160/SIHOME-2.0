@@ -72,7 +72,7 @@
                         <?php
                             include_once 'models/expediente.php';
                             $i = 1;
-                            if(count($this->expedientes) >0 ){
+                            if(isset($this->expedientes) && count($this->expedientes) > 0){
                                 foreach($this->expedientes as $row){
                                     $expediente = new Expediente();
                                     $expediente = $row;
