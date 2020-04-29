@@ -18,7 +18,6 @@
                 $controller = new BuscarExpediente();
                 //Aquí asigno el modelo al controlador llamado
                 $controller->loadModel('buscarExpediente');
-                $controller->view->expedientes = [];
                 $controller->render();
                 return false;
             }
@@ -32,9 +31,23 @@
                 //Aquí asigno el modelo al controlador llamado
                 $controller->loadModel($url[0]);
 
+                //cantidad de elementos del arreglo
+                $nparam = sizeof($url);
+
                 //Si hay un método que se require cargar
-                if(isset($url[1]) && method_exists($controller,$url[1])){
-                    $controller->{$url[1]}();
+                if($nparam > 1 && method_exists($controller,$url[1])){
+                    //Luego de los métodos se procesan los parámetros que son enviados
+                    //al método
+                    if($nparam > 2){
+                        $param = [];
+                        for($i = 2; $i < $nparam; $i++){
+                            array_push($param, $url[$i]);
+                        }
+                        //var_dump($param);
+                        $controller->{$url[1]}($param);
+                    }else{
+                        $controller->{$url[1]}();
+                    }
                 }else{
                     $controller->render();
                 }

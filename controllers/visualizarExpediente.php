@@ -5,10 +5,19 @@
         function __construct(){
             parent::__construct();
             //echo "<p>Controlador para Visualizar Expediente</p>";
+            $this->view->expediente = "";
         }
 
         function render(){
             $this->view->render('visualizarExpediente/index');
+        }
+
+        function mostrarExpediente($datos){
+            $id = $datos[0];
+            echo $id;
+            $this->view->expediente = $this->model->obtenerExpediente($id);
+            var_dump($this->view->expediente);
+            $this->render();
         }
 
     }

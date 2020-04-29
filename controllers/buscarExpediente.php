@@ -1,5 +1,4 @@
 <?php
-
     class BuscarExpediente extends Controller{
 
         function __construct(){
@@ -14,9 +13,8 @@
         }
         
         function buscarE(){
-
             $filtro = $_POST['filtro'];
-            $this->view->expedientes = $this->model->buscar(['expediente'=>$filtro]);
+            $this->view->expedientes = $this->model->buscar(['paciente'=>$filtro]);
             //var_dump($this->view->expedientes);
 
             if(count($this->view->expedientes)>0){

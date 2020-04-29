@@ -85,7 +85,7 @@
                             <td><?php echo $expediente->fechaCreacion; ?></td>
                             <td><?php echo $expediente->ultimaConsulta; ?></td>
                             <td>
-                                <a class="btn btn-default" href="#">
+                                <a class="btn btn-default" href="<?php echo constant('URL') . 'visualizarExpediente/mostrarExpediente/' . $expediente->codigo; ?>">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a> 
                             </td>

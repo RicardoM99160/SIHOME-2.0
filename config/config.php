@@ -8,6 +8,6 @@
     define('DB','s1542_sihome');
     define('USER','u1542_6qDEAG1rUL');
     define('PASSWORD',"CwHlrU8LnZllQ0O1cXLW5sVC");
-    define('CHARSET','utf8mb4');
+    define('CHARSET','utf8');
 
 ?>
