@@ -6,6 +6,7 @@
             parent::__construct();
             //echo "<p>Controlador para Visualizar Expediente</p>";
             $this->view->expediente = "";
+            $this->view->consultas = [];
         }
 
         function render(){
@@ -15,7 +16,8 @@
         function mostrarExpediente($datos){
             $id = $datos[0];
             $this->view->expediente = $this->model->obtenerExpediente($id);
-            //var_dump($this->view->expediente);
+            $this->view->consultas = $this->model->obtenerConsultas($id);
+            //var_dump($this->view->consultas);
             //echo $id;
             $this->render();
         }

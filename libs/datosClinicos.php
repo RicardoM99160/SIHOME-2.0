@@ -1,5 +1,5 @@
 <?php
-
+/*
 class datosClinicos{
 
 
@@ -242,6 +242,6 @@ class datosClinicos{
 
     }
 }
-
+*/
 
 ?>
