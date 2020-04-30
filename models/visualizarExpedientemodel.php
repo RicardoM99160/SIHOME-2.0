@@ -76,6 +76,11 @@
                 return null;
             }
         }
+
+        public function obtenerHistorialClinico(){
+            $items = [];
+            
+        }
     }
 
 ?>

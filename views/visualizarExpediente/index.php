@@ -227,6 +227,7 @@
                                         </h5>
                                     </div>
                                 </div>
+                                
                                 <div class="row no-gutters my-2">
                                     <div class="col-2">
                                         <input type="text" name="alcoholH" id="alcoholHabito" class="form-control text-uppercase text-center" value="'.$datos["habito"].'" disabled>
