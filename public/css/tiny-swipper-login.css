@@ -1,0 +1,24 @@
+ 
+html,
+body,
+.swiper-wrapper {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+ 
+.b {
+    background: #0078DE;
+}  
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+.swiper-container {
+    height: 100%;
+    margin-bottom: 1rem; 
+}
+.swiper-wrapper {
+    flex-direction: column
+}
