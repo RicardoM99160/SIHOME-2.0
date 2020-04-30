@@ -2,6 +2,7 @@
 
     include_once 'models/expediente.php';
     include_once 'models/consulta.php';
+    include_once 'models/historialClinico.php';
 
     class visualizarExpedienteModel extends Model{
 
@@ -77,9 +78,48 @@
             }
         }
 
-        public function obtenerHistorialClinico(){
+        public function obtenerHistorialClinico($id){
+            $item = new HistorialClinico();
+            //$habito = [];
+            $query1 = $this->db->connect()->prepare(
+                "SELECT habitos.nombreHabito, habitos.detalleHabito, habitos.tipo AS 'tipoHabito'
+                FROM habitos
+                WHERE habitos.pacientes_idPacientes = :idPaciente");
+            try{
+                $query1->execute(['idPaciente' =>$id]);
+                while($row = $query->fetch()){
+                    $habito['nombre'] = $row['nombreHabito'];
+                    $habito['detalle'] = $row['detalleHabito'];
+                    $habito['tipo'] = $row['tipoHabito'];
+                    array_push($item->habitos, $habito);
+                }
+                $query1 = null;
+                return $item;
+            }catch(PDOException $e){
+                $e->getMessage();
+                return null;
+            }
+        }
+
+        public function obtenerHabitos($id, $tipo){
             $items = [];
-            
+            $query = $this->db->connect()->prepare(
+                "SELECT habitos.nombreHabito, habitos.detalleHabito, habitos.tipo AS 'tipoHabito'
+                FROM habitos
+                WHERE habitos.pacientes_idPacientes = :idPaciente AND habitos.tipo = :tipoHabito ");
+            try{
+                $query->execute(['idPaciente' => $id, 'tipoHabito' => $tipo]);
+                while($row = $query->fetch()){
+                    $item['nombre'] = $row['nombreHabito'];
+                    $item['detalle'] = $row['detalleHabito'];
+                    array_push($items, $item);
+                }
+                $query = null;
+                return $items;
+            }catch(PDOException $e){
+                $e->getMessage();
+                return null;
+            }
         }
     }
 
