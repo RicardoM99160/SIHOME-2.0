@@ -14,6 +14,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     background: #fafafa;
     font-size: 15px;
+    transition: .3s ease all;
 }
 
 p {
@@ -23,6 +24,10 @@ p {
     line-height: 1.7em;
     color: #999;
 }
+
+body.dark p {
+    color: #FEFEFE;
+  }
 
 a, a:hover, a:focus {
     color: inherit;
@@ -36,7 +41,54 @@ ul ul a {
     background: #6d7fcc;
 }
 
+#cont-table {
+    transition: .3s ease all;
+}
+th {
+    transition: .3s ease all;
+}
+tr {
+    transition: .3s ease all;
+}
+td {
+    transition: .3s ease all;
+}
+
 /*------------------------- FIN ESTILOS GLOBALES DEL SITIO -------------------------*/
+
+/*------------------------- ESTILOS GENERALES MODO OSCURO -------------------------*/ 
+
+
+body.dark {
+    background: #111111;
+}
+
+body.dark #font-tituloPagina {
+    color: rgb(216, 216, 216);
+}
+
+body.dark #cont-table {
+    background-color: #111111;
+    transition: .3s ease all;
+}
+body.dark th {
+    background-color: #111111;
+    color: #C8C8C8;
+    transition: .3s ease all;
+}
+body.dark tr {
+    background-color: #111111;
+    color: #C8C8C8;
+    transition: .3s ease all;
+}
+body.dark td {
+    background-color: #111111;
+    color: #C8C8C8;
+    transition: .3s ease all;
+}
+
+
+/*------------------------- FIN ESTILOS GENERALES MODO OSCURO -------------------------*/
 
 /*------------------------- ESTILOS PARA BARRA LATERAL -------------------------*/
 
@@ -61,6 +113,10 @@ Y que el alto mínimo sea el alto del dispositivo*/
     -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+}
+body.dark #barraLateral {
+    background: #333333;
+    color: #C8C8C8;
 }
 
 /*Esta regla mueve 250px a la izquierda la navbar lateral
@@ -92,7 +148,7 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
     }
 }
 
- 
+
 
 #barraLateral ul.components {
     padding: 20px 0; 
@@ -114,6 +170,10 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 }
 #barraLateral ul li a:hover {
     color: black; 
+    opacity: 1;
+}
+body.dark #barraLateral ul li a:hover {
+    color: rgb(199, 195, 255); 
     opacity: 1;
 }
 
@@ -140,17 +200,29 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
     border-bottom: 1px solid #ABABAB;
     
 }
-  
+body.dark #barraSuperior {
+    background: rgb(27, 27, 27);
+    color: #e6eef1;
+    /*transition: all 0.3s;*/
+}
+body.dark #font-logo {
+    color: #e6eef1;
+    /*transition: all 0.3s;*/
+}
+
+
 /*Sirve para ajustar el alto de la barra lateral con la barra superior*/
 
 #cuentaUsuario {
     height: 25px;
     font-size: 15px;
     color: #676767;
-
+}
+body.dark #cuentaUsuario {
+    color: #FFFFFF;
+    /*transition: all 0.3s;*/
 }
 
- 
 /*Si los enlaces no quedan centrados, modifica el padding con bootstrap*/
 /*Sirve para ajustar el tamaño de los íconos*/
 #i-clock, #i-ellipsis-vertical, #i-user{
@@ -165,6 +237,54 @@ dropdown de la navbar lateral hasta el extremo derecho de dicho contenedor*/
 .fa-image{
     margin-right: 10px;
 }
+body.dark .fa-image {
+    color: white;
+    /*transition: all 0.3s;*/
+}
 
- 
+/*Botón modo oscuro*/
+.switch {
+  background: #343D5B;
+  border-radius: 1000px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+}
+
+.switch::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  background: #F1F1F1;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 100px;
+  transition: .3s ease all;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.switch.active {
+  background: orange;
+  color: #000;
+}
+
+.switch.active::after {
+  right: 0;
+  left: unset;
+}
+
+.switch span {
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  display: block;
+  background: none;
+  color: #fff;
+}
+
 /*------------------------- FIN ESTILOS PARA BARRA SUPERIOR -------------------------*/

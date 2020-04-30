@@ -13,8 +13,9 @@
         <!-- Font Awesome JS-->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body onload="checkModoOscuro()">
         
         <!-- Barra superior de navegación -->
         <div id="contenedorBarraSuperior">
@@ -43,6 +44,12 @@
                         <span>Cerrar sesión</span>
                         </a>
                     </div>
+                </div>
+                <div style="text-align: center;">
+                    <button class="switch" id="switch" onclick="modoOscuro()">
+                        <span><i class="fas fa-sun"></i></span>
+                        <span><i class="fas fa-moon"></i></span>
+                    </button>
                 </div>
             </nav>
         </div>

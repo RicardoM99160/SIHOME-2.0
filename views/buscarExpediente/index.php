@@ -11,6 +11,7 @@
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/buscarExpediente.css">
     </head>
+    <?php require 'views/modo.php'?>
     <body>
         <!-- Script slider -->
         <script type="text/javascript" src="<?php echo constant('URL');?>public/js/bootstrap-slider.js"></script>
@@ -38,7 +39,7 @@
                     <div class="form-group w-50 px-2 d-block"> 
                         <div class="input-group ">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                <span class="input-group-text" id="searchIcon"><i class="fas fa-search" aria-hidden="true"></i></span>
                             </div>
                             <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Número del expediente">
                         </div>
@@ -104,7 +105,6 @@
                   </table>
                 </div>  
             </div>
-
         </div>
 
         <!-- Script para limitar el ingreso de caracteres del expediente -->
@@ -193,6 +193,76 @@
                 </div>
             </div>
         </div>
+<!--Form de filtros-->
+<?php
+        if(isset($_POST['filtros']))
+        {
+            $rango = $_POST['edad'];
+
+            if(isset($_POST['antiguedad'])) $orden = $_POST['antiguedad'];
+            else $orden = null;
+            if(isset($_POST['fecha1'])) $fecha1 = $_POST['fecha1'];
+            else $fecha1 = null;
+            if(isset($_POST['fecha2'])) $fecha2 = $_POST['fecha2'];
+            else $fecha2 = null;
+            if(isset($_POST['filtrarEdades'])) $filtrarEdad = $_POST['filtrarEdades'];
+            else $filtrarEdad = null;
+
+            //Obtener edades por separado
+            $edades = explode(",", $rango);
+            $edad1 = $edades[0];
+            $edad2 = $edades[1];
+
+            //Elegir variables a usar
+            
+            //***Todos los filtros
+            if($orden != null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad != null)
+            {
+
+            }
+
+            //***Sólo orden
+            if($orden != null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad == null)
+            {
+            }
+
+            //***Orden y fecha
+            elseif ($orden != null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad == null)
+            {
+
+            }
+
+            //***Orden y edades
+            elseif ($orden != null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad != null)
+            {
+
+            }
+
+            //***Sólo fecha
+            elseif ($orden == null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad == null)
+            {
+
+            }
+
+            //***Fecha y edades
+            elseif ($orden == null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad != null)
+            {
+
+            }
+
+            //***Sólo edades
+            elseif ($orden == null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad != null)
+            {
+
+            }
+        }
+
+        //Función para probar que se guardan las variables
+        /*function alert($msg)
+        {
+            if($msg != null) echo "<script type='text/javascript'>console.log('$msg');</script>";
+        }*/
+        ?>
 
         <!-- Inicialización de slider -->
         <script type="text/javascript">

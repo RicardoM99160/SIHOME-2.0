@@ -10,7 +10,8 @@
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/generarExpediente.css">
     </head>
-    <body onload="numeroCampos(7)">
+    <?php require 'views/modo.php'?>
+    <body>
         <!-- Validaciones -->
         <script type="text/javascript" src="<?php echo constant('URL');?>public/js/validaciones.js"></script>
 
@@ -249,6 +250,7 @@
         $(document).ready(function(){
             $('#gExp').addClass('active');
             $('#bExp').removeClass('active');
+            numeroCampos(7);
         });
     </script>
 </html>
