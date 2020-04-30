@@ -9,6 +9,19 @@
     require_once 'libs/app.php';
 
     require_once 'config/config.php';
+
+    $url = isset($_GET['url']) ? $_GET['url'] : null ;
+    $url = rtrim($url, '/');
+    $url = explode('/', $url);
+
+    if($url[0]=='api'){
+        $controladorApi = 'controllers/api.php';
+        require_once $controladorApi;
+        $controladorApi = new Api();
+        $controladorApi->render();
+        return false;
+    }
+    else{
     
     //Inicializando usuario para la sesion
     $userSession = new UserSession();
@@ -18,6 +31,8 @@
     $controladorLogin = 'controllers/login.php';
     require_once $controladorLogin;
     $controladorLogin = new Login();
+
+    
 
     //Inicializando controlador de Buscar Expediente
     $controladorBE = 'controllers/buscarExpediente.php';
@@ -46,5 +61,6 @@
         $controladorLogin->view->mensaje="";
         $controladorLogin->render();
     }
+}
     
 ?>

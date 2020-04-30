@@ -8,7 +8,6 @@
             $url = rtrim($url, '/');
             $url = explode('/', $url);
             //var_dump($url);
-
             //Cuando se ingresa sin definir controlador
             if(empty($url[0]) || $url[0]=='login'){
                 $archivoController = 'controllers/buscarExpediente.php';
@@ -21,6 +20,8 @@
                 $controller->render();
                 return false;
             }
+
+            
 
             $archivoController = 'controllers/'.$url[0].'.php';
             if(file_exists($archivoController)){
