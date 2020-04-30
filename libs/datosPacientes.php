@@ -1,6 +1,6 @@
 <?php
 
- class paciente{
+ /*class paciente{
     
 
 public function __construct ()
@@ -308,5 +308,5 @@ public function agregarPaciente($nombre, $apellido, $dui, $fechaNa, $sexo, $tipo
 
 }
 
-     
+     */
 ?>

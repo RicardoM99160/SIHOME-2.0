@@ -11,8 +11,12 @@
         //Para buscar un grupo de expedientes
         public function buscar($datos){
             $items = [];
+            $query = $this->db->connect()->prepare(
+                "SELECT * 
+                FROM pacientes 
+                WHERE idPacientes 
+                LIKE '%".$datos['paciente']."%'");
             try{
-                $query = $this->db->connect()->prepare("SELECT * FROM pacientes WHERE idPacientes LIKE '%".$datos['paciente']."%'");
                 $query->execute();
 
                 while($row = $query->fetch()){
@@ -25,6 +29,7 @@
 
                     array_push($items, $item);
                 }
+                $query = null;
                 return $items;
             }catch(PDOException $e){
                 //echo $e->getMessage();

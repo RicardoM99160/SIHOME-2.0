@@ -1,6 +1,7 @@
 <?php
 
     include_once 'models/expediente.php';
+    include_once 'models/consulta.php';
 
     class visualizarExpedienteModel extends Model{
 
@@ -37,7 +38,7 @@
                     $item->telefono = $row['telefono'];
                     $item->direccion = $row['direccion'];
                 }
-
+                $query = null;
                 return $item;
             }catch(PDOException $e){
                 echo $e->getMessage();
@@ -45,8 +46,40 @@
             }
         }
 
-        public function prueba(){
-            return "modelo VisualizarExpediente";
+        public function obtenerConsultas($id){
+            $items = [];
+            $query = $this->db->connect()->prepare(
+                "SELECT consulta.idConsulta, consulta.motivoConsulta, consulta.enfermedadConsulta, consulta.antecedentesConsulta, 
+                consulta.diagnostico, personal.nombrePersonal AS 'nombreDoctor', personal.apellidoPersonal AS 'apellidoDoctor' 
+                FROM consulta 
+                INNER JOIN personal ON consulta.personal_idPersonal = personal.idPersonal
+                WHERE consulta.pacientes_idPacientes = :idPaciente");
+            try{
+                $query->execute(['idPaciente' => $id]);
+
+                while($row = $query->fetch()){
+                    $item = new Consulta();
+                    $item->codigo = $row['idConsulta'];
+                    $item->motivo = $row['motivoConsulta'];
+                    $item->enfermedad = $row['enfermedadConsulta'];
+                    $item->antecedentes = $row['antecedentesConsulta'];
+                    $item->diagnostico = $row['diagnostico'];
+                    $item->doctorEncargado = $row['nombreDoctor'] . " " . $row['apellidoDoctor'];
+                    $item->fecha = "Agregar a tabla de consultas";
+                    $item->hora = "Agregar a tabla de consultas";
+                    array_push($items, $item);
+                }
+                $query = null;
+                return $items;
+            }catch(PDOException $e){
+                echo $e->getMessage();
+                return null;
+            }
+        }
+
+        public function obtenerHistorialClinico(){
+            $items = [];
+            
         }
     }
 

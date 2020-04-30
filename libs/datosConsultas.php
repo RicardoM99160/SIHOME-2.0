@@ -1,4 +1,4 @@
-<?php
+<?php /*
 class consulta{
 
 
@@ -96,5 +96,5 @@ class consulta{
 
     }
 
-}
+}*/
 ?>

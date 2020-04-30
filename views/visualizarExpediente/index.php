@@ -23,7 +23,7 @@
                 <!--Informacion general de paciente -->
                 <?php
                     include_once 'models/expediente.php';
-                    if(isset($this->expediente)){
+                    if(isset($this->expediente) && $this->expediente != ""){
                         $expediente = new Expediente();
                         $expediente = $this->expediente;
                 ?>
@@ -125,13 +125,12 @@
                                     </svg>
                                     <!--Número de consultas --->
                                     <?php
-                                        include 'libs/datosConsultas.php';
-                                        include 'libs/datosClinicos.php';
-                                        $clinico = new datosClinicos();
-                                        $buscar = new consulta();
-                                        $numC = $buscar->nConsultas($_SESSION['idPaciente']);
-                                        echo '<span><b>Consultas Registradas ('.$numC.') </b></span>';
-                                        ?>
+                                        if(isset($this->consultas) && count($this->consultas) > 0){
+                                            echo '<span><b>Consultas Registradas ('.count($this->consultas).') </b></span>';
+                                        }else{
+                                            echo '<span><b>Consultas Registradas (0) </b></span>';
+                                        }
+                                    ?>
                                 </h5>
                                 <!--Formulario de opciones -->
                                 <form action="POST" class="row form-group inline-form">
@@ -174,10 +173,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                <?php
-                                $buscar->listarConsultas($_SESSION['idPaciente']);
-                                ?>
+                                            <?php
+                                                include_once 'models/consulta.php';
+                                                if(isset($this->consultas) && count($this->consultas) > 0){
+                                                    $i = 1;
+                                                    foreach($this->consultas as $row){
+                                                        $consulta = new Consulta();
+                                                        $consulta = $row;
+                                            ?>
+                                            <tr>
+                                                <th scope="row" class="borderless"><?php echo $i; ?></th>
+                                                <td><?php echo $consulta->codigo; ?></td>
+                                                <td><?php echo $consulta->doctorEncargado; ?></td>
+                                                <td><?php echo $consulta->fecha; ?></td>
+                                                <td><?php echo $consulta->hora; ?></td>
+                                                <td><?php echo $consulta->motivo; ?></td>
+                                                <td>
+                                                    <a class="btn btn-default" href="#">
+                                                        <i class="fas fa-external-link-alt"></i>
+                                                    </a> 
+                                                </td>
+                                            </tr>
+                                            <?php
+                                                        $i++;                                                
+                                                    }
+                                                }else{
+                                            ?>
+                                            <tr>
+                                                <th colspan="6">No se han encontrado Consultas<td>
+                                            </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -200,6 +225,15 @@
                                             </button>  
                                             
                                         </h5>
+                                    </div>
+                                </div>
+                                
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="alcoholH" id="alcoholHabito" class="form-control text-uppercase text-center" value="'.$datos["habito"].'" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="alcoholV" id="alcoholValor" class="form-control" value="'.$datos["detalle"].'" disabled>
                                     </div>
                                 </div>
                                 <!--Menu para agregar una categoria/comentario habitos-toxicos-->
@@ -258,10 +292,6 @@
                                         </h5>
                                     </div>
                                 </div>
-                                 
-                                <?php 
-                                      $clinico->obtenerFisiologicos($_SESSION['idPaciente']);
-                                ?>
                             </div>
                             <hr>
 
@@ -278,9 +308,6 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                      $clinico->obtenerInfancia($_SESSION['idPaciente']);
-                                ?>
                             </div>
                             <hr>
 
@@ -297,9 +324,6 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                      $clinico->obtenerEnfermedad($_SESSION['idPaciente']);
-                                ?>
                             </div>
                             <hr>
 
@@ -319,9 +343,6 @@
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
                                         <ul class="list-group" id="list-alergias">
-                                            <?php 
-                                                $clinico->obtenerAlergias($_SESSION['idPaciente']);
-                                            ?> 
                                         </ul> 
                                     </div>
                                 </div>
@@ -341,9 +362,6 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <?php 
-                                      $clinico->obtenerAntecedentes($_SESSION['idPaciente']);
-                                ?>
                             </div>
                             <!-- MEDICAMENTOS -->
                             <div id="medicamentos" class="form-group mt-5">
@@ -360,10 +378,7 @@
                                 </div>
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
-                                        <div id="medicamentosDescripcion" class="px-3 py-3 form-control campo-descriptivo">
-                                            <?php
-                                                $clinico->obtenerMedicamentos($_SESSION['idPaciente']);    
-                                            ?>                                   
+                                        <div id="medicamentosDescripcion" class="px-3 py-3 form-control campo-descriptivo">                                  
                                         </div>
                                     </div>
                                 </div>

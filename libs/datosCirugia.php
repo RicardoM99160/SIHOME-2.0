@@ -1,4 +1,4 @@
-<?php
+<?php /*
 class cirugia{
     var $idPacientecirugia=  'P0001';
 
@@ -61,5 +61,5 @@ class cirugia{
     return $numeConsultas;
     }
 
-}
+}*/
 ?>
