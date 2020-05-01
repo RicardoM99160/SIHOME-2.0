@@ -1,48 +1,75 @@
 <?php
-
+    require_once 'libs/database.php';
     class User{
 
         private $nombre;
+        private $apellido;
         private $username;
-        private $usuarios;
+        private $cargo;
+        private $sesion;
 
         function __construct(){
-            $this->usuarios = array(
-                "ricardo.majano@sihome.com" => array("123456","Ricardo","Majano"),
-                "nathaly.palencia@sihome.com" => array("sihome","Nathaly","Palencia"),
-                "oscar.serpas@sihome.com" => array("tael98","Oscar","Serpas"),
-                "gerardo.moreno@sihome.com" => array("peluca","Gerardo","Moreno")
-            );
-            $this->loggeado = false;
+            $this->db = new Database();
         }
 
+        //Esta función sirve para verificar en la base de datos si el usuario existe
         public function userExists($user,$pass){
-            //Esta función sirve para verificar en la base de datos si el usuario existe
-            foreach ($this->usuarios as $usuario => $datos) {
-                if($usuario==$user && $datos[0]==$pass){
-                    $this->loggeado = true;
-                    break;
-                }else{
-                    $this->loggeado = false;
-                }    
-            }
-            return $this->loggeado;
+            $query = $this->db->connect()->prepare(
+                "SELECT emailPersonal AS 'user', contrasena AS 'pass'
+                FROM personal
+                WHERE emailPersonal = :email AND contrasena = :contra");
+            $query->execute(['email' => $user, 'contra' => $pass]);
 
-            /*if($user=="ricardo.majano@sihome.com" && $pass=="123456"){
+            if($query->rowCount()){
                 return true;
             }else{
                 return false;
-            }*/
+            }
+
+            $query = null;
         }
 
-        public function setUser($user){
-            //Esta función sirve para asignar el nombre y el username de acuerdo 
-            //al user que se ha pasado como parámetro
-            //Esta info se obtiene de la base de datos (Ver el tutorial para configurar bien el login con la bd)
+        //Revisa si el usuario ha iniciado sesion en otro dispositivo
+        //En caso de iniciar sesion en este dispositivo cambia el estado de la sesion de 1 a 0
+        public function userInSession($user){
+            //El 1 significa que no ha iniciado sesión
+            //El 0 significa que ha iniciado sesión
+            $query = $this->db->connect()->prepare(
+                "SELECT estado
+                FROM personal
+                WHERE emailPersonal = :email AND estado = '1'");
+            $query->execute(['email' => $user]);
 
-            $this->nombre = $this->usuarios[$user][1];
-            $this->apellido = $this->usuarios[$user][2];
-            $this->username = $user;
+            if($query->rowCount()){
+                $query = $this->db->connect()->prepare(
+                    "UPDATE personal
+                    SET estado = '0'
+                    WHERE emailPersonal = :email");
+                $query->execute(['email' => $user]);
+                return true;
+            }else{
+                return false;
+            }
+            $query = null;
+        }
+
+
+        //Función para obtener todos los datos necesarios del usuario validado de la BD
+        public function setUser($user){
+            $query = $this->db->connect()->prepare(
+                "SELECT *
+                FROM personal
+                WHERE emailPersonal = :email");
+            $query->execute(['email' => $user]);
+
+            foreach($query as $currentUser){
+                $this->nombre = $currentUser['nombrePersonal'];
+                $this->apellido = $currentUser['apellidoPersonal'];
+                $this->username = $currentUser['emailPersonal'];
+                $this->cargo = $currentUser['cargo'];
+            }
+
+            $query = null;
         }
 
         public function getNombre(){
@@ -52,6 +79,10 @@
 
         public function getApellido(){
             return $this->apellido;
+        }
+
+        public function getCargo(){
+            return $this->cargo;
         }
     }
 

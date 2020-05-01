@@ -1,5 +1,4 @@
 <?php
-
     class UserSession{
 
         public function __construct(){
@@ -8,10 +7,11 @@
             session_start();
         }
 
-        public function setCurrentUser($user,$nombre,$apellido){
+        public function setCurrentUser($user,$nombre,$apellido,$cargo){
             $_SESSION['user'] = $user;
             $_SESSION['nombre'] = $nombre;
             $_SESSION['apellido'] = $apellido;
+            $_SESSION['cargo'] = $cargo;
             /*$_SESSION['idPaciente'] = '';
             $_SESSION['pacientes'] = array();
             $_SESSION['consultas'] = array();*/

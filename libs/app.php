@@ -8,19 +8,34 @@
             $url = rtrim($url, '/');
             $url = explode('/', $url);
             //var_dump($url);
-            //Cuando se ingresa sin definir controlador
-            if(empty($url[0]) || $url[0]=='login'){
-                $archivoController = 'controllers/buscarExpediente.php';
-                require_once $archivoController;
 
-                //Inicializo el controlador de Buscar Expediente
-                $controller = new BuscarExpediente();
+            //Cuando se ingresa sin definir controlador
+            if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 0){
+                //Primero se evalua si el usuario es de tipo admin, en ese caso solo se le renderiza esa vista
+                //Y no tiene acceso a los demás controladores
+
+                $archivoController = 'controllers/admin.php';
+                require_once $archivoController;
+                //Inicializo el controlador de admin
+                $controller = new Admin();
                 //Aquí asigno el modelo al controlador llamado
-                $controller->loadModel('buscarExpediente');
+                $controller->loadModel('admin');
                 $controller->render();
                 return false;
+            }else{
+                if(empty($url[0]) || $url[0]=='login' || $url[0]=='admin'){
+                    $archivoController = 'controllers/buscarExpediente.php';
+                    require_once $archivoController;
+    
+                    //Inicializo el controlador de Buscar Expediente
+                    $controller = new BuscarExpediente();
+                    //Aquí asigno el modelo al controlador llamado
+                    $controller->loadModel('buscarExpediente');
+                    $controller->render();
+                    return false;
+                }
             }
-
+            
             
 
             $archivoController = 'controllers/'.$url[0].'.php';

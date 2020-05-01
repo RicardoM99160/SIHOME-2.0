@@ -32,12 +32,15 @@
     require_once $controladorLogin;
     $controladorLogin = new Login();
 
-    
-
     //Inicializando controlador de Buscar Expediente
     $controladorBE = 'controllers/buscarExpediente.php';
     require_once $controladorBE;
     $controladorBE = new BuscarExpediente();
+
+    //Inicializando controlador de admin
+    $controladorA = 'controllers/admin.php';
+    require_once $controladorA;
+    $controladorA = new Admin();
 
     if(isset($_SESSION['user'])){
         $user->setUser($userSession->getCurrentUser());
@@ -48,9 +51,19 @@
         $passForm = $_POST['pass'];
 
         if($user->userExists($userForm, $passForm)){
-            $user->setUser($userForm);
-            $userSession->setCurrentUser($userForm, $user->getNombre(), $user->getApellido());
-            $controladorBE->render();
+            if($user->userInSession($userForm)){
+                $user->setUser($userForm);
+                $userSession->setCurrentUser($userForm, $user->getNombre(), $user->getApellido(), $user->getCargo());
+                if($_SESSION['cargo'] == 0){
+                    $controladorA->render();
+                }else{
+                    $controladorBE->render();
+                }
+            }else{
+                //Renderizando la vista en caso que el usuario haya iniciado sesión en otra computadora
+                $controladorLogin->view->mensaje="Este usuario tiene una sesión activa en otro dispositivo";
+                $controladorLogin->render();
+            }
         }else{
             //Renderizando la vista de login con mensaje de error de inicio de sesión
             $controladorLogin->view->mensaje="Usuario y/o contraseña incorrectos";

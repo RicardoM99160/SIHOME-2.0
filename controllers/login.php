@@ -8,8 +8,6 @@
         }
 
         function render(){
-          
-
             $this->view->render('login/index');
         }
         
