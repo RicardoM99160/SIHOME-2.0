@@ -43,7 +43,7 @@ $(document).ready(function() {
                         plugins:{
                             labels:{
                                 //render: 'value',
-                                fontSize: 26,
+                                fontSize: 22,
                                 showZero: true,
                                 fontColor: '#fff',
                                 fontStyle: 'normal',
