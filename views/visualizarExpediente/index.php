@@ -443,45 +443,6 @@
                                 ?>
                             </div>
                             <hr>
-                             <!-- ANTECEDENTES-->
-                            <div id="antecedentes" class="form-group mt-5">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="titulo-seccion  text-uppercase">
-                                            <span class="pr-2">Antecedentes heredofamiliares</span>
-                                            <button class="btn btn-light" name="edit_historia">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <?php
-                                    if(isset($this->historialClinico) && count($this->historialClinico->antecedentes) > 0){
-                                        foreach($this->historialClinico->antecedentes as $antecedente){
-                                ?>
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="antecedenteH1" id="antecedenteHeredo1" class="form-control text-uppercase text-center h-100" value="<?php echo $antecedente['nombre']?>" disabled>
-                                    </div>
-                                    <div class="col-7">
-                                        <div id="antecedente1Descripcion" class="px-3 py-3 form-control campo-descriptivo">
-                                            <p class="font-weight-bold"><?php echo $antecedente['parentesco']?></p>
-                                            <p><?php echo $antecedente['detalle']?></p>                                     
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php       
-                                        }
-                                    }else{
-                                ?>  
-                                <div class="row no-gutters my-2" id="noRegistroAH"> 
-                                    <p>Aun no hay antecedentes heredofamiliares registrados</p>
-                                </div>
-                                <?php                                 
-                                    }                                
-                                ?>
-                            </div>
-                            <hr>
                             <!-- MEDICAMENTOS -->
                             <div id="medicamentos" class="form-group mt-5">
                                 <div class="row">

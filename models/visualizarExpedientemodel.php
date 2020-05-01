@@ -143,11 +143,6 @@
             }
         }
 
-        //No hay Antecendetes heredo familiares en la BD
-        public function obtenerAntecedentesH($id){
-
-        }
-
         public function obtenerMedicamentos($id){
             $items = [];
             $query = $this->db->connect()->prepare(
