@@ -16,11 +16,13 @@
     <!--chart lib-->
     <script src="<?php echo constant('URL')?>public/js/chart/chart.js"></script> 
     <script src="<?php echo constant('URL')?>public/js/chart/chart.min.js"></script> 
-    <!-- moment.js -->
-    <script src="<?php echo constant('URL')?>public/js/chart/moment.js"></script> 
+    <!-- chart.piece.label.js -->
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script> 
     <!--- jquery --->
-    <script crossorigin="anonymous" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>   
+    <script crossorigin="anonymous" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
+    
     <script src="<?php echo constant('URL')?>public/js/graficos.js"></script> 
+    
     <!--------------------------------------------------------------------------------------------->
 </head>
 <body>
@@ -82,11 +84,18 @@
     </div>
 
             </div>
-            <!-- slide de graficos -->
-            <div class="b swiper-slide"> 
-                <canvas id="graficoGenero">
-
-                </canvas> 
+            <!-- slide de graficos --> 
+            <div class="b swiper-slide">       
+                <div class="container w-100 h-100 wrapper justify-content-center">
+                    <div class="row w-100  align-self-center">
+                        <div class="col-lg-12 ">      
+                            <div id="font-bienvenida"class="text-left">
+                                <h3>ESTADISTICAS DE PACIENTES</h3>
+                            </div>      
+                            <canvas id="graficoGenero"></canvas> 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div> 
     </div>
@@ -134,11 +143,12 @@
             direction: 'vertical',
             spaceBetween: 10,
             mousewheel: true
-        }); 
-
-        
-
-        
+        });         
     </script> 
+
+    <script type="text/javascript">
+        var BASE_URL= "<?php echo constant('URL')?>";
+     </script> 
+    
 </body>
 </html>
