@@ -51,7 +51,8 @@
             $items = [];
             $query = $this->db->connect()->prepare(
                 "SELECT consulta.idConsulta, consulta.motivoConsulta, consulta.enfermedadConsulta, consulta.antecedentesConsulta, 
-                consulta.diagnostico, personal.nombrePersonal AS 'nombreDoctor', personal.apellidoPersonal AS 'apellidoDoctor' 
+                consulta.diagnostico, personal.nombrePersonal AS 'nombreDoctor', personal.apellidoPersonal AS 'apellidoDoctor',
+                consulta.fechaConsulta, consulta.horaConsulta 
                 FROM consulta 
                 INNER JOIN personal ON consulta.personal_idPersonal = personal.idPersonal
                 WHERE consulta.pacientes_idPacientes = :idPaciente");
@@ -66,37 +67,14 @@
                     $item->antecedentes = $row['antecedentesConsulta'];
                     $item->diagnostico = $row['diagnostico'];
                     $item->doctorEncargado = $row['nombreDoctor'] . " " . $row['apellidoDoctor'];
-                    $item->fecha = "Agregar a tabla de consultas";
-                    $item->hora = "Agregar a tabla de consultas";
+                    $item->fecha = date("d-m-Y", strtotime($row['fechaConsulta']));
+                    $item->hora = $row['horaConsulta'];
                     array_push($items, $item);
                 }
                 $query = null;
                 return $items;
             }catch(PDOException $e){
                 echo $e->getMessage();
-                return null;
-            }
-        }
-
-        public function obtenerHistorialClinico($id){
-            $item = new HistorialClinico();
-            //$habito = [];
-            $query1 = $this->db->connect()->prepare(
-                "SELECT habitos.nombreHabito, habitos.detalleHabito, habitos.tipo AS 'tipoHabito'
-                FROM habitos
-                WHERE habitos.pacientes_idPacientes = :idPaciente");
-            try{
-                $query1->execute(['idPaciente' =>$id]);
-                while($row = $query->fetch()){
-                    $habito['nombre'] = $row['nombreHabito'];
-                    $habito['detalle'] = $row['detalleHabito'];
-                    $habito['tipo'] = $row['tipoHabito'];
-                    array_push($item->habitos, $habito);
-                }
-                $query1 = null;
-                return $item;
-            }catch(PDOException $e){
-                $e->getMessage();
                 return null;
             }
         }
@@ -112,6 +90,75 @@
                 while($row = $query->fetch()){
                     $item['nombre'] = $row['nombreHabito'];
                     $item['detalle'] = $row['detalleHabito'];
+                    array_push($items, $item);
+                }
+                $query = null;
+                return $items;
+            }catch(PDOException $e){
+                $e->getMessage();
+                return null;
+            }
+        }
+
+        public function obtenerEnfermedades($id, $tipo){
+            $items = [];
+            $query = $this->db->connect()->prepare(
+                "SELECT nombreEnfermedad, fechaEnfermedad, detalle AS 'detalleEnfermedad'
+                FROM enfermedades
+                WHERE enfermedades.pacientes_idPacientes = :idPaciente AND tipoEnfermedad = :tipoEnfermedad");
+            try{
+                $query->execute(['idPaciente' => $id, 'tipoEnfermedad' => $tipo]);
+                while($row = $query->fetch()){
+                    $item['nombre'] = $row['nombreEnfermedad'];
+                    $item['fecha'] = date("d-m-Y", strtotime($row['fechaEnfermedad']));
+                    $item['detalle'] = $row['detalleEnfermedad'];
+                    array_push($items, $item);
+                }
+                $query = null;
+                return $items;
+            }catch(PDOException $e){
+                $e->getMessage();
+                return null;
+            }
+        }
+
+        public function obtenerAlergias($id){
+            $items = [];
+            $query = $this->db->connect()->prepare(
+                "SELECT alergias.nombreAlergia
+                FROM pacientes_alergias
+                INNER JOIN alergias ON pacientes_alergias.alergias_idAlergias = alergias.idAlergias
+                WHERE pacientes_idPacientes = :idPaciente");
+            try{
+                $query->execute(['idPaciente' => $id]);
+                while($row = $query->fetch()){
+                    $item['nombre'] = $row['nombreAlergia'];
+                    array_push($items, $item);
+                }
+                $query = null;
+                return $items;
+            }catch(PDOException $e){
+                $e->getMessage();
+                return null;
+            }
+        }
+
+        //No hay Antecendetes heredo familiares en la BD
+        public function obtenerAntecedentesH($id){
+
+        }
+
+        public function obtenerMedicamentos($id){
+            $items = [];
+            $query = $this->db->connect()->prepare(
+                "SELECT nombreMedicamento, dosis
+                FROM medicamentos
+                WHERE pacientes_idPacientes = :idPaciente");
+            try{
+                $query->execute(['idPaciente' => $id]);
+                while($row = $query->fetch()){
+                    $item['nombre'] = $row['nombreMedicamento'];
+                    $item['dosis'] = $row['dosis'];
                     array_push($items, $item);
                 }
                 $query = null;

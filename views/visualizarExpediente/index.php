@@ -227,15 +227,6 @@
                                         </h5>
                                     </div>
                                 </div>
-                                
-                                <div class="row no-gutters my-2">
-                                    <div class="col-2">
-                                        <input type="text" name="alcoholH" id="alcoholHabito" class="form-control text-uppercase text-center" value="'.$datos["habito"].'" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <input type="text" name="alcoholV" id="alcoholValor" class="form-control" value="'.$datos["detalle"].'" disabled>
-                                    </div>
-                                </div>
                                 <!--Menu para agregar una categoria/comentario habitos-toxicos-->
                                 <div class="d-none row inline-form" id="cont-agregarToxico">  
                                     <div class="form-group"> 
@@ -260,13 +251,30 @@
                                             
                                         </div> 
                                     </div>  
-                                </div>  
-                               
-                                <!--Cuando no hay observaciones debe de ir lo siguiente 
-                                <div class="row no-gutters my-2" id="noRegistro"> 
+                                </div>
+                                <?php
+                                    include_once 'models/historialClinico.php';
+                                    if(isset($this->historialClinico) && count($this->historialClinico->habitosToxicos) > 0){
+                                        foreach($this->historialClinico->habitosToxicos as $habitoT){
+                                ?>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="alcoholH" id="alcoholHabito" class="form-control text-uppercase text-center" value="<?php echo $habitoT['nombre']; ?>" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="alcoholV" id="alcoholValor" class="form-control" value="<?php echo $habitoT['detalle']; ?>" disabled>
+                                    </div>
+                                </div>
+                                <?php       
+                                        }
+                                    }else{
+                                ?>  
+                                <div class="row no-gutters my-2" id="noRegistroHT"> 
                                     <p>Aun no hay hábitos tóxicos registrados</p>
-                                </div> 
-                                -->
+                                </div>
+                                <?php                                 
+                                    }                                
+                                ?>
                                 <!--Plantilla de habito--> 
                                 <div class="nodo row no-gutters my-2"> 
                                 </div>
@@ -292,6 +300,28 @@
                                         </h5>
                                     </div>
                                 </div>
+                                <?php
+                                    if(isset($this->historialClinico) && count($this->historialClinico->habitosFisiologicos) > 0){
+                                        foreach($this->historialClinico->habitosFisiologicos as $habitoF){
+                                ?>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="habitoN" id="habitoNombre" class="form-control text-uppercase text-center" value="<?php echo $habitoF['nombre']?>" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <input type="text" name="habitoV" id="habitoValor" class="form-control" value="<?php echo $habitoF['detalle']?>" disabled>
+                                    </div>
+                                </div>
+                                <?php       
+                                        }
+                                    }else{
+                                ?>  
+                                <div class="row no-gutters my-2" id="noRegistroHF"> 
+                                    <p>Aun no hay hábitos fisiológicos registrados</p>
+                                </div>
+                                <?php                                 
+                                    }                                
+                                ?>
                             </div>
                             <hr>
 
@@ -308,6 +338,31 @@
                                         </h5>
                                     </div>
                                 </div>
+                                <?php
+                                    if(isset($this->historialClinico) && count($this->historialClinico->enfermedadesInfancia) > 0){
+                                        foreach($this->historialClinico->enfermedadesInfancia as $enfermedadI){
+                                ?>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="enfermedad1I" id="enfermedad1Infancia" class="form-control text-uppercase text-center h-100" value="<?php echo $enfermedadI['nombre']?>" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="enfermedad1IDescripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">Diagnosticado el <?php echo $enfermedadI['fecha']?></p>
+                                            <p><?php echo $enfermedadI['detalle']?></p>                                     
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php       
+                                        }
+                                    }else{
+                                ?>  
+                                <div class="row no-gutters my-2" id="noRegistroEI"> 
+                                    <p>Aun no hay enfermedades de la infancia registradas</p>
+                                </div>
+                                <?php                                 
+                                    }                                
+                                ?>
                             </div>
                             <hr>
 
@@ -324,6 +379,31 @@
                                         </h5>
                                     </div>
                                 </div>
+                                <?php
+                                    if(isset($this->historialClinico) && count($this->historialClinico->enfermedades) > 0){
+                                        foreach($this->historialClinico->enfermedades as $enfermedad){
+                                ?>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="enfermedad1" id="enfermedad1" class="form-control text-uppercase text-center h-100" value="<?php echo $enfermedad['nombre']?>" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="enfermedad1Descripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold">Diagnosticado el <?php echo $enfermedad['fecha']?></p>
+                                            <p><?php echo $enfermedad['detalle']?></p>                                     
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php       
+                                        }
+                                    }else{
+                                ?>  
+                                <div class="row no-gutters my-2" id="noRegistroE"> 
+                                    <p>Aun no hay enfermedades registradas</p>
+                                </div>
+                                <?php                                 
+                                    }                                
+                                ?>
                             </div>
                             <hr>
 
@@ -340,29 +420,68 @@
                                         </h5>
                                     </div>
                                 </div>
+                                <?php
+                                    if(isset($this->historialClinico) && count($this->historialClinico->alergias) > 0){
+                                        foreach($this->historialClinico->alergias as $alergia){
+                                ?>
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
                                         <ul class="list-group" id="list-alergias">
+                                            <li class="list-group-item"><?php echo $alergia['nombre']?></li>
                                         </ul> 
                                     </div>
                                 </div>
-                                
+                                <?php       
+                                        }
+                                    }else{
+                                ?>  
+                                <div class="row no-gutters my-2" id="noRegistroA"> 
+                                    <p>Aun no hay alergias registradas</p>
+                                </div>
+                                <?php                                 
+                                    }                                
+                                ?>
                             </div>
                             <hr>
                              <!-- ANTECEDENTES-->
                             <div id="antecedentes" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h5 class="titulo-seccion  text-uppercase">
+                                        <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Antecedentes heredofamiliares</span>
                                             <button class="btn btn-light" name="edit_historia">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            
                                         </h5>
                                     </div>
                                 </div>
+                                <?php
+                                    if(isset($this->historialClinico) && count($this->historialClinico->antecedentes) > 0){
+                                        foreach($this->historialClinico->antecedentes as $antecedente){
+                                ?>
+                                <div class="row no-gutters my-2">
+                                    <div class="col-2">
+                                        <input type="text" name="antecedenteH1" id="antecedenteHeredo1" class="form-control text-uppercase text-center h-100" value="<?php echo $antecedente['nombre']?>" disabled>
+                                    </div>
+                                    <div class="col-7">
+                                        <div id="antecedente1Descripcion" class="px-3 py-3 form-control campo-descriptivo">
+                                            <p class="font-weight-bold"><?php echo $antecedente['parentesco']?></p>
+                                            <p><?php echo $antecedente['detalle']?></p>                                     
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php       
+                                        }
+                                    }else{
+                                ?>  
+                                <div class="row no-gutters my-2" id="noRegistroAH"> 
+                                    <p>Aun no hay antecedentes heredofamiliares registrados</p>
+                                </div>
+                                <?php                                 
+                                    }                                
+                                ?>
                             </div>
+                            <hr>
                             <!-- MEDICAMENTOS -->
                             <div id="medicamentos" class="form-group mt-5">
                                 <div class="row">
@@ -378,7 +497,21 @@
                                 </div>
                                 <div class="row no-gutters my-2">
                                     <div class="col-9">
-                                        <div id="medicamentosDescripcion" class="px-3 py-3 form-control campo-descriptivo">                                  
+                                        <div id="medicamentosDescripcion" class="px-3 py-3 form-control campo-descriptivo">   
+                                            <?php
+                                                if(isset($this->historialClinico) && count($this->historialClinico->medicamentos) > 0){
+                                                    foreach($this->historialClinico->medicamentos as $medicamento){
+                                            ?>
+                                            <p class="font-weight-bold"><?php echo $medicamento['nombre'] ?></p>
+                                            <p><?php echo $medicamento['dosis'] ?></p>
+                                            <?php       
+                                                    }
+                                                }else{
+                                            ?>  
+                                                <p>No se le suministran medicamentos</p>
+                                            <?php                                 
+                                                }                                
+                                            ?>                            
                                         </div>
                                     </div>
                                 </div>
