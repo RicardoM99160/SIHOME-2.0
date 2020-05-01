@@ -11,6 +11,7 @@
         <!-- CSS propio -->
         <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/buscarExpediente.css">
     </head>
+    <?php require 'views/modo.php'?>
     <body>
         <!-- Script slider -->
         <script type="text/javascript" src="<?php echo constant('URL');?>public/js/bootstrap-slider.js"></script>
@@ -38,7 +39,7 @@
                     <div class="form-group w-50 px-2 d-block"> 
                         <div class="input-group ">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                <span class="input-group-text" id="searchIcon"><i class="fas fa-search" aria-hidden="true"></i></span>
                             </div>
                             <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Número del expediente">
                         </div>
@@ -104,7 +105,6 @@
                   </table>
                 </div>  
             </div>
-
         </div>
 
         <!-- Script para limitar el ingreso de caracteres del expediente -->
@@ -136,13 +136,13 @@
                                 <div class="row">  
                                     <div class="col-md-4">
                                         <div class="form form-inline">
-                                            <input type="radio" name="antiguedad" id="nuevos"> 
+                                            <input type="radio" name="antiguedad" id="nuevos" value="1"> 
                                             <label class="form-check-label" for="antiguedad">Más nuevos primero</label> 
                                         </div> 
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form form-inline">
-                                            <input type="radio" name="antiguedad" id="antiguos">   
+                                            <input type="radio" name="antiguedad" id="antiguos" value="2">   
                                             <label class="form-check-label" for="antiguedad">Más antiguos primeros</label> 
                                         </div>  
                                     </div>
@@ -157,42 +157,110 @@
                                         <!-- Columna --> 
                                             <div class="form-inline">
                                                 <span style="margin-right: 2%">Entre</span>
-                                                <input type="date" id="filtroFecha1" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('filtroFecha1')">
-                                                 
+                                                <input type="date" id="filtroFecha1" name="fecha1" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('filtroFecha1')">
                                             </div> 
                                         <div class='col-md-4'> 
                                                 <span style="margin-right: 2%">y</span>
-                                                <input type="date" id="fitroFecha2" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('fitroFecha2')">
-                                           
-                                        </div> 
+                                                <input type="date" id="fitroFecha2" name="fecha2" class="form-control d-inline-flex w-75" min="1900-01-01" max="" onclick="validarFecha('fitroFecha2')">
+                                            </div> 
                                 </div> 
                                 </div>
                                 
                             <div class="modal-seccion">
                                 <!---Filtro de edad -->
                                 <div class="row"> 
-                                    <h6 class="modal-seccion-title">Filtrar por edad</h6> 
+                                    <h6 class="modal-seccion-title">Filtrar por edad</h6>
+                                    <input type="checkbox" name="filtrarEdades" value="1" class="d-inline-flex align-self-center w-25">
                                 </div>
                                 <div class="row justify-content-center" id="modal-slider-seccion">
                                     <div class='col-md-10'>
                                         <div class="form-inline form-group ">
-                                            <input id="sliderDoble" type="text" class="span2" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[1,18]" style="width: 100%" />
-                                             
+                                            <input id="sliderDoble" name="edad" type="text" class="span2" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[1,18]" style="width: 100%" />
                                         </div>
                                     </div>
                                 </div> 
                                 <!---Filtro por fecha de ultima cita -->
-                                </div>    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" id="btn-reset" style="display: none;">Resetear campos</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn-action" name="filtros" id="filtros">Aplicar</button>
+                                </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" id="btn-reset" style="display: none;">Resetear campos</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn-action">Aplicar</button>
                     </div>
                 </div>
             </div>
         </div>
+    <!--Form de filtros-->
+    <?php
+        if(isset($_POST['filtros']))
+        {
+            $rango = $_POST['edad'];
+
+            if(isset($_POST['antiguedad'])) $orden = $_POST['antiguedad'];
+            else $orden = null;
+            if(isset($_POST['fecha1'])) $fecha1 = $_POST['fecha1'];
+            else $fecha1 = null;
+            if(isset($_POST['fecha2'])) $fecha2 = $_POST['fecha2'];
+            else $fecha2 = null;
+            if(isset($_POST['filtrarEdades'])) $filtrarEdad = $_POST['filtrarEdades'];
+            else $filtrarEdad = null;
+
+            //Obtener edades por separado
+            $edades = explode(",", $rango);
+            $edad1 = $edades[0];
+            $edad2 = $edades[1];
+
+            //Elegir variables a usar
+            
+            //***Todos los filtros
+            if($orden != null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad != null)
+            {
+
+            }
+
+            //***Sólo orden
+            if($orden != null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad == null)
+            {
+            }
+
+            //***Orden y fecha
+            elseif ($orden != null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad == null)
+            {
+
+            }
+
+            //***Orden y edades
+            elseif ($orden != null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad != null)
+            {
+
+            }
+
+            //***Sólo fecha
+            elseif ($orden == null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad == null)
+            {
+
+            }
+
+            //***Fecha y edades
+            elseif ($orden == null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad != null)
+            {
+
+            }
+
+            //***Sólo edades
+            elseif ($orden == null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad != null)
+            {
+
+            }
+        }
+
+        //Función para probar que se guardan las variables
+        /*function alert($msg)
+        {
+            if($msg != null) echo "<script type='text/javascript'>console.log('$msg');</script>";
+        }*/
+        ?>
 
         <!-- Inicialización de slider -->
         <script type="text/javascript">
