@@ -32,8 +32,24 @@
                 </div>
                 
                 <div id="cont-infoGeneral" class="informacion-expediente">
-                <div class="row px-3 py-3 no-gutters">
-                    <div class="col-9"> 
+                    <!--====================Botones para modificar y crear ===============================--> 
+
+                    <div class="row px-3 py-3 no-gutters">  
+                        <!--Boton nueva consulta -->   
+                        <a id="btn-nuevaConsulta" href="<?php echo constant('URL');?>generarConsulta">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Nueva consulta</span>
+                        </a>   
+                        <!--Boton modificar historial clinico -->   
+                        <a id="btn-nuevaConsulta" href="<?php echo constant('URL');?>generarConsulta">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Modificar historial clinico</span>
+                        </a>                    
+                    </div>
+        <!--====================Informacion general de paciente ===============================--> 
+
+                <div class="row px-3 py-3 no-gutters">                   
+                    <div class="col-12"> 
                             <div class="row my-2">
                                 <!-- Nombre completo -->
                                 <div class="col"> 
@@ -78,12 +94,13 @@
                                 </div>
                             </div>
                     </div>         
+                     
                 </div>
                 <?php
                     }else{
                 ?>
                 <div class="row px-3 py-3 no-gutters">
-                    <div class="col-9">
+                    <div class="col-12">
                         <div class="row my-2">
                             <!-- mensaje error -->
                             <h3 id="font-nombreCompleto">No se ha encontrado información</h43>
@@ -103,7 +120,7 @@
                             </a> 
                         </div>
                     </div>
-          
+                        
                     <!--Panel de navegacion tabular -->
                     
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -135,29 +152,19 @@
                                 <!--Formulario de opciones -->
                                 <form action="POST" class="row form-group inline-form">
                                     <!--input parametro busqueda -->
-                                    <div class="col-3"> 
-                                        <div class="input-group filtro">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                    
+                                    
+                                        <div class="col-6">                                             
+                                                               
+                                            <div class="input-group filtro">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                                </div>
+                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Buscar...">    
                                             </div>
-                                            <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Buscar...">    
-                                        </div>
-                                    </div> 
-                                    <!--Boton filtro -->   
-                                    <div class="form-group">
-                                        <button id="btn-refinar" name="aplicarFiltro">
-                                            <i class="fas fa-sliders-h"></i>
-                                            <span> Refinar búsqueda </span>
-                                        </button>
-                                    </div>
-                                    <!--Boton nueva consulta -->   
-                                    <div class="form-group">
-                                        <a id="btn-nuevaConsulta" href="<?php echo constant('URL');?>generarConsulta">
-                                            <i class="fas fa-pencil-alt"></i>
-                                            <span>Nueva consulta</span>
-                                        </a>
-                                    </div> 
+                                        </div>    
                                 </form>
+
                                 <!--Tabla de consultas-->
                                 <div id="cont-table">
                                     <table class="table table-hover borderless align-midle ">
@@ -218,40 +225,10 @@
                                     <div class="col">
                                         <!--Titulo de seccion -->
                                         <h5 class="titulo-seccion  text-uppercase">
-                                            <span class="pr-2">Habitos Toxicos</span>
-                                            <!--Boton modificar seccion-->
-                                            <button id="btn-modificarHabitos" name="edit_historia" class="btn btn-light">
-                                                <i class="fas fa-edit"></i>
-                                            </button>  
-                                            
+                                            <span class="pr-2">Habitos Toxicos</span>                                             
                                         </h5>
                                     </div>
-                                </div>
-                                <!--Menu para agregar una categoria/comentario habitos-toxicos-->
-                                <div class="d-none row inline-form" id="cont-agregarToxico">  
-                                    <div class="form-group"> 
-                                        <!--Combo box de categorias -->
-                                        <label for="" class="w-100">Categoria</label>
-                                            <select name="examenes" id="slt-listaToxicos" class="custom-select" required>
-                                            </select>
-                                    </div>
-                                    <!--Observaciones input -->
-                                    <div class="form-group">  
-                                        <label for="" class="">Observaciones*</label>    
-                                        <div class="input-group">  
-                                            <input type="text" id="input-observacionToxico" class="form-control" placeholder="" required>   
-                                            <button type="button" id="btn-agregarToxico" class="btn-agregarCategoria"> 
-                                                <i class="fas fa-plus-circle"></i>
-                                                <span>Agregar</span>
-                                            </button> 
-                                            <button id="btn-guardarHabitos"class="d-none btn-action">
-                                                <i class="fas fa-save"></i>
-                                                <span>Guardar cambios</span>
-                                            </button>  
-                                            
-                                        </div> 
-                                    </div>  
-                                </div>
+                                </div> 
                                 <?php
                                     include_once 'models/historialClinico.php';
                                     if(isset($this->historialClinico) && count($this->historialClinico->habitosToxicos) > 0){
@@ -292,11 +269,7 @@
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
-                                            <span class="pr-2">Habitos Fisiologicos</span>
-                                            <button class="btn btn-light" name="edit_historia">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            
+                                            <span class="pr-2">Habitos Fisiologicos</span>                                            
                                         </h5>
                                     </div>
                                 </div>
@@ -329,12 +302,8 @@
                             <div id="enfermedadesInfancia" class="form-group mt-5">
                                 <div class="row">
                                     <div class="col">
-                                    <h5 class="titulo-seccion  text-uppercase">
-                                            <span class="pr-2">Enfermedades de la infancia</span>
-                                            <button class="btn btn-light" name="edit_historia">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            
+                                        <h5 class="titulo-seccion  text-uppercase">
+                                            <span class="pr-2">Enfermedades de la infancia</span>                                            
                                         </h5>
                                     </div>
                                 </div>
@@ -372,9 +341,6 @@
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
                                             <span class="pr-2">Enfermedades</span>
-                                            <button class="btn btn-light" name="edit_historia">
-                                                <i class="fas fa-edit" ></i>
-                                            </button>
                                             
                                         </h5>
                                     </div>
@@ -412,11 +378,7 @@
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
-                                            <span class="pr-2">Alergías</span>
-                                            <button class="btn btn-light" name="edit_historia">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            
+                                            <span class="pr-2">Alergías</span>                                            
                                         </h5>
                                     </div>
                                 </div>
@@ -448,11 +410,7 @@
                                 <div class="row">
                                     <div class="col">
                                     <h5 class="titulo-seccion  text-uppercase">
-                                            <span class="pr-2">Medicamentos</span>
-                                            <button class="btn btn-light" name="edit_historia">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            
+                                            <span class="pr-2">Medicamentos</span>                              
                                         </h5>
                                     </div>
                                 </div>

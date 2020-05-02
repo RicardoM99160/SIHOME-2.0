@@ -84,7 +84,7 @@
   margin-left: 10px;
 }
 
-.fa-sliders-h, .fa-pencil-alt{
+.fa-sliders-h, .fa-pencil-alt,.fa-file-alt{
   margin-right:5px;
 }
 
@@ -117,6 +117,7 @@
 
 #btn-nuevaConsulta, .btn-action{
   border: 1px solid #389CD5;
+  margin: 0 10px;
   color: #FFFFFF; 
   padding: 5px 20px;
   text-align: center;
