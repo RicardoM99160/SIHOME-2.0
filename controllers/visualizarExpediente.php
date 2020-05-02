@@ -1,6 +1,7 @@
 <?php
 
     include_once 'models/historialClinico.php';
+    include_once 'models/consulta.php';
 
     class VisualizarExpediente extends Controller{
 
@@ -9,11 +10,17 @@
             //echo "<p>Controlador para Visualizar Expediente</p>";
             $this->view->expediente = "";
             $this->view->consultas = [];
+            $this->view->consulta = "";
             $this->view->historialClinico = new HistorialClinico();
         }
 
-        function render(){
-            $this->view->render('visualizarExpediente/index');
+        function render($vista = null){
+            if($vista == null){
+                $this->view->render('visualizarExpediente/index');
+            }else{
+                $this->view->render($vista);
+            }
+            
         }
 
         function mostrarExpediente($datos){
@@ -31,6 +38,16 @@
             //var_dump($this->view->historialClinico);
             //echo $id;
             $this->render();
+        }
+
+        function mostrarConsulta($datos){
+            $idC = $datos[0];
+            var_dump($_SESSION['consultas']);
+            $this->view->consulta = $_SESSION['consultas'];
+            $this->view->consulta->ordenes = $this->model->obtenerOrdenesConsulta($idc);
+            //foreach que recorra la variable de sesion y obtenga la consulta por medio del $idC
+
+            $this->render('visualizarExpediente/vistaConsulta');
         }
 
     }

@@ -52,9 +52,11 @@
             $query = $this->db->connect()->prepare(
                 "SELECT consulta.idConsulta, consulta.motivoConsulta, consulta.enfermedadConsulta, consulta.antecedentesConsulta, 
                 consulta.diagnostico, personal.nombrePersonal AS 'nombreDoctor', personal.apellidoPersonal AS 'apellidoDoctor',
-                consulta.fechaConsulta, consulta.horaConsulta 
+                consulta.fechaConsulta, consulta.horaConsulta, examenFisico.temperatura, examenFisico.presionCardia AS 'presion', 
+                examenFisico.pulso, examenFisico.frecuenciaRespiratoria AS 'frecuencia'
                 FROM consulta 
                 INNER JOIN personal ON consulta.personal_idPersonal = personal.idPersonal
+                INNER JOIN examenFisico ON consulta.idConsulta = examenFisico.consulta_idConsulta
                 WHERE consulta.pacientes_idPacientes = :idPaciente");
             try{
                 $query->execute(['idPaciente' => $id]);
@@ -69,7 +71,12 @@
                     $item->doctorEncargado = $row['nombreDoctor'] . " " . $row['apellidoDoctor'];
                     $item->fecha = date("d-m-Y", strtotime($row['fechaConsulta']));
                     $item->hora = $row['horaConsulta'];
+                    $item->temperatura = $row['temperatura'];
+                    $item->presion = $row['presion'];
+                    $item->pulso = $row['pulso'];
+                    $item->frecuencia = $row['frecuencia'];
                     array_push($items, $item);
+                    array_push($_SESSION['consultas'], $item);
                 }
                 $query = null;
                 return $items;
@@ -154,6 +161,26 @@
                 while($row = $query->fetch()){
                     $item['nombre'] = $row['nombreMedicamento'];
                     $item['dosis'] = $row['dosis'];
+                    array_push($items, $item);
+                }
+                $query = null;
+                return $items;
+            }catch(PDOException $e){
+                $e->getMessage();
+                return null;
+            }
+        }
+
+        public function obtenerOrdenesConsulta($id){
+            $items = [];
+            $query = $this->db->connect()->prepare(
+                "SELECT nombreOrden
+                FROM orden
+                WHERE consulta_idConsulta = :idConsulta");
+            try{
+                $query->execute(['idConsulta' => $id]);
+                while($row = $query->fetch()){
+                    $item['nombre'] = $row['nombreOrden'];
                     array_push($items, $item);
                 }
                 $query = null;
