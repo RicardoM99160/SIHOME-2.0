@@ -12,6 +12,7 @@
             $_SESSION['nombre'] = $nombre;
             $_SESSION['apellido'] = $apellido;
             $_SESSION['cargo'] = $cargo;
+            $_SESSION['consultas'] = [];
             /*$_SESSION['idPaciente'] = '';
             $_SESSION['pacientes'] = array();
             $_SESSION['consultas'] = array();*/

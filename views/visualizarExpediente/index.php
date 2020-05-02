@@ -189,7 +189,7 @@
                                                 <td><?php echo $consulta->hora; ?></td>
                                                 <td><?php echo $consulta->motivo; ?></td>
                                                 <td>
-                                                    <a class="btn btn-default" href="#">
+                                                    <a class="btn btn-default" href="<?php echo constant('URL') . 'visualizarExpediente/mostrarConsulta/' . $consulta->codigo;?>">
                                                         <i class="fas fa-external-link-alt"></i>
                                                     </a> 
                                                 </td>
