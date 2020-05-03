@@ -53,6 +53,20 @@
             $query = null;
         }
 
+        public function unblockedUser($user){
+            $query = $this->db->connect()->prepare(
+                "SELECT habilitado
+                FROM personal
+                WHERE emailPersonal = :email AND habilitado = '1'");
+            $query->execute(['email' => $user]);
+
+            if($query->rowCount()){
+                return true;
+            }else{
+                return false;
+            }
+            $query = null;
+        }
 
         //Función para obtener todos los datos necesarios del usuario validado de la BD
         public function setUser($user){

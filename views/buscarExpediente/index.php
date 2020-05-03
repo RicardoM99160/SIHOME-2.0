@@ -71,6 +71,7 @@
                     <tbody>
                         <?php
                             include_once 'models/expediente.php';
+                            $_SESSION['consultas'] = [];
                             $i = 1;
                             if(isset($this->expedientes) && count($this->expedientes) > 0){
                                 foreach($this->expedientes as $row){
