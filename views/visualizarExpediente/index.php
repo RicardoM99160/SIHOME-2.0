@@ -41,11 +41,14 @@
                             <span>Nueva consulta</span>
                         </a>   
                         <!--Boton modificar historial clinico -->   
-                        <a id="btn-nuevaConsulta" href="<?php echo constant('URL');?>generarConsulta">
+                        <a id="btn-nuevaConsulta" href="<?php echo constant('URL').'editarHistoria/recuperarExpediente/'.$expediente->codigo;?>">
                             <i class="fas fa-file-alt"></i>
                             <span>Modificar historial clinico</span>
                         </a>                    
                     </div>
+                    
+ 
+                 
         <!--====================Informacion general de paciente ===============================--> 
 
                 <div class="row px-3 py-3 no-gutters">                   

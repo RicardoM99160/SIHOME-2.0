@@ -8,7 +8,7 @@
         public $fechaCreacion;
         public $ultimaConsulta;
 
-        //Datos utilizados en Visualizar Expediente
+        //Datos utilizados en Visualizar Expediente - editar Historia
         public $fechaNacimiento;
         public $edad;
         public $tipoSangre;
