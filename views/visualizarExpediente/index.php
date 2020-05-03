@@ -26,6 +26,7 @@
                     if(isset($this->expediente) && $this->expediente != ""){
                         $expediente = new Expediente();
                         $expediente = $this->expediente;
+                        $_SESSION['idPaciente'] = (string)$expediente->codigo;
                 ?>
                 <div id="ruta">
                     <h6><a href="">Buscar expediente</a> > <span>EXPEDIENTE <?php echo $expediente->codigo; ?></span></h6>
@@ -36,7 +37,7 @@
 
                     <div class="row px-3 py-3 no-gutters">  
                         <!--Boton nueva consulta -->   
-                        <a id="btn-nuevaConsulta" href="<?php echo constant('URL');?>generarConsulta">
+                        <a id="btn-nuevaConsulta" href="<?php echo constant('URL').'generarConsulta/cargarInfo/'.$expediente->codigo;?>">
                             <i class="fas fa-pencil-alt"></i>
                             <span>Nueva consulta</span>
                         </a>   

@@ -1,6 +1,7 @@
 // Eliminar un orden
 var close = document.getElementsByClassName("eliminarOrden");
 var i; 
+let texto = new Set();
  
 // Agregar un orden
 function newElement() { 
@@ -9,6 +10,12 @@ function newElement() {
   var inputValue = select.value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
+  texto.add(inputValue);
+  CadenaFinal = añadirOpcionSelect(texto);
+  document.getElementById('listaOrdenes').value = '';
+  document.getElementById('listaOrdenes').focus();
+  document.getElementById('listaO').value = CadenaFinal;
+
    
   document.getElementById("ordenesAgregados").appendChild(li); 
 
@@ -32,7 +39,10 @@ function newElement() {
       //Añadir la opción al select nuevamente
       var option = document.createElement("option");
       option.text = this.id;
-      añadirOpcionSelect(option,'listaOrdenes','btn-agregar');
+      texto.delete(option.text);
+      console.log(texto);
+      CadenaFinal = añadirOpcionSelect(texto);
+      document.getElementById('listaO').value = CadenaFinal;
       //Eliminar campo
       var div = this.parentElement;
       div.parentNode.removeChild(div);

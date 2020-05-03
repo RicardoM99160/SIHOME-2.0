@@ -54,7 +54,7 @@
             if($user->unblockedUser($userForm)){
                 if($user->userInSession($userForm)){
                     $user->setUser($userForm);
-                    $userSession->setCurrentUser($userForm, $user->getNombre(), $user->getApellido(), $user->getCargo());
+                    $userSession->setCurrentUser($userForm, $user->getNombre(), $user->getApellido(), $user->getCargo(),$user->getID());
                     if($_SESSION['cargo'] == 0){
                         $controladorA->loadModel('admin');
                         $controladorA->mostrarUsuarios();

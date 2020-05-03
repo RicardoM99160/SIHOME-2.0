@@ -6,6 +6,7 @@
         private $apellido;
         private $username;
         private $cargo;
+        private $userID;
         private $sesion;
 
         function __construct(){
@@ -81,6 +82,7 @@
                 $this->apellido = $currentUser['apellidoPersonal'];
                 $this->username = $currentUser['emailPersonal'];
                 $this->cargo = $currentUser['cargo'];
+                $this->userID = $currentUser['idPersonal'];
             }
 
             $query = null;
@@ -97,6 +99,10 @@
 
         public function getCargo(){
             return $this->cargo;
+        }
+
+        public function getID(){
+            return $this->userID;
         }
     }
 
