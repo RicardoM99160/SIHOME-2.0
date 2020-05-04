@@ -61,11 +61,11 @@
                                 </div> 
                                 <!--Fila -->  
                                 
-                                <form method="post" action="">
+                                <form method="POST" action="<?php echo constant('URL');?>editarHistoria/insertarHabito">
                                     <div class="row no-gutters my-2">
                                         <div class="col-2 px-1">
                                             <label for="HT_nTipo">Tipo</label>
-                                            <select class="form-control" >
+                                            <select class="form-control" name="nombreHT">
                                                 <option>ALCOHOL</option>
                                                 <option>DROGAS VARIAS</option>
                                                 <option>TABACO</option>
@@ -75,10 +75,10 @@
                                         </div>
                                         <div class="col-6 px-1">
                                             <label for="HT_nObs">Observación</label>
-                                            <input type="text" id="alcoholValor" class="form-control">                                       
+                                            <input type="text" id="alcoholValor" class="form-control" name="detalleHT">                                       
                                         </div>     
                                         <div class="col-2">                                    
-                                            <button type="submit" name="nuevo" value="HT"  onclick="DoAjaxPostAndMore(this)" class="btn-action agregar">                                         
+                                            <button type="submit" name="nuevoHT" value="HT"  onclick="DoAjaxPostAndMore(this)" class="btn-action agregar">                                         
                                                 <i class="fas fa-plus-circle"></i>
                                                 Agregar
                                             </button> 
@@ -137,10 +137,11 @@
                                     </div>
                                 </div> 
                                 <!--Fila -->
+                                <form method="POST" action="<?php echo constant('URL');?>editarHistoria/insertarHabito">
                                 <div class="row no-gutters my-2">
                                     <div class="col-2 px-1">
                                         <label for="HT_nTipo">Tipo</label>
-                                        <select class="form-control" >
+                                        <select class="form-control" name="nombreHF" >
                                             <option>ALIMENTACION</option>
                                             <option>DIURESIS</option>
                                             <option>CATARSIS</option>
@@ -152,10 +153,10 @@
                                     </div>
                                     <div class="col-6 px-1">
                                         <label for="HT_nObs">Observación</label>
-                                        <input type="text" class="form-control">                                       
+                                        <input type="text" class="form-control" name="detalleHF">                                       
                                     </div>     
                                     <div class="col-2">                                          
-                                        <button type="button"  class="btn-action agregar">                                         
+                                        <button type="submit"  class="btn-action agregar" name="nuevoHF" value="HF">                                         
                                             <i class="fas fa-plus-circle"></i>
                                             Agregar
                                         </button> 
@@ -165,7 +166,7 @@
                                         </button> 
                                     </div>                                  
                                 </div> 
-                               
+                                </form>
                                 <br>
                                 <?php
                                     if(isset($this->historialClinico) && count($this->historialClinico->habitosFisiologicos) > 0){

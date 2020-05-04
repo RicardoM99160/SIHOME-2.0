@@ -12,6 +12,9 @@
         }
         
         function generarE(){
+            if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
+
+            
             $nombrePaciente = $_POST['nombre'];
             $apellidoPaciente = $_POST['apellido'];
             $duiPaciente = $_POST['dui'];
@@ -30,6 +33,7 @@
             $parentescoPariente = $_POST['parentezcop'];
             
             $this->view->exp = $this->model->guardarExpediente($nombrePaciente, $apellidoPaciente, $duiPaciente, $nacimientoPaciente, $sexoPaciente, $sangrePaciente,$direccionPaciente,$departamentoPaciente,$telefonoPaciente,$nombrePariente,$apellidoPariente,$direccionPariente,$telefonoPariente,$parentescoPariente);
+            }
             $this->render();
         }
     }

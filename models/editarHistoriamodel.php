@@ -134,14 +134,16 @@ class editarHistoriamodel extends Model{
 
 
     //Para insertar un nuevo habito a la historia
-    public function insertarHT($id,$nombre,$detalle){
+    public function insertarH($id,$nombre,$detalle,$tipo){
         $items = [];
         $query = $this->db->connect()->prepare(
-            "INSERT INTO habitos(idHabitos,nombreHabito,detalleHabito,tipo,pacientes_idPacientes) VALUES (NULL,:nombreH, :detalleH, 'HT', :idPaciente)");
+            "INSERT INTO habitos(idHabitos,nombreHabito,detalleHabito,tipo,pacientes_idPacientes) VALUES (NULL,:nombreH, :detalleH, :tipo, :idPaciente)");
 
-        $query->bindValue(':idPaciente', $id);
+        
         $query->bindValue(':nombreH', $nombre);
         $query->bindValue(':detalleH', $detalle); 
+        $query->bindValue(':tipo', $tipo);
+        $query->bindValue(':idPaciente', $id);
         $query->execute();        
 
     }
