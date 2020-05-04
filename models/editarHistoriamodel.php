@@ -1,7 +1,7 @@
 <?php
 
 include_once 'models/expediente.php';
-
+include_once 'models/historialClinico.php';
 
 class editarHistoriamodel extends Model{
 
@@ -46,7 +46,108 @@ class editarHistoriamodel extends Model{
         }
     }
 
+    //Para obtener los habitos de la historia clinica
+    public function obtenerHabitos($id, $tipo){
+        $items = [];
+        $query = $this->db->connect()->prepare(
+            "SELECT habitos.nombreHabito, habitos.detalleHabito, habitos.tipo AS 'tipoHabito'
+            FROM habitos
+            WHERE habitos.pacientes_idPacientes = :idPaciente AND habitos.tipo = :tipoHabito ");
+        try{
+            $query->execute(['idPaciente' => $id, 'tipoHabito' => $tipo]);
+            while($row = $query->fetch()){
+                $item['nombre'] = $row['nombreHabito'];
+                $item['detalle'] = $row['detalleHabito'];
+                array_push($items, $item);
+            }
+            $query = null;
+            return $items;
+        }catch(PDOException $e){
+            $e->getMessage();
+            return null;
+        }
+    }
 
+    public function obtenerEnfermedades($id, $tipo){
+        $items = [];
+        $query = $this->db->connect()->prepare(
+            "SELECT nombreEnfermedad, fechaEnfermedad, detalle AS 'detalleEnfermedad'
+            FROM enfermedades
+            WHERE enfermedades.pacientes_idPacientes = :idPaciente AND tipoEnfermedad = :tipoEnfermedad");
+        try{
+            $query->execute(['idPaciente' => $id, 'tipoEnfermedad' => $tipo]);
+            while($row = $query->fetch()){
+                $item['nombre'] = $row['nombreEnfermedad'];
+                $item['fecha'] = date("d-m-Y", strtotime($row['fechaEnfermedad']));
+                $item['detalle'] = $row['detalleEnfermedad'];
+                array_push($items, $item);
+            }
+            $query = null;
+            return $items;
+        }catch(PDOException $e){
+            $e->getMessage();
+            return null;
+        }
+    }
+
+    public function obtenerAlergias($id){
+        $items = [];
+        $query = $this->db->connect()->prepare(
+            "SELECT alergias.nombreAlergia
+            FROM pacientes_alergias
+            INNER JOIN alergias ON pacientes_alergias.alergias_idAlergias = alergias.idAlergias
+            WHERE pacientes_idPacientes = :idPaciente");
+        try{
+            $query->execute(['idPaciente' => $id]);
+            while($row = $query->fetch()){
+                $item['nombre'] = $row['nombreAlergia'];
+                array_push($items, $item);
+            }
+            $query = null;
+            return $items;
+        }catch(PDOException $e){
+            $e->getMessage();
+            return null;
+        }
+    }
+
+    public function obtenerMedicamentos($id){
+        $items = [];
+        $query = $this->db->connect()->prepare(
+            "SELECT nombreMedicamento, dosis
+            FROM medicamentos
+            WHERE pacientes_idPacientes = :idPaciente");
+        try{
+            $query->execute(['idPaciente' => $id]);
+            while($row = $query->fetch()){
+                $item['nombre'] = $row['nombreMedicamento'];
+                $item['dosis'] = $row['dosis'];
+                array_push($items, $item);
+            }
+            $query = null;
+            return $items;
+        }catch(PDOException $e){
+            $e->getMessage();
+            return null;
+        }
+    }
+
+
+    //Para insertar un nuevo habito a la historia
+    public function insertarHT($id,$nombre,$detalle){
+        $items = [];
+        $query = $this->db->connect()->prepare(
+            "INSERT INTO habitos(idHabitos,nombreHabito,detalleHabito,tipo,pacientes_idPacientes) VALUES (NULL,:nombreH, :detalleH, 'HT', :idPaciente)");
+
+        $query->bindValue(':idPaciente', $id);
+        $query->bindValue(':nombreH', $nombre);
+        $query->bindValue(':detalleH', $detalle); 
+        $query->execute();        
+
+    }
+
+
+    
 }
 
 

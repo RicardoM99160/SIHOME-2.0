@@ -221,8 +221,7 @@
                     <div id="historialClinico" class="row px-3 py-3">
                         <div class="col">
 
-                            <!--HABITOS TOXICOS -->
-                            <form>
+                            <!--HABITOS TOXICOS --> 
                             <div id="habitosToxicos" class="form-group mt-2">
                                 <div class="row">
                                     <div class="col">
@@ -261,7 +260,7 @@
 
 
                             </div>
-                        </form>
+                        
 
 
 
