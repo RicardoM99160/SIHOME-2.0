@@ -51,17 +51,25 @@
         $passForm = $_POST['pass'];
 
         if($user->userExists($userForm, $passForm)){
-            if($user->userInSession($userForm)){
-                $user->setUser($userForm);
-                $userSession->setCurrentUser($userForm, $user->getNombre(), $user->getApellido(), $user->getCargo());
-                if($_SESSION['cargo'] == 0){
-                    $controladorA->render();
+            if($user->unblockedUser($userForm)){
+                if($user->userInSession($userForm)){
+                    $user->setUser($userForm);
+                    $userSession->setCurrentUser($userForm, $user->getNombre(), $user->getApellido(), $user->getCargo(),$user->getID());
+                    if($_SESSION['cargo'] == 0){
+                        $controladorA->loadModel('admin');
+                        $controladorA->mostrarUsuarios();
+                        //$controladorA->render();
+                    }else{
+                        $controladorBE->render();
+                    }
                 }else{
-                    $controladorBE->render();
+                    //Renderizando la vista de login en caso que el usuario haya iniciado sesión en otra computadora
+                    $controladorLogin->view->mensaje="Este usuario tiene una sesión activa en otro dispositivo";
+                    $controladorLogin->render();
                 }
             }else{
-                //Renderizando la vista en caso que el usuario haya iniciado sesión en otra computadora
-                $controladorLogin->view->mensaje="Este usuario tiene una sesión activa en otro dispositivo";
+                //Renderizando la vista de login en caso que el usuario haya sido bloqueado
+                $controladorLogin->view->mensaje="Este usuario ha sido bloqueado, por favor contactese con el administrador del sitio";
                 $controladorLogin->render();
             }
         }else{

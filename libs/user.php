@@ -6,6 +6,7 @@
         private $apellido;
         private $username;
         private $cargo;
+        private $userID;
         private $sesion;
 
         function __construct(){
@@ -53,6 +54,20 @@
             $query = null;
         }
 
+        public function unblockedUser($user){
+            $query = $this->db->connect()->prepare(
+                "SELECT habilitado
+                FROM personal
+                WHERE emailPersonal = :email AND habilitado = '1'");
+            $query->execute(['email' => $user]);
+
+            if($query->rowCount()){
+                return true;
+            }else{
+                return false;
+            }
+            $query = null;
+        }
 
         //Función para obtener todos los datos necesarios del usuario validado de la BD
         public function setUser($user){
@@ -67,6 +82,7 @@
                 $this->apellido = $currentUser['apellidoPersonal'];
                 $this->username = $currentUser['emailPersonal'];
                 $this->cargo = $currentUser['cargo'];
+                $this->userID = $currentUser['idPersonal'];
             }
 
             $query = null;
@@ -83,6 +99,10 @@
 
         public function getCargo(){
             return $this->cargo;
+        }
+
+        public function getID(){
+            return $this->userID;
         }
     }
 

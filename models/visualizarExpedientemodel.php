@@ -9,6 +9,7 @@
         public function __construct(){
             parent::__construct();
         }
+        var $queryAns;
 
         //Para buscar un solo expediente
         public function obtenerExpediente($id){
@@ -24,9 +25,13 @@
                 LEFT JOIN direcciones ON pacientes.idPacientes = direcciones.pacientes_idPacientes
                 WHERE pacientes.idPacientes = :idPaciente ");
             try{
+                $_SESSION['datos']=[];
                 $query->execute(['idPaciente' => $id]);
-
-                while($row = $query->fetch()){
+                $query->setFetchMode(PDO::FETCH_ASSOC);
+                $this->queryAns = $query->fetchAll();
+                //var_dump($this->queryAns);
+                //$_SESSION['datos'] = array_merge((array)$_SESSION['datos'], (array)$queryAns);
+                foreach($this->queryAns as $row ){
                     $item->codigo = $row['idPacientes'];
                     $item->nombre = $row['nombrePaciente'] . " " . $row['apellidoPaciente'];
                     $item->dui = $row['duiPaciente'];
@@ -45,6 +50,10 @@
                 echo $e->getMessage();
                 return null;
             }
+            $_SESSION['datos'] = array_merge((array)$_SESSION['datos'], (array)$this->queryAns);
+            var_dump($this->queryAns);
+            var_dump($_SESSION['datos']);
+
         }
 
         public function obtenerConsultas($id){

@@ -25,6 +25,8 @@
 
         function mostrarExpediente($datos){
             $id = $datos[0];
+            $_SESSION['idPaciente'] = $id;
+            var_dump($_SESSION['userID']);
             $this->view->expediente = $this->model->obtenerExpediente($id);
             $this->view->consultas = $this->model->obtenerConsultas($id);
             //$this->view->historialClinico = $this->model->obtenerHistorialClinico($id);

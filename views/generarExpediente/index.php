@@ -19,7 +19,7 @@
 
         <div class="wrapper">
 
-            <?php require 'views/barraLateral.php'; ?>
+            <?php require 'views/barraLateral.php';?>
 
             <!-- Contenido del sitio -->
             <div id="contenido" class="w-75 h-75 mx-auto">
@@ -31,17 +31,25 @@
                     
                 </div>
                 <?php
-                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
+                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar" && isset($this->exp)){
                 ?>
                 <div class="alert alert-success alert-dismissible fade show">
-                    El expediente ha sido agregado con exito.
+                    El expediente <?php echo $this->exp;?> ha sido agregado con exito.
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                 </div>
                 <?php
                     }
+                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar" && $this->exp == ''){
+                        ?>
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            Ha ocurrido un error al ingresar el expediente.
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        </div>
+                        <?php
+                            }
                 ?>
                 <!--- Formulario generar expediente-->
-                <form id="form-generarExpediente" method="POST" action="">
+                <form id="form-generarExpediente" method="POST" action="<?php echo constant('URL');?>generarExpediente/generarE">
                     <!--- Seccion informacion personal-->
                     <div class="card">
                         <h5 class="font-tituloSeccion card-header">Información personal</h5>
@@ -66,9 +74,9 @@
                                         <label for="selectSexo" class="w-50">Sexo</label>
                                         <select name="sexo" id="selectSexo" class="w-50 custom-select" required>
                                             <option value="" selected>Select</option>
-                                            <option value="m">Masculino</option>
-                                            <option value="f">Femenino</option>
-                                            <option value="o">Otro</option>
+                                            <option value="FMNNO">Femenino</option>
+                                            <option value="MSCLN">Maculino</option>
+                                            <option value="OTROG">Otro</option>
                                         </select>
                                     </div> 
                                 </div>
@@ -89,14 +97,14 @@
                                         <label for="selectSangre" class="w-50">Tipo de sangre</label>
                                         <select name="sangre" id="selectSangre" class="w-50 custom-select" required>
                                             <option selected>Select</option>
-                                            <option value="a+">A+</option>
-                                            <option value="a-">A-</option>
-                                            <option value="b+">B+</option>
-                                            <option value="b-">B-</option>
-                                            <option value="ab+">AB+</option>
-                                            <option value="ab-">AB-</option>
-                                            <option value="o+">O+</option>
-                                            <option value="o-">O-</option>
+                                            <option value="TDS01">A+</option>
+                                            <option value="TDS02">A-</option>
+                                            <option value="TDS03">O-</option>
+                                            <option value="TDS04">O+</option>
+                                            <option value="TDS05">B+</option>
+                                            <option value="TDS06">B-</option>
+                                            <option value="TDS07">AB+</option>
+                                            <option value="TDS08">AB-</option>
                                         </select>
                                     </div>
                                 </div> 
@@ -129,8 +137,21 @@
                                     <div class="form-group">
                                             <label for="selectDepartamento" class="w-50">Departamento</label>
                                             <select name="departamento" id="selectDepartamento" class="w-50 custom-select" required>
-                                                <option value="" selected>Select</option>
-                                                <option value="san_salvador">San Salvador</option>
+                                                <option value="1" selected>Select</option>
+                                                <option value="1">San Salvador</option>
+                                                <option value="2">San Vicente</option>
+                                                <option value="3">La Libertad</option>
+                                                <option value="4">Ahuachapan</option>
+                                                <option value="5">Sonsonate</option>
+                                                <option value="5">Cuscatlan</option>
+                                                <option value="7">Cabañas</option>
+                                                <option value="8">La Paz</option>
+                                                <option value="9">Santa Ana</option>
+                                                <option value="10">Chalatenango</option>
+                                                <option value="11">San Miguel</option>
+                                                <option value="12">Morazán</option>
+                                                <option value="13">Usulután</option>
+                                                <option value="14">La Unión</option>
                                             </select>
                                     </div>
                                     
@@ -211,31 +232,6 @@
                         </div>
                     </div>  
                 </form>
-                <?php
-                /*include 'libs/datosPacientes.php';
-                $guardar = new paciente();
-                    if(isset($_POST['submit']) && $_POST['submit'] == 'Guardar'){
-                        $nombrePaciente = $_POST['nombre'];
-                        $apellidoPaciente = $_POST['apellido'];
-                        $duiPaciente = $_POST['dui'];
-                        $nacimientoPaciente = $_POST['nacimiento'];
-                        $sexoPaciente = $_POST['sexo'];
-                        $sangrePaciente = $_POST['sangre'];
-
-                        $direccionPaciente = $_POST['direccion'];
-                        $departamentoPaciente = $_POST['departamento'];
-                        $telefonoPaciente = $_POST['telefono'];
-
-                        $nombrePariente = $_POST['nombrep'];
-                        $apellidoPariente = $_POST['apellidop'];
-                        $direccionPariente = $_POST['direccionp'];
-                        $telefonoPariente = $_POST['telefonop'];
-                        $parentescoPariente = $_POST['parentezcop'];
-                        $guardar->agregarPaciente($nombrePaciente, $apellidoPaciente, $duiPaciente, $nacimientoPaciente, $sexoPaciente, $sangrePaciente,$direccionPaciente,$departamentoPaciente,$telefonoPaciente,$nombrePariente,$apellidoPariente,$direccionPariente,$telefonoPariente,$parentescoPariente);
-
-                    }*/
-
-                ?>
 
             </div>
 

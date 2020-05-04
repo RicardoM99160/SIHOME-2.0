@@ -7,15 +7,20 @@
             session_start();
         }
 
-        public function setCurrentUser($user,$nombre,$apellido,$cargo){
+        public function setCurrentUser($user,$nombre,$apellido,$cargo, $userID){
             $_SESSION['user'] = $user;
             $_SESSION['nombre'] = $nombre;
             $_SESSION['apellido'] = $apellido;
             $_SESSION['cargo'] = $cargo;
-            $_SESSION['consultas'] = [];
-            /*$_SESSION['idPaciente'] = '';
-            $_SESSION['pacientes'] = array();
-            $_SESSION['consultas'] = array();*/
+            $_SESSION['userID']=$userID;
+            $_SESSION['consultas'] =array();
+            $_SESSION['datos'] = array();
+            $_SESSION['idPaciente'] = '';
+            $_SESSION['usuarios'] = array();
+            $_SESSION['adminC'] ="";
+            $_SESSION['cantidadUsuarios'] = 0;
+            //$_SESSION['pacientes'] = array();
+            //$_SESSION['consultas'] = array();
         }
 
         public function getCurrentUser(){

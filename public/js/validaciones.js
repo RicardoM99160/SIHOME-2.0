@@ -32,11 +32,15 @@ function removerOpcionSelect(id_select, id_boton)
     if(select.value == "") document.getElementById(id_boton).disabled = true;
 }
 
-function añadirOpcionSelect(opcion, id_select, id_boton)
+function añadirOpcionSelect(datos)
 {
-    var select = document.getElementById(id_select);
-    select.add(opcion);
-    document.getElementById(id_boton).disabled = false;
+	listaOrden = '';
+    for(ordenes of datos){
+		listaOrden += ordenes + ',';
+		console.log(listaOrden);
+	  }
+	  return listaOrden;
+	  
 }
 
 

@@ -28,11 +28,18 @@
                         <svg id="i-user1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                             <path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
                         </svg>
-                        <span>Usuarios (16)</span>
+                        <?php
+                            if(isset($this->usuarios) && count($this->usuarios) > 0){
+                                echo "<span>Usuarios (". count($this->usuarios) .")</span>";
+                            }else{
+                                echo "<span>Usuarios (0)</span>";
+                            }
+                        ?>
+                        
                     </h4>
 
                     <div class="d-inline-flex ml-auto">
-                        <a href="#" class="btn btn-dark">
+                        <a href="<?php echo constant('URL')?>admin/crearUsuario" class="btn btn-dark">
                             <svg id="i-compose" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                 <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
                             </svg>
@@ -57,19 +64,20 @@
                                     <div class="modal-body"> 
                                         <div class="form-group w-100">
                                             <label for="nuevoPassword">Ingrese la nueva contraseña:</label>
-                                            <input type="text" name="password" id="nuevoPassword" class="form-control">
+                                            <input type="text" name="passwordN" id="nuevoPassword" class="form-control">
                                         </div>
                                         <div class="form-group w-100">
                                             <label for="confirmarPassword">Confirme la nueva contraseña:</label>
-                                            <input type="text" name="confirmar" id="confirmarPassword" class="form-control">
+                                            <input type="text" name="passwordC" id="confirmarPassword" class="form-control">
                                         </div>
                                     </div>
-                                </form>
+                                
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" id="passwordN" class="btn btn-primary">Guardar nueva contraseña</button>
+                                <button type="submit" name="guardar" id="guardarP" class="btn btn-primary">Guardar nueva contraseña</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -111,65 +119,41 @@
                         <th scope="col">Código</th>
                         <th style="width: 20%;" scope="col">Nombre completo</th>
                         <th sscope="col">Correo electrónico</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Habilitar/Deshabilitar</th>
+                        <th scope="col">Cambiar contraseña</th>
                       </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            include_once 'models/usuario.php';
+                            if(isset($this->usuarios) && count($this->usuarios)){
+                                $i = 1;
+                                foreach($this->usuarios as $row){
+                                    $usuario = new Usuario();
+                                    $usuario = $row;
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>No.000000</td>
-                            <td>Julio Salazar</td>
-                            <td>empleado@sihome.com</td>
-                            <td class="d-inline-flex">
-                                <a href="#" class="btn btn-dark mr-2">1</a>
-                                <button type="button" class="btn btn-dark mx-2" name="nuevo-pass" data-toggle="modal" data-target="#modalPass">2</button>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $usuario->codigo; ?></td>
+                            <td><?php echo $usuario->nombre; ?></td>
+                            <td><?php echo $usuario->email; ?></td>
+                            <td style="text-align: center;"><input type="checkbox" name="habilitarU" class="form-check-input habilitarUsuario" data-codigo="<?php echo $usuario->codigo; ?>" <?php if($usuario->habilitado == 1){ echo "checked"; }?> <?php if($usuario->cargo == 0){ echo "disabled"; }?>></td>
+                            <td style="text-align: center;"><button type="button" class="btn btn-default cPass" name="nuevo-pass" data-toggle="modal" data-target="#modalPass" data-codigo="<?php echo $usuario->codigo; ?>"><i class="fas fa-external-link-alt"></i></button></td>
+                            <!--<td class="d-inline-flex" id="<?php echo $usuario->codigo;?>">
                                 <button type="button" class="btn btn-dark mx-2" name="deshabilitar-usuario" data-toggle="modal" data-target="#modalUsuario">3</button>
-                            </td>
+                            </td>-->
                         </tr>
+                        <?php
+                                $i++;
+                                }
+                            }else{
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>No.000000</td>
-                            <td>Julio Salazar</td>
-                            <td>empleado@sihome.com</td>
-                            <td class="d-inline-flex">
-                                <a href="#" class="btn btn-dark mr-2">1</a>
-                                <button type="button" class="btn btn-dark mx-2" name="nuevo-pass" data-toggle="modal" data-target="#modalPass">2</button>
-                                <button type="button" class="btn btn-dark mx-2" name="deshabilitar-usuario" data-toggle="modal" data-target="#modalUsuario">3</button>
-                            </td>
+                            <td colspan="5">No hay usuarios registrados<td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>No.000000</td>
-                            <td>Julio Salazar</td>
-                            <td>empleado@sihome.com</td>
-                            <td class="d-inline-flex">
-                                <a href="#" class="btn btn-dark mr-2">1</a>
-                                <button type="button" class="btn btn-dark mx-2" name="nuevo-pass" data-toggle="modal" data-target="#modalPass">2</button>
-                                <button type="button" class="btn btn-dark mx-2" name="deshabilitar-usuario" data-toggle="modal" data-target="#modalUsuario">3</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>No.000000</td>
-                            <td>Julio Salazar</td>
-                            <td>empleado@sihome.com</td>
-                            <td class="d-inline-flex">
-                                <a href="#" class="btn btn-dark mr-2">1</a>
-                                <button type="button" class="btn btn-dark mx-2" name="nuevo-pass" data-toggle="modal" data-target="#modalPass">2</button>
-                                <button type="button" class="btn btn-dark mx-2" name="deshabilitar-usuario" data-toggle="modal" data-target="#modalUsuario">3</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>No.000000</td>
-                            <td>Julio Salazar</td>
-                            <td>empleado@sihome.com</td>
-                            <td class="d-inline-flex">
-                                <a href="#" class="btn btn-dark mr-2">1</a>
-                                <button type="button" class="btn btn-dark mx-2" name="nuevo-pass" data-toggle="modal" data-target="#modalPass">2</button>
-                                <button type="button" class="btn btn-dark mx-2" name="deshabilitar-usuario" data-toggle="modal" data-target="#modalUsuario">3</button>
-                            </td>
-                        </tr>
+                        <?php                                
+                            }
+                        ?>
                     </tbody>
                   </table>
                 </div>  
@@ -187,5 +171,6 @@
                 });
             });
         </script>
+        <script src="<?php echo constant('URL');?>public/js/main.js"></script>
     </body>
 </html>

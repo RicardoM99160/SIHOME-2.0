@@ -11,6 +11,27 @@
             $this->view->render('generarExpediente/index');
         }
         
+        function generarE(){
+            $nombrePaciente = $_POST['nombre'];
+            $apellidoPaciente = $_POST['apellido'];
+            $duiPaciente = $_POST['dui'];
+            $nacimientoPaciente = $_POST['nacimiento'];
+            $sexoPaciente = $_POST['sexo'];
+            $sangrePaciente = $_POST['sangre'];
+
+            $direccionPaciente = $_POST['direccion'];
+            $departamentoPaciente = $_POST['departamento'];
+            $telefonoPaciente = $_POST['telefono'];
+
+            $nombrePariente = $_POST['nombrep'];
+            $apellidoPariente = $_POST['apellidop'];
+            $direccionPariente = $_POST['direccionp'];
+            $telefonoPariente = $_POST['telefonop'];
+            $parentescoPariente = $_POST['parentezcop'];
+            
+            $this->view->exp = $this->model->guardarExpediente($nombrePaciente, $apellidoPaciente, $duiPaciente, $nacimientoPaciente, $sexoPaciente, $sangrePaciente,$direccionPaciente,$departamentoPaciente,$telefonoPaciente,$nombrePariente,$apellidoPariente,$direccionPariente,$telefonoPariente,$parentescoPariente);
+            $this->render();
+        }
     }
 
 ?>

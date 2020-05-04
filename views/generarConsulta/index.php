@@ -18,14 +18,14 @@
         <?php require 'views/plantillaBase.php'; ?>
         <div class="wrapper">
 
-            <?php require 'views/barraLateral.php'; ?>
+            <?php require 'views/barraLateral.php';?>
 
             <!-- Contenido del sitio -->
             <div id="contenido" class="w-75 h-75 mx-auto">
                 
                 <!-- Título de la página actual -->
                 <div id="font-tituloPagina"> 
-                    <h4>Nueva consulta <?php echo ' | PACIENTE '.$_SESSION['idPaciente']; ?></h4>
+                    <h4>Nueva consulta | Paciente: <?php echo $_SESSION['datos'][0]['nombrePaciente']. ' '.$_SESSION['datos'][0]['apellidoPaciente']?></h4>
                 </div>
                 <?php
                     if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
@@ -38,7 +38,7 @@
                     }
                 ?>
                 <!--- Formulario generar consulta-->
-                <form id="form-generarConsulta" action="" method="POST">
+                <form id="form-generarConsulta" action="<?php echo constant('URL');?>generarConsulta/generarC" method="POST">
                     <div class="row">
                         <div class="col-md-6"> 
                              <!--- Seccion datos de consulta-->
@@ -131,11 +131,57 @@
                          <!--Datos de paciente-->
                          <div class="seccionFormulario card">
                                 <h5 class="font-tituloSeccion card-header text-center">Datos de paciente</h5>
-                                            <?php
-                                            include 'libs/datosPacientes.php';
-                                            $datosP = new paciente;
-                                            $datosP->mostrarNombreC($_SESSION['idPaciente']);
-                                            ?> 
+                                <div class="frm-seccion card-body">   
+                                    <div class="col"> 
+                                        <!--Fila 1--> 
+                                        <div class="row">
+                                          <div class="row form-group no-gutters">
+                                                <!--Nombre completo -->
+                                                <div class="col-8 px-1">
+                                                    <label for="fechaNacimiento">Nombre del paciente</label>
+                                                    <input type="text" name="" id="" value="<?php echo $_SESSION['datos'][0]['nombrePaciente'].' '.$_SESSION['datos'][0]['apellidoPaciente'];?>" class="form-control" disabled>
+                                                </div>
+                                                <!--DUI-->
+                                                <div class="col-4 px-1">
+                                                    <label for="dui">DUI</label>
+                                                    <input type="text" name="dui" id="dui" value="<?php echo $_SESSION['datos'][0]['duiPaciente'];?>" class="form-control" disabled>
+                                                </div> 
+                                            </div>  
+                                            <!-- Fila 2 --> 
+                                            <div class="row form-group no-gutters">
+                                                <!--Fecha de nacimiento -->
+                                                <div class="col-5 px-1">
+                                                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                                                    <input type="text" name="fechaNacimiento" id="fechaNacimiento" value="<?php echo $_SESSION['datos'][0]['fechaNacimiento'];?>" class="form-control" disabled>
+                                                </div>
+                                                <!-- Sexo -->
+                                                <div class="col-4 px-1">
+                                                    <label for="sexo">Sexo</label>
+                                                    <input type="text" name="sexo" id="sexo" value="<?php echo $_SESSION['datos'][0]['genero'];?>" class="form-control" disabled>
+                                                </div>
+                                                <!--Tipo de sangre -->
+                                                <div class="col-3 px-1">
+                                                    <label for="tipoSangre">Tipo de sangre</label>
+                                                    <input type="text" name="tipoSangre" id="tipoSangre" value="<?php echo $_SESSION['datos'][0]['tipoSangre'];?>" class="form-control" disabled>
+                                                </div> 
+                                        
+                                            </div>                             
+                                            <!-- Fila 3 -->  
+                                            <div class="row form-group no-gutters">
+                                                <!--Direccion -->
+                                                <div class="col-9 px-1">
+                                                    <label for="direccion">Dirección</label>
+                                                    <input type="text" name="direccion" id="direccion" value="<?php echo $_SESSION['datos'][0]['direccion'];?>" class="form-control" disabled>
+                                                </div>
+                                                <!--Telefono-->
+                                                <div class="col-3 px-1">
+                                                    <label for="telefono">Teléfono</label>
+                                                    <input type="text" name="telefono" id="telefono" value="<?php echo $_SESSION['datos'][0]['telefono'];?>" class="form-control" disabled>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        </div>
+                                        </div>
                         </div>
                         <!--- Seccion Diagnostico-->
                         <div class=" seccionFormulario card">
@@ -157,13 +203,15 @@
                                         <div class="form-group inline-form">
                                             <label for="" class="w-50">Orden</label>
                                             
-                                            <select name="examenes" id="listaOrdenes" class="custom-select" required>
+                                            <!--<select name="examenes" id="listaOrdenes" class="custom-select" required>
                                                 <option value="Sin examenes">Sin examenes</option>
                                                 <option value="Análisis de orina">Análisis de orina</option>
                                                 <option value="Hemograma completo">Hemograma completo</option>
                                                 <option value="Coprocultivo">Coprocultivo</option>
-                                            </select>
-                                        <button type="button" id="btn-agregar" value="Guardar" onclick="newElement(); removerOpcionSelect('listaOrdenes','btn-agregar');"> 
+                                            </select>-->
+                                            <input name="examenes" id="listaOrdenes" class="form-control">
+                                            <input name="examenLista" id="listaO" class="custom-select" hidden>
+                                        <button type="button" id="btn-agregar" value="Guardar" onclick="newElement();"> 
                                         
                                         <i class="fas fa-plus-circle"></i><span>Agregar</span>
                                         </button>
@@ -197,34 +245,6 @@
                      
                     </div>
                 </form> 
-
-                <?php
-
-                include 'libs/datosConsultas.php';
-                $guardar = new consulta();
-
-                    if(isset($_POST['submit']) && $_POST['submit'] == "Guardar"){
-                        $motivoConsulta = $_POST['motivo'];
-                        $enfermedad = $_POST['enfermedad'];
-                        $antecedente = $_POST['antecedente'];
-
-                        $temperatura = $_POST['temperatura'];
-                        $presion = $_POST['presion'];
-                        $pulso = $_POST['pulso'];
-                        $frecuencia = $_POST['frecuenciac'];
-
-                        $diagnostico = $_POST['diagnostico'];
-                        $orden = $_POST['examenes'];
-
-                        $guardar->guardarConsultas($motivoConsulta, $enfermedad, $antecedente, $temperatura, $presion, $pulso, $frecuencia, $diagnostico, $orden);
-                    }
-                    
-                ?>
-                   
-                   
-                
-                
-                 
                     </div>
                     </div>
 
