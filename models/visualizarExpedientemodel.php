@@ -25,7 +25,7 @@
                 LEFT JOIN direcciones ON pacientes.idPacientes = direcciones.pacientes_idPacientes
                 WHERE pacientes.idPacientes = :idPaciente ");
             try{
-                $_SESSION['datos']=[];
+                
                 $query->execute(['idPaciente' => $id]);
                 $query->setFetchMode(PDO::FETCH_ASSOC);
                 $this->queryAns = $query->fetchAll();
@@ -50,9 +50,9 @@
                 echo $e->getMessage();
                 return null;
             }
-            $_SESSION['datos'] = array_merge((array)$_SESSION['datos'], (array)$this->queryAns);
-            var_dump($this->queryAns);
-            var_dump($_SESSION['datos']);
+            //$_SESSION['datos'] = array_merge((array)$_SESSION['datos'], (array)$this->queryAns);
+            //var_dump($this->queryAns);
+            //var_dump($_SESSION['datos']);
 
         }
 

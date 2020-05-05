@@ -7,7 +7,7 @@
         }
 
         public function guardarConsulta($idPaciente, $motivoConsulta, $enfermedad, $antecedente, $temperatura, $presion, $pulso, $frecuencia, $diagnostico, $orden){
-            var_dump($idPaciente);
+            
             $query = $this->db->connect()->prepare("SELECT COUNT(idConsulta) AS cantidadConsultas FROM consulta");
             $query->execute();
             $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -72,7 +72,7 @@
     }
 
     function InsertarOrden($nuevoid, $orden){
-        var_dump($orden);
+        //var_dump($orden);
         $ordenes = explode(',',$orden);
         $sqlOrden = "INSERT INTO orden (idOrden, nombreOrden, consulta_idConsulta) VALUES (NULL, :detalle, :idConsulta)";
         $query = $this->db->connect()->prepare($sqlOrden);

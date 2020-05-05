@@ -213,6 +213,7 @@
                                     </div>
                                 </div> 
                                 <!--Fila -->
+                                <form method="POST" action="<?php echo constant('URL');?>editarHistoria/insertarHabito">
                                 <div class="row no-gutters my-2">
                                     <div class="col-2 px-1">
                                         <label for="HT_nTipo">Tipo</label>
@@ -223,7 +224,7 @@
                                         <input type="text" class="form-control" name="detalleEI">                                       
                                     </div>     
                                     <div class="col-2">                                          
-                                        <button type="button"  class="btn-action agregar" name="nuevoEI" value="EI">                                         
+                                        <button type="submit"  class="btn-action agregar" name="nuevoEI" value="EI">                                         
                                             <i class="fas fa-plus-circle"></i>
                                             Agregar
                                         </button> 
@@ -233,7 +234,7 @@
                                         </button> 
                                     </div>                                  
                                 </div> 
-                               
+                               <form>
                                 <br>
                                 <?php
                                     if(isset($this->historialClinico) && count($this->historialClinico->enfermedadesInfancia) > 0){

@@ -26,7 +26,7 @@
         function mostrarExpediente($datos){
             $id = $datos[0];
             $_SESSION['idPaciente'] = $id;
-            var_dump($_SESSION['userID']);
+            //var_dump($_SESSION['userID']);
             $this->view->expediente = $this->model->obtenerExpediente($id);
             $this->view->consultas = $this->model->obtenerConsultas($id);
             //$this->view->historialClinico = $this->model->obtenerHistorialClinico($id);
@@ -44,7 +44,7 @@
 
         function mostrarConsulta($datos){
             $idC = $datos[0];
-            var_dump($_SESSION['consultas']);
+            //var_dump($_SESSION['consultas']);
             $this->view->consulta = $_SESSION['consultas'];
             $this->view->consulta->ordenes = $this->model->obtenerOrdenesConsulta($idc);
             //foreach que recorra la variable de sesion y obtenga la consulta por medio del $idC
