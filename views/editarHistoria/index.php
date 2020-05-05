@@ -216,14 +216,14 @@
                                 <div class="row no-gutters my-2">
                                     <div class="col-2 px-1">
                                         <label for="HT_nTipo">Tipo</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="nombreEI">
                                     </div>
                                     <div class="col-6 px-1">
                                         <label for="HT_nObs">Observación</label>
-                                        <input type="text" class="form-control">                                       
+                                        <input type="text" class="form-control" name="detalleEI">                                       
                                     </div>     
                                     <div class="col-2">                                          
-                                        <button type="button"  class="btn-action agregar">                                         
+                                        <button type="button"  class="btn-action agregar" name="nuevoEI" value="EI">                                         
                                             <i class="fas fa-plus-circle"></i>
                                             Agregar
                                         </button> 
@@ -244,10 +244,7 @@
                                         <input type="text" class="form-control text-uppercase text-center" value="<?php echo $enfermedadI['nombre']?>" disabled>
                                     </div>
                                     <div class="col-6">
-                                        <div id="enfermedad1IDescripcion" class="px-3 py-3 form-control campo-descriptivo">
-                                            <p class="font-weight-bold">Diagnosticado el <?php echo $enfermedadI['fecha']?></p>
-                                            <p><?php echo $enfermedadI['detalle']?></p>                                     
-                                        </div>
+                                        <input type="text" class="form-control text-uppercase text-center" value="<?php echo $enfermedadI['detalle']?>" disabled>
                                     </div> 
                                     <button type="button"  class="btnCirculo editar"> 
                                         <i class="fas fa-edit"></i>

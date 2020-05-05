@@ -48,7 +48,14 @@
                 $this->model->insertarH($id,$nombre,$detalle,$tipo);
 
             }
-            $id = $_SESSION['idPaciente'];
+            if(isset($_POST['nuevoEI']) && $_POST['nuevoEI'] == "EI"){
+                $nombre = $_POST['nombreEI'];
+                $detalle = $_POST['detalleEI'];
+                $fechaEI = date('Y-m-d');
+                $tipo = 'EI';
+                $this->model->insertarE($id,$nombre,$detalle,$tipo, $fechaEI);
+
+            }
             $this->view->expediente = $this->model->obtenerExpediente($id);
 
             $this->view->historialClinico->habitosToxicos = $this->model->obtenerHabitos($id, 'HT');

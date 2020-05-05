@@ -20,8 +20,11 @@ botones.forEach(boton  => {
 //Funcion para hacer un http request que cambia la contraseña del usuario
 botonCambioContra.addEventListener("click", function(){
     password = inputContra.value;
-    console.log("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/cambiarContra/" + codigo + "/" + password);
-    httpRequest("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/cambiarContra/" + codigo + "/" + password, function(){
+    console.log("http://localhost/SIHOME-2.0/admin/cambiarContra/" + codigo + "/" + password);
+    httpRequest("http://localhost/SIHOME-2.0/admin/cambiarContra/" + codigo + "/" + password, function(){
+    //Majano
+    //console.log("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/cambiarContra/" + codigo + "/" + password);
+    //httpRequest("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/cambiarContra/" + codigo + "/" + password, function(){
         console.log(this.responseText);
     });
     console.log("Contraseña cambiada");
@@ -39,8 +42,10 @@ checkboxesHabilitarU.forEach(checkboxU =>{
         }
         console.log(codigo);
         console.log(habilitado);
-        console.log("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/habilitarUsuario/" + codigo + "/" + habilitado);
-        httpRequest("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/habilitarUsuario/" + codigo + "/" + habilitado, function(){
+        console.log("http://localhost/SIHOME-2.0/admin/habilitarUsuario/" + codigo + "/" + habilitado);
+        httpRequest("http://localhost/SIHOME-2.0/admin/habilitarUsuario/" + codigo + "/" + habilitado, function(){
+        //console.log("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/habilitarUsuario/" + codigo + "/" + habilitado);
+        //httpRequest("http://localhost/Proyecto%20LIS/SIHOME-2.0/admin/habilitarUsuario/" + codigo + "/" + habilitado, function(){
             console.log(this.responseText);
         });
     });

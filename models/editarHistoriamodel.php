@@ -148,6 +148,21 @@ class editarHistoriamodel extends Model{
 
     }
 
+    public function insertarE($id,$nombre,$detalle,$tipo, $fechaEI){
+        $items = [];
+        $query = $this->db->connect()->prepare(
+            "INSERT INTO enfermedades(idEnfermedad,nombreEnfermedad,fechaEnfermedad,detalle,tipoEnfermedad,pacientes_idPacientes) VALUES (NULL,:nombreE, :fechaE,:detalleE, :tipo, :idPaciente)");
+
+        
+        $query->bindValue(':nombreE', $nombre);
+        $query->bindValue(':fechaE', $fechaEI);
+        $query->bindValue(':detalleE', $detalle); 
+        $query->bindValue(':tipo', $tipo);
+        $query->bindValue(':idPaciente', $id);
+        $query->execute();        
+
+    }
+
 
     
 }

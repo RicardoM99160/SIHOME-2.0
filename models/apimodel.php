@@ -44,20 +44,15 @@
         {
             $input = $_POST;
             $query = "INSERT INTO alergias
-                  (nombreAlergias)
+                  (nombreAlergia)
                   VALUES
                   (:nombre)";
-            $statement = $this->db->connect()->prepare($sql);
+            $statement = $this->db->connect()->prepare($query);
             $statement->bindValue(':nombre', $input['nombre']);
             $statement->execute();
-            $postId = $this->db->connect()->lastInsertId();
-            if($postId)
-            {
-              $input['id'] = $postId;
-              header("HTTP/1.1 200 INSERTADO CON EXITO");
-              echo json_encode($input);
-              exit();
-             }
+            header("HTTP/1.1 200 INSERTADO CON EXITO");
+            echo json_encode($input);
+            exit();
         }
         
         //Borrar
