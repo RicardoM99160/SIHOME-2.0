@@ -50,12 +50,13 @@ class editarHistoriamodel extends Model{
     public function obtenerHabitos($id, $tipo){
         $items = [];
         $query = $this->db->connect()->prepare(
-            "SELECT habitos.nombreHabito, habitos.detalleHabito, habitos.tipo AS 'tipoHabito'
+            "SELECT  habitos.idHabitos, habitos.nombreHabito, habitos.detalleHabito, habitos.tipo AS 'tipoHabito'
             FROM habitos
             WHERE habitos.pacientes_idPacientes = :idPaciente AND habitos.tipo = :tipoHabito ");
         try{
             $query->execute(['idPaciente' => $id, 'tipoHabito' => $tipo]);
             while($row = $query->fetch()){
+                $item['idH'] = $row['idHabitos']; 
                 $item['nombre'] = $row['nombreHabito'];
                 $item['detalle'] = $row['detalleHabito'];
                 array_push($items, $item);
@@ -146,6 +147,12 @@ class editarHistoriamodel extends Model{
         $query->bindValue(':idPaciente', $id);
         $query->execute();        
 
+    }
+
+    public function eliminarH($id){ 
+        $query = $this->db->connect()->prepare("DELETE FROM habitos WHERE habitos.idHabitos = :idHabito");
+        $query->execute(['idhabito' => $id]);
+        $query = null; 
     }
 
     public function insertarE($id,$nombre,$detalle,$tipo, $fechaEI){

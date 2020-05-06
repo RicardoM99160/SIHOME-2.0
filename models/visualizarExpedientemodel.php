@@ -103,7 +103,7 @@
                 WHERE habitos.pacientes_idPacientes = :idPaciente AND habitos.tipo = :tipoHabito ");
             try{
                 $query->execute(['idPaciente' => $id, 'tipoHabito' => $tipo]);
-                while($row = $query->fetch()){
+                while($row = $query->fetch()){ 
                     $item['nombre'] = $row['nombreHabito'];
                     $item['detalle'] = $row['detalleHabito'];
                     array_push($items, $item);
@@ -124,7 +124,7 @@
                 WHERE enfermedades.pacientes_idPacientes = :idPaciente AND tipoEnfermedad = :tipoEnfermedad");
             try{
                 $query->execute(['idPaciente' => $id, 'tipoEnfermedad' => $tipo]);
-                while($row = $query->fetch()){
+                while($row = $query->fetch()){ 
                     $item['nombre'] = $row['nombreEnfermedad'];
                     $item['fecha'] = date("d-m-Y", strtotime($row['fechaEnfermedad']));
                     $item['detalle'] = $row['detalleEnfermedad'];

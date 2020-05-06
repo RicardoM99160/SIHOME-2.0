@@ -62,7 +62,7 @@
                                 <!--Fila -->  
                                 
                                 <form method="POST" action="<?php echo constant('URL');?>editarHistoria/insertarHabito">
-                                    <div class="row no-gutters my-2">
+                                    <div class="row no-gutters my-2 align-items-end">
                                         <div class="col-2 px-1">
                                             <label for="HT_nTipo">Tipo</label>
                                             <select class="form-control" name="nombreHT">
@@ -75,16 +75,12 @@
                                         </div>
                                         <div class="col-6 px-1">
                                             <label for="HT_nObs">Observación</label>
-                                            <input type="text" id="alcoholValor" class="form-control" name="detalleHT">                                       
+                                            <input type="text" id="alcoholValor" class="form-control" name="detalleHT" required>                                       
                                         </div>     
                                         <div class="col-2">                                    
-                                            <button type="submit" name="nuevoHT" value="HT"  onclick="DoAjaxPostAndMore(this)" class="btn-action agregar">                                         
+                                            <button type="submit" name="nuevoHT" value="HT" class="btn-action agregar">                                         
                                                 <i class="fas fa-plus-circle"></i>
                                                 Agregar
-                                            </button> 
-                                            <button type="submit" name="editar" value="HT" class="btn-action aceptar" onclick="ola()" disabled>                                         
-                                                <i class="fas fa-check-square"></i>
-                                                Aceptar
                                             </button> 
                                         </div>                                  
                                     </div> 
@@ -94,33 +90,30 @@
                                     include_once 'models/historialClinico.php';
                                     if(isset($this->historialClinico) && count($this->historialClinico->habitosToxicos) > 0){
                                         foreach($this->historialClinico->habitosToxicos as $habitoT){
-                                ?>                               
-
-                                <div class="row no-gutters my-2">
-                                    <div class="col-3">
-                                        <input type="text" class="form-control text-uppercase text-center" value="<?php echo $habitoT['nombre']; ?>" disabled>
+                                ?>        
+                                    <div class="row no-gutters my-2">
+                                        <div class="col-3">
+                                            <input type="text" class="form-control text-uppercase text-center" value="<?php echo $habitoT['nombre']; ?>" disabled>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" value="<?php echo $habitoT['detalle']; ?>" disabled>
+                                        </div>    
+                                        
+                                        <button type="button" value="<?php echo $habitoT['idH'];?>" class="btnCirculo eliminar"> 
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>  
                                     </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control" value="<?php echo $habitoT['detalle']; ?>" disabled>
-                                    </div> 
-                                    <button type="button"  class="btnCirculo editar"> 
-                                        <i class="fas fa-edit"></i>
-                                    </button>  
-                                    <button type="button" class="btnCirculo eliminar"> 
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button> 
-                                </div>
                                 
-                                <?php       
+                                    <?php       
                                         }
-                                    }else{
-                                ?>  
-                                <div class="row no-gutters my-2" id="noRegistroHT"> 
-                                    <p>Aun no hay hábitos tóxicos registrados</p>
-                                </div>
-                                <?php                                 
-                                    }                                
-                                ?> 
+                                        }else{
+                                    ?>  
+                                    <div class="row no-gutters my-2" id="noRegistroHT"> 
+                                        <p>Aun no hay hábitos tóxicos registrados</p>
+                                    </div>
+                                    <?php                                 
+                                        }                                
+                                    ?>  
                                 <br><hr>
                                
 
@@ -138,7 +131,7 @@
                                 </div> 
                                 <!--Fila -->
                                 <form method="POST" action="<?php echo constant('URL');?>editarHistoria/insertarHabito">
-                                <div class="row no-gutters my-2">
+                                <div class="row no-gutters my-2 align-items-end">
                                     <div class="col-2 px-1">
                                         <label for="HT_nTipo">Tipo</label>
                                         <select class="form-control" name="nombreHF" >
@@ -159,11 +152,7 @@
                                         <button type="submit"  class="btn-action agregar" name="nuevoHF" value="HF">                                         
                                             <i class="fas fa-plus-circle"></i>
                                             Agregar
-                                        </button> 
-                                        <button type="button" onclick=""  class="btn-action aceptar">                                         
-                                            <i class="fas fa-check-square"></i>
-                                            Aceptar
-                                        </button> 
+                                        </button>  
                                     </div>                                  
                                 </div> 
                                 </form>
@@ -178,10 +167,7 @@
                                     </div>
                                     <div class="col-6">
                                         <input type="text" class="form-control" value="<?php echo $habitoF['detalle']?>" disabled>
-                                    </div> 
-                                    <button type="button"  class="btnCirculo editar"> 
-                                        <i class="fas fa-edit"></i>
-                                    </button>  
+                                    </div>  
                                     <button type="button" class="btnCirculo eliminar"> 
                                         <i class="fas fa-trash-alt"></i>
                                     </button> 
@@ -214,7 +200,7 @@
                                 </div> 
                                 <!--Fila -->
                                 <form method="POST" action="<?php echo constant('URL');?>editarHistoria/insertarHabito">
-                                <div class="row no-gutters my-2">
+                                <div class="row no-gutters my-2 align-items-end">
                                     <div class="col-2 px-1">
                                         <label for="HT_nTipo">Tipo</label>
                                         <input type="text" class="form-control" name="nombreEI">
@@ -227,11 +213,7 @@
                                         <button type="submit"  class="btn-action agregar" name="nuevoEI" value="EI">                                         
                                             <i class="fas fa-plus-circle"></i>
                                             Agregar
-                                        </button> 
-                                        <button type="button"  class="btn-action aceptar">                                         
-                                            <i class="fas fa-check-square"></i>
-                                            Aceptar
-                                        </button> 
+                                        </button>  
                                     </div>                                  
                                 </div> 
                                <form>
@@ -246,10 +228,7 @@
                                     </div>
                                     <div class="col-6">
                                         <input type="text" class="form-control text-uppercase text-center" value="<?php echo $enfermedadI['detalle']?>" disabled>
-                                    </div> 
-                                    <button type="button"  class="btnCirculo editar"> 
-                                        <i class="fas fa-edit"></i>
-                                    </button>  
+                                    </div>  
                                     <button type="button" class="btnCirculo eliminar"> 
                                         <i class="fas fa-trash-alt"></i>
                                     </button> 

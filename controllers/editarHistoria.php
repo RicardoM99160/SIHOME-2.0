@@ -25,12 +25,46 @@
             $this->view->historialClinico->alergias = $this->model->obtenerAlergias($id);
             $this->view->historialClinico->medicamentos = $this->model->obtenerMedicamentos($id);
             $this->render();
-        }
-        public function prueba(){ 
+        } 
 
-            
+
+        function eliminarHT($datos){
+            $idH = $datos[0]; 
+            $this->model->eliminarH($idH);
+            console.log($idH);
+            $id = $_SESSION['idPaciente'];
+            $this->view->expediente = $this->model->obtenerExpediente($id);
+
+            $this->view->historialClinico->habitosToxicos = $this->model->obtenerHabitos($id, 'HT');
+            $this->view->historialClinico->habitosFisiologicos = $this->model->obtenerHabitos($id, 'HF');
+            $this->view->historialClinico->enfermedadesInfancia = $this->model->obtenerEnfermedades($id, 'EI');
+            $this->view->historialClinico->enfermedades = $this->model->obtenerEnfermedades($id, 'EA');
+            $this->view->historialClinico->alergias = $this->model->obtenerAlergias($id);
+            $this->view->historialClinico->medicamentos = $this->model->obtenerMedicamentos($id);
+            $this->render();
         }
     
+        function mostrarExpediente($idH){
+            $id = $datos[0];
+            $_SESSION['idPaciente'] = $id;
+            //var_dump($_SESSION['userID']);
+            $this->view->expediente = $this->model->obtenerExpediente($id);
+            $this->view->consultas = $this->model->obtenerConsultas($id);
+            //$this->view->historialClinico = $this->model->obtenerHistorialClinico($id);
+
+            $this->view->historialClinico->habitosToxicos = $this->model->obtenerHabitos($id, 'HT');
+            $this->view->historialClinico->habitosFisiologicos = $this->model->obtenerHabitos($id, 'HF');
+            $this->view->historialClinico->enfermedadesInfancia = $this->model->obtenerEnfermedades($id, 'EI');
+            $this->view->historialClinico->enfermedades = $this->model->obtenerEnfermedades($id, 'EA');
+            $this->view->historialClinico->alergias = $this->model->obtenerAlergias($id);
+            $this->view->historialClinico->medicamentos = $this->model->obtenerMedicamentos($id);
+            //var_dump($this->view->historialClinico);
+            //echo $id;
+            $this->render();
+        }
+
+
+
 
         function insertarHabito(){
             $id = $_SESSION['idPaciente'];
