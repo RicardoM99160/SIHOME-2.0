@@ -163,6 +163,25 @@ class editarHistoriamodel extends Model{
 
     }
 
+    public function insertarM($id,$nombre,$detalle){
+        
+        $query = $this->db->connect()->prepare(
+            "INSERT INTO medicamentos (idMedicamentos, nombreMedicamento, dosis, pacientes_idPacientes) VALUES (NULL, :nombreM, detalleM, :idPaciente)");
+        $query->bindValue(':nombreM', $nombre);
+        $query->bindValue(':detalleM', $detalle); 
+        $query->bindValue(':idPaciente', $id);
+        $query->execute();
+    }
+
+    public function insertarA($id,$idAlergia){
+        
+        $query = $this->db->connect()->prepare(
+            "INSERT INTO pacientes_alergias (idAlergiasPacientes,pacientes_idPacientes, alergias_idAlergias) VALUES (NULL,:idPaciente, :idAlergia)");
+        $query->bindValue(':idPaciente', $id);
+        $query->bindValue(':idAlergia', $idAlergia); 
+        $query->execute();
+    }
+
 
     
 }

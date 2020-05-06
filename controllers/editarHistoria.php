@@ -56,6 +56,25 @@
                 $this->model->insertarE($id,$nombre,$detalle,$tipo, $fechaEI);
 
             }
+            if(isset($_POST['nuevoE']) && $_POST['nuevoE'] == "E"){
+                $nombre = $_POST['nombreE'];
+                $detalle = $_POST['detalleE'];
+                $fechaEI = date('Y-m-d');
+                $tipo = 'EA';
+                $this->model->insertarE($id,$nombre,$detalle,$tipo, $fechaEI);
+
+            }
+            if(isset($_POST['nuevoM']) && $_POST['nuevoM'] == "Med"){
+                $nombre = $_POST['nombreM'];
+                $detalle = $_POST['detalleM'];
+                $this->model->insertarM($id,$nombre,$detalle);
+
+            }
+            if(isset($_POST['nuevoA']) && $_POST['nuevoA'] == "Ale"){
+                $idAlergia = $_POST['idAlergia'];
+                $this->model->insertarA($id,$idAlergia);
+
+            }
             $this->view->expediente = $this->model->obtenerExpediente($id);
 
             $this->view->historialClinico->habitosToxicos = $this->model->obtenerHabitos($id, 'HT');

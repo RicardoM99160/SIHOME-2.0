@@ -41,7 +41,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="searchIcon"><i class="fas fa-search" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Número del expediente">
+                            <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Número del expediente" value="">
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@
                 <div class="modal-content"> 
                     <div class="modal-body"> 
                         <!-- Contenido -->
-                        <form id="frm-filtro" method="POST">
+                        <form id="frm-filtro" action="<?php echo constant('URL');?>buscarExpediente/buscarF" method="POST">
                             <div class="col">
                                 <!---Filtro de antiguedad -->
                             <div class="modal-seccion">
@@ -137,13 +137,13 @@
                                 <div class="row">  
                                     <div class="col-md-4">
                                         <div class="form form-inline">
-                                            <input type="radio" name="antiguedad" id="nuevos" value="1"> 
+                                            <input type="radio" name="antiguedad" id="nuevos" value="DESC"> 
                                             <label class="form-check-label" for="antiguedad">Más nuevos primero</label> 
                                         </div> 
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form form-inline">
-                                            <input type="radio" name="antiguedad" id="antiguos" value="2">   
+                                            <input type="radio" name="antiguedad" id="antiguos" value="ASC">   
                                             <label class="form-check-label" for="antiguedad">Más antiguos primeros</label> 
                                         </div>  
                                     </div>
@@ -193,75 +193,6 @@
             </div>
         </div>
     <!--Form de filtros-->
-    <?php
-        if(isset($_POST['filtros']))
-        {
-            $rango = $_POST['edad'];
-
-            if(isset($_POST['antiguedad'])) $orden = $_POST['antiguedad'];
-            else $orden = null;
-            if(isset($_POST['fecha1'])) $fecha1 = $_POST['fecha1'];
-            else $fecha1 = null;
-            if(isset($_POST['fecha2'])) $fecha2 = $_POST['fecha2'];
-            else $fecha2 = null;
-            if(isset($_POST['filtrarEdades'])) $filtrarEdad = $_POST['filtrarEdades'];
-            else $filtrarEdad = null;
-
-            //Obtener edades por separado
-            $edades = explode(",", $rango);
-            $edad1 = $edades[0];
-            $edad2 = $edades[1];
-
-            //Elegir variables a usar
-            
-            //***Todos los filtros
-            if($orden != null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad != null)
-            {
-
-            }
-
-            //***Sólo orden
-            if($orden != null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad == null)
-            {
-            }
-
-            //***Orden y fecha
-            elseif ($orden != null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad == null)
-            {
-
-            }
-
-            //***Orden y edades
-            elseif ($orden != null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad != null)
-            {
-
-            }
-
-            //***Sólo fecha
-            elseif ($orden == null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad == null)
-            {
-
-            }
-
-            //***Fecha y edades
-            elseif ($orden == null && ($fecha1 != null && $fecha2 != null) && $filtrarEdad != null)
-            {
-
-            }
-
-            //***Sólo edades
-            elseif ($orden == null && ($fecha1 == null && $fecha2 == null) && $filtrarEdad != null)
-            {
-
-            }
-        }
-
-        //Función para probar que se guardan las variables
-        /*function alert($msg)
-        {
-            if($msg != null) echo "<script type='text/javascript'>console.log('$msg');</script>";
-        }*/
-        ?>
 
         <!-- Inicialización de slider -->
         <script type="text/javascript">
