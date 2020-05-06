@@ -154,20 +154,6 @@
                                     ?>
                                 </h5>
                                 <!--Formulario de opciones -->
-                                <form action="POST" class="row form-group inline-form">
-                                    <!--input parametro busqueda -->
-                                    
-                                    
-                                        <div class="col-6">                                             
-                                                               
-                                            <div class="input-group filtro">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                                </div>
-                                                <input type="text" name="filtro" id="inputFiltro" class="form-control" placeholder="Buscar...">    
-                                            </div>
-                                        </div>    
-                                </form>
 
                                 <!--Tabla de consultas-->
                                 <div id="cont-table">
