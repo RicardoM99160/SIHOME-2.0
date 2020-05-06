@@ -49,7 +49,7 @@
                                 <h1>Bienvenido a su página de usuario.</h1>
                             </div> 
                             <div id="datosErroneos" class="pl-2 w-75">
-                                <p><?php echo $this->mensaje; ?></p>
+                                <p style="color:#F8703D"><?php echo $this->mensaje; ?></p>
                             </div>
                             <form action="" method="POST" id="form-inicioSesion" class="mb-5 pl-4 w-75">
                                 <div class="row form-group d-block">
