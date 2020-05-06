@@ -64,7 +64,7 @@
                         <th style="width: 20%;" scope="col">Paciente</th>
                         <th scope="col">DUI</th>
                         <th scope="col">Fecha de creación</th>
-                        <th scope="col">Ultima consulta</th>
+                        <th scope="col">Edad        </th>
                         <th scope="col">Acciones</th>
                       </tr>
                     </thead>
@@ -152,7 +152,7 @@
                             <!---Filtro de cita -->
                             <div class="modal-seccion">
                             <div class="row"> 
-                                    <h6 class="modal-seccion-title">Fecha estimada de ultima cita</h6> 
+                                    <h6 class="modal-seccion-title">Fecha estimada de creacion de Expediente</h6> 
                                 </div>
                                 <div class="form-inline"> 
                                         <!-- Columna --> 

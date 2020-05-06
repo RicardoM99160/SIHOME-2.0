@@ -56,8 +56,8 @@
                 $mensaje = "No se han encontrado pacientes";
             }
             $this->view->mensaje = $mensaje;
-            $this->render();
         }
+        $this->render();
         }
 
         //Funcion para cerrar la sesión del usuario

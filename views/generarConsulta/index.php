@@ -51,17 +51,17 @@
                                             <!--Motivo de consulta-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Motivo de consulta*</label>
-                                                <textarea name="motivo" class="form-control" rows="3" id="comment" tabindex ="1" required></textarea> 
+                                                <textarea name="motivo" class="form-control" rows="3" id="comment" tabindex ="1" required autofocus></textarea> 
                                             </div> 
                                             <!--Enfermedad actual-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Enfermedad actual*</label>
-                                                <textarea name="enfermedad" class="form-control" rows="2" id="comment" tabindex ="1" required></textarea> 
+                                                <textarea name="enfermedad" class="form-control" rows="2" id="comment" tabindex ="2" required></textarea> 
                                             </div> 
                                             <!--Antecedentes de enfermedad actual-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Antecedentes de enfermedad actual</label>
-                                                <textarea name="antecedente" class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
+                                                <textarea name="antecedente" class="form-control" rows="3" id="comment" tabindex ="3"></textarea> 
                                             </div> 
                                         </div> 
                                     </div> 
@@ -78,7 +78,7 @@
                                         <div class="form-group"> 
                                             <label for="" class="w-75">Temperatura</label> 
                                                 <div class="input-group"> 
-                                                    <input type="text" name="temperatura" id="inputTemperatura" class="form-control" placeholder="" required onchange="validar('inputTemperatura', 'decimales', 0)">    
+                                                    <input type="text" name="temperatura" id="inputTemperatura" class="form-control" placeholder="" tabindex ="4" required onchange="validar('inputTemperatura', 'decimales', 0)">    
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">&#176;C</span>
                                                     </div>
@@ -89,7 +89,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Pulso</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="pulso" id="inputPulso" class="form-control" placeholder="" required onchange="validar('inputPulso', 'enteros', 1)">    
+                                                <input type="text" name="pulso" id="inputPulso" class="form-control" placeholder="" required tabindex ="5" onchange="validar('inputPulso', 'enteros', 1)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">lat/min</span>
                                                 </div>
@@ -104,7 +104,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Presión</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="presion" id="inputPresion" class="form-control" placeholder="" required onchange="validar('inputPresion', 'presion', 2)">    
+                                                <input type="text" name="presion" id="inputPresion" class="form-control" placeholder="" required tabindex ="6" onchange="validar('inputPresion', 'presion', 2)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">mmHg</span>
                                                 </div>
@@ -115,7 +115,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Frecuencia respiratoria</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="frecuenciac" id="inputFrecuencia" class="form-control" placeholder="" required onchange="validar('inputFrecuencia', 'enteros', 3)">    
+                                                <input type="text" name="frecuenciac" id="inputFrecuencia" class="form-control" placeholder="" required tabindex ="7" onchange="validar('inputFrecuencia', 'enteros', 3)">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">resp/min</span>
                                                 </div>
@@ -194,7 +194,7 @@
                                     <!--Diagnostico-->
                                     <div class="form-group">
                                         <label for="" class='control-label'>Descripción de diagnostico*</label>
-                                        <textarea name="diagnostico" class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
+                                        <textarea name="diagnostico" class="form-control" rows="3" id="comment" tabindex ="8" required></textarea> 
                                     </div> 
                                 </div> 
                             </div>  
@@ -209,7 +209,7 @@
                                                 <option value="Hemograma completo">Hemograma completo</option>
                                                 <option value="Coprocultivo">Coprocultivo</option>
                                             </select>-->
-                                            <input name="examenes" id="listaOrdenes" class="form-control">
+                                            <input name="examenes" id="listaOrdenes" class="form-control" tabindex ="9">
                                             <input name="examenLista" id="listaO" class="custom-select" hidden>
                                         <button type="button" id="btn-agregar" value="Guardar" onclick="newElement();"> 
                                         
@@ -233,7 +233,7 @@
                         <hr></hr>
                         <div class="row">
                             <div class="w-100 form-group d-flex justify-content-center">
-                                <button type="submit" name="submit" id="btn-generar" value="Guardar" class="btn-action" disabled>
+                                <button type="submit" name="submit" id="btn-generar" value="Guardar" class="btn-action" disabled tabindex ="10">
                                     <i class="fas fa-save"></i>
                                     Generar consulta
                                 </button>
