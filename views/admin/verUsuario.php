@@ -22,16 +22,6 @@
             <!-- Contenido del sitio -->
             <div id="contenido" class="w-75 h-75 mx-auto">
                 
-                <?php
-                    if(isset($_POST['crear']) && $_POST['crear'] == "Crear usuario"){
-                ?>
-                <div class="alert alert-success alert-dismissible fade show">
-                    <?php echo $this->mensaje; ?>
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
-                <?php
-                        }
-                ?>
                 <!-- Título de la página actual -->
                 <div id="font-tituloPagina" class="w-100 d-flex mb-4">
                     <h4>
@@ -54,17 +44,13 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Código</label>
-                                <?php
-                                    if(isset($_SESSION['cantidadUsuarios']) && $_SESSION['cantidadUsuarios'] > 0){
-                                ?>
-                                <input type="text" name="codigo" id="codigoUsuario" class="form-control" value="<?php echo $this->nuevoid; ?>" readonly>
-                                <?php }?>
+                                <input type="text" name="codigo" id="codigoUsuario" class="form-control" value="<?php echo ($this->usuario != "") ? $this->usuario->codigo : "Sin datos" ?>" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Correo institucional</label>
-                                <input type="text" name="correo" id="correoUsuario" class="form-control" required tabindex="4"> 
+                                <input type="text" name="correo" id="correoUsuario" class="form-control" value="<?php echo ($this->usuario != "") ? $this->usuario->email : "Sin datos" ?>" readonly> 
                             </div>
                         </div>
                     </div>
@@ -72,13 +58,13 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Nombres</label>
-                                <input type="text" name="nombre" id="nombreUsuario" class="form-control" required tabindex="1">
+                                <input type="text" name="nombre" id="nombreUsuario" class="form-control" value="<?php echo ($this->usuario != "") ? $this->usuario->nombre : "Sin datos" ?>" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Contraseña</label>
-                                <input type="text" name="pass" id="passUsuario" class="form-control" required tabindex="5">
+                                <input type="text" name="pass" id="passUsuario" class="form-control" value="<?php echo ($this->usuario != "") ? $this->usuario->pass : "Sin datos" ?>" readonly>
                             </div>
                         </div>
                     </div>
@@ -86,21 +72,29 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Apellidos</label>
-                                <input type="text" name="apellido" id="apellidoUsuario" class="form-control" required tabindex="2">
+                                <input type="text" name="apellido" id="apellidoUsuario" class="form-control" value="<?php echo ($this->usuario != "") ? $this->usuario->apellido : "Sin datos" ?>" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Cargo</label>
-                                <select class="form-control" tabindex="6" name="cargo">
-                                    <option value="0">Administrador</option>
-                                    <option value="1">Doctor</option>
+                                <select class="form-control" tabindex="6" name="cargo" readonly>
+                                    <option value="0">
+                                        <?php 
+                                            if($this->usuario != ""){
+                                                if($this->usuario->cargo == 1){ 
+                                                    echo "Doctor";
+                                                }else{ 
+                                                    echo "Administrador";
+                                                }
+                                            }else{
+                                                echo "Sin datos";
+                                            } 
+                                            ?>
+                                    </option>
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div style="text-align:center;" class="d-flex justify-content-center">
-                        <input type="submit" name="crear" id="crearU" value="Crear usuario" class="btn btn-primary">
                     </div>
                 </form> 
             </div>
