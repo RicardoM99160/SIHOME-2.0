@@ -1,5 +1,6 @@
 <?php
     include_once 'models/consulta.php';
+    include_once 'models/usuario.php';
     class UserSession{
 
         public function __construct(){

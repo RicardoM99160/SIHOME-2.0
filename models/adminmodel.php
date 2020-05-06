@@ -19,14 +19,15 @@
                 while($row = $query->fetch()){
                     $item = new Usuario();
                     $item->codigo = $row['idPersonal'];
-                    $item->nombre = $row['nombrePersonal'] . " " . $row['apellidoPersonal'];
+                    $item->nombre = $row['nombrePersonal'];
+                    $item->apellido = $row['apellidoPersonal'];
                     $item->cargo = $row['cargo'];
                     $item->estado = $row['estado'];
                     $item->email = $row['emailPersonal'];
                     $item->pass = $row['contrasena'];
                     $item->habilitado = $row['habilitado'];
                     array_push($items, $item);
-                    //array_push($_SESSION['usuarios'], $item);
+                    array_push($_SESSION['usuarios'], $item);
                 }
                 $query = null;
                 return $items;

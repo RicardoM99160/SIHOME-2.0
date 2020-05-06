@@ -1,5 +1,5 @@
 <?php
-
+    include_once 'models/usuario.php';
     class Admin extends Controller{
 
         function __construct(){
@@ -7,6 +7,7 @@
             $this->view->usuarios = "";
             $this->view->mensaje = "";
             $this->view->nuevoid = "";
+            $this->view->usuario = "";
             //echo "soy admin";
         }
 
@@ -57,7 +58,6 @@
                 $email = $_POST['correo'];
                 $pass = $_POST['pass'];
                 $cargo = $_POST['cargo'];
-                echo "el cargo seleccionado es " . $cargo;
                 if($this->model->agregarUsuario([$codigo, $nombres, $apellidos, $cargo, $email, $pass])){
                     $this->view->mensaje = "Usuario agregado con éxito";
                 }else{
@@ -67,7 +67,18 @@
                 $this->view->nuevoid = 'P'.str_pad(($_SESSION['cantidadUsuarios']+1), 6, '0', STR_PAD_LEFT);
                 $this->render('admin/crearUsuario');
             }
-            
+        }
+
+        function verUsuario($datos = null){
+            $id = $datos[0];
+            foreach($_SESSION['usuarios'] as $usuario){
+                if($usuario->codigo == $id){
+                    $this->view->usuario = $usuario;
+                    break;
+                }
+            }
+            //var_dump($_SESSION['usuarios']);
+            $this->render('admin/verUsuario');
         }
 
         //Funcion para cerrar la sesión del usuario

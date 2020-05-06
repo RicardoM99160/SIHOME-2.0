@@ -40,12 +40,11 @@
                     </h4>
 
                     <div class="d-inline-flex ml-auto">
-                        <a href="<?php echo constant('URL')?>admin/crearUsuario" class="btn btn-dark">
-                            <svg id="i-compose" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
-                            </svg>
-                            <span>Crear usuario</span>
-                        </a>
+                        <!--Boton nuevo usuario -->   
+                        <a class="btn-admin" href="<?php echo constant('URL')?>admin/crearUsuario">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Nuevo usuario</span>
+                        </a>   
                     </div>
                     
                 </div>
@@ -119,10 +118,11 @@
                       <tr>
                         <th scope="col"> #</th>
                         <th scope="col">Código</th>
-                        <th style="width: 20%;" scope="col">Nombre completo</th>
-                        <th sscope="col">Correo electrónico</th>
+                        <th scope="col">Nombre completo</th>
+                        <th scope="col">Correo electrónico</th>
                         <th scope="col">Habilitar/Deshabilitar</th>
                         <th scope="col">Cambiar contraseña</th>
+                        <th scope="col">Información del usuario</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -137,13 +137,11 @@
                         <tr>
                             <td><?php echo $i; ?></td>
                             <td><?php echo $usuario->codigo; ?></td>
-                            <td><?php echo $usuario->nombre; ?></td>
+                            <td><?php echo $usuario->nombre . " " . $usuario->apellido; ?></td>
                             <td><?php echo $usuario->email; ?></td>
                             <td style="text-align: center;"><input type="checkbox" name="habilitarU" class="form-check-input habilitarUsuario" data-codigo="<?php echo $usuario->codigo; ?>" <?php if($usuario->habilitado == 1){ echo "checked"; }?> <?php if($usuario->cargo == 0){ echo "disabled"; }?>></td>
                             <td style="text-align: center;"><button type="button" class="btn btn-default cPass" name="nuevo-pass" data-toggle="modal" data-target="#modalPass" data-codigo="<?php echo $usuario->codigo; ?>"><i class="fas fa-external-link-alt"></i></button></td>
-                            <!--<td class="d-inline-flex" id="<?php echo $usuario->codigo;?>">
-                                <button type="button" class="btn btn-dark mx-2" name="deshabilitar-usuario" data-toggle="modal" data-target="#modalUsuario">3</button>
-                            </td>-->
+                            <td style="text-align: center;"><a class="btn btn-default" href="<?php echo constant('URL') . "admin/verUsuario/" . $usuario->codigo ?>"><i class="fas fa-external-link-alt"></i></a></td>
                         </tr>
                         <?php
                                 $i++;

@@ -96,6 +96,28 @@ input[type=radio]{
   opacity: 1;
 }
 
+.btn-admin, .btn-action{
+    border: 1px solid #389CD5;
+    margin: 0 10px;
+    color: #FFFFFF; 
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px; 
+    background: #389CD5;
+  
+    -webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+    -moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.08);
+    
+  }
+  
+  .btn-admin:hover, .btn-action:hover{
+    background-color: #00437D;
+  }
+
 .btn-action{ 
     border: none;
     color: white; 
