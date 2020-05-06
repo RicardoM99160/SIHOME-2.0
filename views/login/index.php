@@ -20,6 +20,8 @@
     <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script> 
     <!--- jquery --->
     <script crossorigin="anonymous" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
+    <!--tooltip lib-->
+    <script src="<?php echo constant('URL')?>public/js/popper.min.js"></script>
     
     <script src="<?php echo constant('URL')?>public/js/graficos.js"></script> 
     
@@ -47,7 +49,7 @@
                                 <h1>Bienvenido a su página de usuario.</h1>
                             </div> 
                             <div id="datosErroneos" class="pl-2 w-75">
-                                <p><?php echo $this->mensaje; ?></p>
+                                <p style="color:#F8703D"><?php echo $this->mensaje; ?></p>
                             </div>
                             <form action="" method="POST" id="form-inicioSesion" class="mb-5 pl-4 w-75">
                                 <div class="row form-group d-block">
@@ -73,7 +75,7 @@
                     </div>
                     <div id="btn-form-cont" class="row form-group">
                         <button class="btn-action" type="submit" id="btnInicio" disabled="true">Iniciar sesión</button>
-                        <button class="btn-ayuda" type="button">Ayuda</button>
+                        <button class="btn-ayuda" type="button" data-toggle="popover" data-trigger="focus" data-content="Póngase en contacto con un administrador.">Ayuda</button>
                     </div>
                 </form>
             </div>
@@ -134,6 +136,10 @@
                 document.getElementById('btnInicio').disabled = true;
             } 
         }
+
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
     </script>
     <!-- tiny swipper conf -->
     <script type="text/javascript"> 
@@ -148,7 +154,8 @@
 
     <script type="text/javascript">
         var BASE_URL= "<?php echo constant('URL')?>";
-     </script> 
-    
+    </script> 
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

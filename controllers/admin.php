@@ -48,7 +48,7 @@
 
         function crearUsuario($datos = null){
             if($datos == null){
-                $this->view->nuevoid = 'P'.str_pad(($_SESSION['cantidadUsuarios']+1), 6, '0', STR_PAD_LEFT);
+                $this->view->nuevoid = 'E'.str_pad(($_SESSION['cantidadUsuarios']+1), 6, '0', STR_PAD_LEFT);
                 $this->render('admin/crearUsuario');
             }else{
                 $codigo = $_POST['codigo'];

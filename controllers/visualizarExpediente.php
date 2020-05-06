@@ -23,7 +23,7 @@
             
         }
 
-        function mostrarExpediente($datos){
+        function mostrarExpediente($datos = null){
             $id = $datos[0];
             $_SESSION['idPaciente'] = $id;
             //var_dump($_SESSION['userID']);
@@ -42,14 +42,24 @@
             $this->render();
         }
 
-        function mostrarConsulta($datos){
-            $idC = $datos[0];
-            //var_dump($_SESSION['consultas']);
-            $this->view->consulta = $_SESSION['consultas'];
-            $this->view->consulta->ordenes = $this->model->obtenerOrdenesConsulta($idc);
-            //foreach que recorra la variable de sesion y obtenga la consulta por medio del $idC
+        function mostrarConsulta($datos = null){
+            if($datos == null){
+                $this->render('visualizarExpediente/vistaConsulta');
+            }else{
+                $idC = $datos[0];
 
-            $this->render('visualizarExpediente/vistaConsulta');
+                //foreach que recorra la variable de sesion y obtenga la consulta por medio del $idC
+                foreach($_SESSION['consultas'] as $consulta){
+                    if($consulta->codigo == $idC){
+                        $this->view->consulta = $consulta;
+                        break;
+                    }
+                }
+                $this->view->consulta->ordenes = $this->model->obtenerOrdenesConsulta($idC);
+                //var_dump($this->view->consulta);
+
+                $this->render('visualizarExpediente/vistaConsulta');
+            }
         }
 
     }

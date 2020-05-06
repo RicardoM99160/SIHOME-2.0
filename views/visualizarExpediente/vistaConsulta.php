@@ -22,10 +22,9 @@
 
             <!-- Contenido del sitio -->
             <div id="contenido" class="w-75 h-75 mx-auto">
-                
                 <!-- Título de la página actual -->
                 <div id="font-tituloPagina"> 
-                    <h4>Nueva consulta</h4>
+                    <h4>Consulta <?php echo ($this->consulta != "") ? $this->consulta->codigo : "no registrada" ?></h4>
                 </div>
 
                 <!--- Formulario generar consulta-->
@@ -41,18 +40,21 @@
                                         <div class='col'>
                                             <!--Motivo de consulta-->
                                             <div class="form-group">
-                                                <label for="" class='control-label'>Motivo de consulta*</label>
-                                                <textarea name="motivo" class="form-control" rows="3" id="comment" tabindex ="1" required></textarea> 
+                                                <label for="" class='control-label'>Motivo de consulta</label>
+                                                <textarea name="motivo" class="form-control" rows="3" id="comment" tabindex ="1" disabled><?php echo ($this->consulta != "") ? $this->consulta->motivo : "Sin datos" ?>
+                                                </textarea> 
                                             </div> 
                                             <!--Enfermedad actual-->
                                             <div class="form-group">
-                                                <label for="" class='control-label'>Enfermedad actual*</label>
-                                                <textarea name="enfermedad" class="form-control" rows="2" id="comment" tabindex ="1" required></textarea> 
+                                                <label for="" class='control-label'>Enfermedad actual</label>
+                                                <textarea name="enfermedad" class="form-control" rows="2" id="comment" tabindex ="1" disabled><?php echo ($this->consulta != "") ? $this->consulta->enfermedad : "Sin datos" ?>
+                                                </textarea> 
                                             </div> 
                                             <!--Antecedentes de enfermedad actual-->
                                             <div class="form-group">
                                                 <label for="" class='control-label'>Antecedentes de enfermedad actual</label>
-                                                <textarea name="antecedente" class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
+                                                <textarea name="antecedente" class="form-control" rows="3" id="comment" tabindex ="1" disabled><?php echo ($this->consulta != "") ? $this->consulta->antecedentes : "Sin datos" ?>
+                                                </textarea> 
                                             </div> 
                                         </div> 
                                     </div> 
@@ -69,7 +71,7 @@
                                         <div class="form-group"> 
                                             <label for="" class="w-75">Temperatura</label> 
                                                 <div class="input-group"> 
-                                                    <input type="text" name="temperatura" id="inputTemperatura" class="form-control" placeholder="" required onchange="validar('inputTemperatura', 'decimales', 0)">    
+                                                    <input type="text" name="temperatura" id="inputTemperatura" class="form-control" placeholder="" disabled onchange="validar('inputTemperatura', 'decimales', 0)" value="<?php echo ($this->consulta != "") ? $this->consulta->temperatura : "Sin datos" ?>">    
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">&#176;C</span>
                                                     </div>
@@ -80,7 +82,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Pulso</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="pulso" id="inputPulso" class="form-control" placeholder="" required onchange="validar('inputPulso', 'enteros', 1)">    
+                                                <input type="text" name="pulso" id="inputPulso" class="form-control" placeholder="" disabled onchange="validar('inputPulso', 'enteros', 1)" value="<?php echo ($this->consulta != "") ? $this->consulta->pulso : "Sin datos" ?>">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">lat/min</span>
                                                 </div>
@@ -95,7 +97,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Presión</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="presion" id="inputPresion" class="form-control" placeholder="" required onchange="validar('inputPresion', 'presion', 2)">    
+                                                <input type="text" name="presion" id="inputPresion" class="form-control" placeholder="" disabled onchange="validar('inputPresion', 'presion', 2)" value="<?php echo ($this->consulta != "") ? $this->consulta->presion : "Sin datos" ?>">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">mmHg</span>
                                                 </div>
@@ -106,7 +108,7 @@
                                         <div class="form-group">
                                             <label for="" class="w-100">Frecuencia respiratoria</label> 
                                             <div class="input-group"> 
-                                                <input type="text" name="frecuenciac" id="inputFrecuencia" class="form-control" placeholder="" required onchange="validar('inputFrecuencia', 'enteros', 3)">    
+                                                <input type="text" name="frecuenciac" id="inputFrecuencia" class="form-control" placeholder="" disabled onchange="validar('inputFrecuencia', 'enteros', 3)" value="<?php echo ($this->consulta != "") ? $this->consulta->frecuencia : "Sin datos" ?>">    
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">resp/min</span>
                                                 </div>
@@ -133,32 +135,40 @@
                                 <div class="col">
                                     <!--Diagnostico-->
                                     <div class="form-group">
-                                        <label for="" class='control-label'>Descripción de diagnostico*</label>
-                                        <textarea name="diagnostico" class="form-control" rows="3" id="comment" tabindex ="1"></textarea> 
+                                        <label for="" class='control-label'>Descripción de diagnostico</label>
+                                        <textarea name="diagnostico" class="form-control" rows="3" id="comment" tabindex ="1" disabled><?php echo ($this->consulta != "") ? $this->consulta->diagnostico : "Sin datos" ?>
+                                        </textarea> 
                                     </div> 
                                 </div> 
                             </div>  
                             <div class="col">
                                     <!--Orden-->   
-                                        <div class="form-group inline-form">
-                                            <label for="" class="w-50">Orden</label>
-                                            
-                                            <select name="examenes" id="listaOrdenes" class="custom-select" required>
-                                                <option value="Sin examenes">Sin examenes</option>
-                                                <option value="Análisis de orina">Análisis de orina</option>
-                                                <option value="Hemograma completo">Hemograma completo</option>
-                                                <option value="Coprocultivo">Coprocultivo</option>
-                                            </select>
-                                        <button type="button" id="btn-agregar" value="Guardar" onclick="newElement(); removerOpcionSelect('listaOrdenes','btn-agregar');"> 
-                                        
-                                        <i class="fas fa-plus-circle"></i><span>Agregar</span>
-                                        </button>
-
+                                    <div class="form-group inline-form">
                                         <ul id="ordenesAgregados" class="lista-orden list-group">
-                                            <!--Ejemplo de li 
-                                            <li id="orden-item" class="list-group-item d-flex justify-content-between align-items-center">Un item
-                                                <span class="eliminarOrden"><i class="fas fa-minus-circle"></i></span>
-                                            </li>  -->
+                                            <label for="" class="w-50">Orden</label>
+                                            <?php
+                                                if(isset($this->consulta->ordenes)){
+                                                    if(count($this->consulta->ordenes)>0){
+                                                        foreach($this->consulta->ordenes as $orden){
+                                            ?>
+                                            <li id="orden-item" class="list-group-item d-flex justify-content-between align-items-center"><?php echo $orden['nombre'] ?>
+                                            </li>
+                                            <?php
+                                                        }
+                                                    }else{
+                                            ?>
+                                            <li id="orden-item" class="list-group-item d-flex justify-content-between align-items-center">No hay ordenes registradas
+                                            </li>
+                                            <?php
+                                                    }
+                                                }else{
+                                            ?>
+                                            <li id="orden-item" class="list-group-item d-flex justify-content-between align-items-center">Sin datos
+                                            </li>
+                                            <?php
+                                                                                                                                            
+                                                }
+                                            ?>
                                         </ul>
                                         
                                    
@@ -166,16 +176,6 @@
                             </div>
 
                             
-                        </div>
-                        <!-- Boton GENERAR-->
-                        <hr></hr>
-                        <div class="row">
-                            <div class="w-100 form-group d-flex justify-content-center">
-                                <button type="submit" name="submit" id="btn-generar" value="Guardar" class="btn-action" disabled>
-                                    <i class="fas fa-save"></i>
-                                    Generar consulta
-                                </button>
-                            </div>
                         </div>
                         
                     </div>  

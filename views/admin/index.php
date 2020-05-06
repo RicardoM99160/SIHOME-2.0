@@ -16,6 +16,7 @@
         <!-- Validaciones -->
         <script type="text/javascript" src="<?php echo constant('URL');?>public/js/validaciones.js"></script>
         <?php require 'views/plantillaBase.php'?>
+        <?php require 'views/modo.php'?>
 
         <div class="wrapper">
 
@@ -64,18 +65,19 @@
                                     <div class="modal-body"> 
                                         <div class="form-group w-100">
                                             <label for="nuevoPassword">Ingrese la nueva contraseña:</label>
-                                            <input type="text" name="passwordN" id="nuevoPassword" class="form-control">
+                                            <input type="text" name="passwordN" id="nuevoPassword" class="form-control" onChange="validarContraseña('guardarP')">
                                         </div>
                                         <div class="form-group w-100">
                                             <label for="confirmarPassword">Confirme la nueva contraseña:</label>
-                                            <input type="text" name="passwordC" id="confirmarPassword" class="form-control">
+                                            <input type="text" name="passwordC" id="confirmarPassword" class="form-control" onChange="validarContraseña('guardarP')">
+                                            <div class="invalid-feedback">Las contraseñas deben coincidir.</div>
                                         </div>
                                     </div>
                                 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" name="guardar" id="guardarP" class="btn btn-primary">Guardar nueva contraseña</button>
+                                <button type="submit" name="guardar" id="guardarP" class="btn btn-primary" disabled>Guardar nueva contraseña</button>
                             </div>
                             </form>
                         </div>
@@ -160,16 +162,30 @@
             </div>
         </div>
         <script type="text/javascript">
-            $(document).ready(function() {
-                //Función para guardar nueva contraseña
-                $("#passwordN").click(function() {
-                    $("#frm-contraseña").submit();
-                });
-                //Función para deshabilitar usuario
-                $("#usuarioD").click(function() {
-                    $("#frm-usuario").submit();
-                });
+
+        function validarContraseña(id_boton)
+        {
+            var contra1 = document.getElementById("nuevoPassword");
+            var contra2 = document.getElementById("confirmarPassword");
+            //Alerta
+            if((contra1.value != contra2.value) && (contra1.value != "") && (contra2.value != "")) contra2.classList.add('is-invalid');
+            else contra2.classList.remove('is-invalid');
+
+            //Botón
+            if((contra1.value != contra2.value)) document.getElementById(id_boton).disabled = true;
+            else if ((contra1.value != "") && (contra2.value != "")) document.getElementById(id_boton).disabled = false;
+        }
+
+        $(document).ready(function() {
+            //Función para guardar nueva contraseña
+            $("#passwordN").click(function() {
+                $("#frm-contraseña").submit();
             });
+            //Función para deshabilitar usuario
+            $("#usuarioD").click(function() {
+                $("#frm-usuario").submit();
+            });            
+        });
         </script>
         <script src="<?php echo constant('URL');?>public/js/main.js"></script>
     </body>

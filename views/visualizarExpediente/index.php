@@ -112,18 +112,6 @@
                     </div>
                 </div> 
                 <?php } ?>
-
-                    <!--Enlace para ultima consulta -->
-
-                    <div class="cont-ultimaConsulta row no-gutters mb-3">
-                        <div class="col d-flex justify-content-center">
-                            <p class="px-1"><b>Ultima consulta:</b></p>
-                            <p class="px-1">Recibida el <u>15 de Mayo de 2019</u> en <u>Instituto Médico San Marcos</u></p>
-                            <a class="link-ext" href="">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a> 
-                        </div>
-                    </div>
                         
                     <!--Panel de navegacion tabular -->
                     
