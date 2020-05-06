@@ -1,4 +1,5 @@
 <?php
+    include_once 'models/consulta.php';
     class UserSession{
 
         public function __construct(){
