@@ -54,7 +54,7 @@
                 </form>
 
                 <!-- Tabla de resultados de búsqueda-->
-                <div id="cont-table">
+                <div id="cont-table" style="height:60vh;" class="overflow-auto">
                 <table class="table table-borderless borderless">
                     <thead class="thead">
                     <!-- Encabezados de tabla-->
