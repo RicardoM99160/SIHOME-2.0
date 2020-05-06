@@ -25,7 +25,7 @@
                     $item->nombre = $row['nombrePaciente'] ." ". $row['apellidoPaciente'];
                     $item->dui = $row['duiPaciente'];
                     $item->fechaCreacion = $row['fechaCreacion'];
-                    $item->ultimaConsulta = "Modificar sentencia SQL";
+                    $item->ultimaConsulta = $row['edad'];
 
                     array_push($items, $item);
                 }
@@ -110,6 +110,13 @@
                     WHERE edad 
                     BETWEEN $edad1 AND $edad2");
             }
+            else{
+                $query = $this->db->connect()->prepare(
+                    "SELECT * 
+                    FROM pacientes 
+                    WHERE idPacientes 
+                    LIKE '%$filtro%'");
+            }
             
             try{
                 $query->execute();
@@ -120,7 +127,7 @@
                     $item->nombre = $row['nombrePaciente'] ." ". $row['apellidoPaciente'];
                     $item->dui = $row['duiPaciente'];
                     $item->fechaCreacion = $row['fechaCreacion'];
-                    $item->ultimaConsulta = "Modificar sentencia SQL";
+                    $item->ultimaConsulta = $row['edad'];
 
                     array_push($items, $item);
                 }
