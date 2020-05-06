@@ -75,7 +75,7 @@
                     </div>
                     <div id="btn-form-cont" class="row form-group">
                         <button class="btn-action" type="submit" id="btnInicio" disabled="true">Iniciar sesión</button>
-                        <button class="btn-ayuda" type="button" data-toggle="popover" data-content="Póngase en contacto con un administrador.">Ayuda</button>
+                        <button class="btn-ayuda" type="button" data-toggle="popover" data-trigger="focus" data-content="Póngase en contacto con un administrador.">Ayuda</button>
                     </div>
                 </form>
             </div>
